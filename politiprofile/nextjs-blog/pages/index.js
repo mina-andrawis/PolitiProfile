@@ -3,15 +3,21 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import Layout from '../components/layout';
 
+
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <link href="../tailwind/output.css" rel="stylesheet"/>
       </Head>
 
       <main>
+
+      <h1 class="text-3xl font-bold underline">
+        Hello world!
+      </h1>
         <h1 className={styles.title}>
           Read <Link href="/my-account">this page!</Link>
         </h1>
