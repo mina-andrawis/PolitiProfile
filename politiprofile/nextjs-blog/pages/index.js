@@ -3,14 +3,6 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import Layout from '../components/layout';
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
 export default function Home() {
   return (
     <Layout home>
