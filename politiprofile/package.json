@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "date-fns": "^3.6.0",
+    "gray-matter": "^4.0.3",
+    "next": "^14.2.7",
+    "nextjs": "^0.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "tailwind": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
