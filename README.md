@@ -10,9 +10,6 @@ Personally, I’ve discovered politicians who don’t even represent my state an
 
 There will be a questionnaire to the user asking what topics they are interested in. Then they are matched to politicians who align with their views.
 
-Criteria For Politicians:
--Online Presence
-
 # V1
 - Project consists of a single page application with different tabs along the top
 - Tabs include: Home, My Account, About, Candidate Comparison, Education
@@ -34,6 +31,6 @@ Criteria For Politicians:
 **Technologies Utilized:**
 - This application is built with **Next.js**, a **React Framework**.
 - **Tailwind** and **CSS Modules** are used for styling.
-- ______ will be the primary **UI Library**.
+- **MaterialUI** will be the primary **UI Library**.
 - The database used is **MongoDB**.
 - The application will be deployed using **Vercel**.
