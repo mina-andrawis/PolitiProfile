@@ -23,8 +23,10 @@ There will be a questionnaire to the user asking what topics they are interested
         - Phone Number
     - https://github.com/unitedstates/congress-legislators/blob/main/legislators-current.yaml
 - My Account
+    - Shows log-in screen
     - Shows user interests
 - Users will be able to input which political topics that they are interested in
+- User will have the ability create an account with email and password
 - Political Topics: Abortion, Gay Marriage, Gun Control, Term Limits, Supreme Court Reform, Taxes, Equal Pay, Drug Price Regulation, Israel, Climate Change, Healthcare Reform, Minimum Wage Increase, Police Reform, Student Loans Reform
 
 
