@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "concurrently \"npm run watch-css\" \"next dev\" --title \"Next.js Dev\"",
+    "watch-css": "npx tailwindcss -i ./styles/tailwind/input.css -o ./styles/tailwind/output.css --watch",
     "start": "next start"
   },
   "dependencies": {
@@ -19,5 +20,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
