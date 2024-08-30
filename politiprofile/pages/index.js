@@ -4,6 +4,7 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
+import CustomButton from '../components/button';
 
 export default function Home({ allPostsData }) {
   return (
@@ -11,6 +12,9 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+
+      <CustomButton/>
+
       <section className={utilStyles.headingMd}>
         <p>[Your Self Introduction]</p>
         <p>
