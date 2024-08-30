@@ -1,7 +1,40 @@
 import Head from 'next/head';
+import Layout, { siteTitle } from '../components/layout';
+import utilStyles from '../styles/utils.module.css';
+import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
-import styles from '../styles/Home.module.css';
-import Layout from '../components/layout';
+import Date from '../components/date';
+
+export default function Home({ allPostsData }) {
+  return (
+    <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+      <section className={utilStyles.headingMd}>
+        <p>[Your Self Introduction]</p>
+        <p>
+          (This is a sample website - you’ll be building a site like this in{' '}
+          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+        </p>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              <Link href={`/posts/${id}`}>{title}</Link>
+              <br />
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </Layout>
+  );
+}
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -10,28 +43,4 @@ export async function getStaticProps() {
       allPostsData,
     },
   };
-}
-export default function Home() {
-  return (
-    <Layout home>
-      <div className={styles.container}>
-        <Head>
-          <title>Create Next App</title>
-          <link rel="icon" href="/favicon.ico" />
-          <link href="./output.css" rel="stylesheet"></link>
-        </Head>
-
-        <main>
-
-          <h1 className="text-3xl font-bold underline">
-            Hello world!
-          </h1>
-
-          <h1 className={styles.title}>
-            Read <Link href="/my-account">this page!</Link>
-          </h1>
-        </main>
-      </div>
-    </Layout>
-  );
 }

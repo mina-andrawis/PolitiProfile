@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "date-fns": "^3.6.0",
+    "fs": "^0.0.1-security",
+    "gray-matter": "^4.0.3",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
+  }
+}
