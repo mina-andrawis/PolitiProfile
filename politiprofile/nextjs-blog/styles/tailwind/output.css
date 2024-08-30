@@ -1,5 +1,6 @@
 /*
-! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
+npx tailwindcss -i ./styles/tailwind/input.css -o ./styles/tailwind/output.css --watch
+npm run dev
 */
 
 /*
