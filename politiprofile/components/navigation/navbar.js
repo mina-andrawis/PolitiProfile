@@ -3,19 +3,19 @@ import Link from 'next/link';
 
 export default function NavBar() {
   return (
-    <div className="container flex flex-wrap p-5 my-3 flex-col md:flex-row items-center border bg-primary">
-      <div className="md:ml-auto md:mr-auto flex flex-grow items-center text-base justify-center">
+    <div className="w-full flex flex-wrap p-5 my-3 flex-col md:flex-row items-center border bg-primary rounded-md">
+      <div className="flex items-center justify-start flex-grow">
         <Link href="/">
-          <button name="Home"className="mr-5 text-white">Home</button>
+          <button name="Home" className="mr-6 text-white text-xl">Home</button>
         </Link>
         <Link href="/about">
-          <button name="About" className="mr-5 text-white">About</button>
+          <button name="About" className="mr-6 text-white text-xl">About</button>
         </Link>
         <Link href="/compare-candidates">
-          <button name="Compare Candidates" className="mr-5 text-white">Compare Candidates</button>
+          <button name="Compare Candidates" className="mr-6 text-white text-xl">Compare Candidates</button>
         </Link>
         <Link href="/education">
-          <button name="Education" className="mr-5 text-white">Education</button>
+          <button name="Education" className="mr-6 text-white text-xl">Education</button>
         </Link>
       </div>
       <Link href="/login">
