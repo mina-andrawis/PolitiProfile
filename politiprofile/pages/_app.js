@@ -3,6 +3,7 @@ import * as React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '../lib/theme';
+import '../styles/tailwind/output.css'; // Import Tailwind CSS
 
 function MyApp({ Component, pageProps }) {
   return (
