@@ -4,22 +4,18 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
-import CustomButton from '../components/button';
 
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
+        <meta name="description" content="Connect with politicians and candidates that align with your ideals. Compare candidates for elections and discover insights on key political issues." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-
-      <CustomButton/>
-
       <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
         <p>
-          (This is a sample website - you’ll be building a site like this in{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          Connect with politicians and candidates that align with your ideals. Compare candidates for elections and discover insights on key political issues.
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
