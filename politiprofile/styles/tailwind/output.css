@@ -591,3 +591,7 @@ video {
 .static {
   position: static;
 }
+
+.flex {
+  display: flex;
+}

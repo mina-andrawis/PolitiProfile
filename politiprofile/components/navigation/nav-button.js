@@ -1,11 +1,20 @@
-//create a navigation button component that will be used in the NavBar component
-//import the necessary modules
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
+import styles from "../../styles/navigation/nav.module.css";
 
-//create the NavButton component
-export default function NavButton({name}) {
+export default function NavButton({ name, href = '/', onClick, sx, ariaLabel }) {
   return (
-    <Button color="inherit">{name}</Button>
+    <Link href={href} passHref legacyBehavior>
+      <Button
+        className={styles.NavButton}
+        color="inherit"
+        onClick={onClick}
+        sx={sx}
+        aria-label={ariaLabel || name}  // Provide accessibility support
+      >
+        {name}
+      </Button>
+    </Link>
   );
 }
