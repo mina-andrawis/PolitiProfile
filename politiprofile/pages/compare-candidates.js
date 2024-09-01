@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card, CardContent, Typography, Grid, Divider, CardMedia, Box, Container } from '@mui/material';
 import Layout from '../components/layout';
 
 const candidate1 = {
@@ -19,48 +18,37 @@ const candidate2 = {
 const CandidateComparison = () => {
   return (
     <Layout>
-      <Box sx={{ flexGrow: 1, p: 2, my:3}}>
-            <Card sx={{p:4, my: 1}}>
-              <CardMedia
-                component="img"
-                height="140"
-                image={candidate1.image}
-                alt={`${candidate1.name}'s photo`}
-              />
-              <CardContent>
-                <Typography variant="h5" component="div">
-                  {candidate1.name}
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary">
-                  {candidate1.party}
-                </Typography>
-                <Divider sx={{ my: 2 }} />
-                <Typography variant="body2">
-                  {candidate1.bio}
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{p:4, my: 1}}>
-              <CardMedia
-                component="img"
-                height="140"
-                image={candidate2.image}
-                alt={`${candidate2.name}'s photo`}
-              />
-              <CardContent>
-                <Typography variant="h5" component="div">
-                  {candidate2.name}
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary">
-                  {candidate2.party}
-                </Typography>
-                <Divider sx={{ my: 2 }} />
-                <Typography variant="body2">
-                  {candidate2.bio}
-                </Typography>
-              </CardContent>
-            </Card>
-      </Box>
+      <div className="flex flex-wrap justify-center gap-4 p-6">
+        {/* Candidate 1 */}
+        <div className="bg-white shadow-lg rounded-lg p-6 w-80">
+          <img 
+            src={candidate1.image} 
+            alt={`${candidate1.name}'s photo`} 
+            className="w-full h-40 object-cover rounded-t-lg" 
+          />
+          <div className="p-4">
+            <h2 className="text-xl font-bold">{candidate1.name}</h2>
+            <p className="text-gray-500">{candidate1.party}</p>
+            <div className="my-4 border-b"></div>
+            <p className="text-gray-700">{candidate1.bio}</p>
+          </div>
+        </div>
+
+        {/* Candidate 2 */}
+        <div className="bg-white shadow-lg rounded-lg p-6 w-80">
+          <img 
+            src={candidate2.image} 
+            alt={`${candidate2.name}'s photo`} 
+            className="w-full h-40 object-cover rounded-t-lg" 
+          />
+          <div className="p-4">
+            <h2 className="text-xl font-bold">{candidate2.name}</h2>
+            <p className="text-gray-500">{candidate2.party}</p>
+            <div className="my-4 border-b"></div>
+            <p className="text-gray-700">{candidate2.bio}</p>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };
