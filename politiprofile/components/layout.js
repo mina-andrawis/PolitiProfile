@@ -18,21 +18,9 @@ export default function Layout({ children, home }) {
         />
       </Head>
       <header className={styles.header}>
-        {home ? ( 
-          <>
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-            <NavBar />
-          </>
-        ) : (
-          <>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2>
-          </>
-        )}
+        <h1 className={utilStyles.heading2Xl}>{name}</h1>
       </header>
+      <NavBar />
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
