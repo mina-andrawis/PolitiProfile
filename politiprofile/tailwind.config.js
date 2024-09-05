@@ -7,6 +7,9 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    daisyui: {
+      themes: ["light", "dark", "cupcake"],
+    },
     colors: {
       primary: '#233d4d',
       secondary: '#ecc94b',
@@ -22,5 +25,5 @@ module.exports = {
       yellow: colors.yellow,
     },
   },
-  plugins: [],
+  plugins: [ require('daisyui'), ]
 }
