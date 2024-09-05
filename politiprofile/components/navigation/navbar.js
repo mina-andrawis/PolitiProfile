@@ -6,16 +6,16 @@ export default function NavBar() {
     <div className="w-full flex flex-wrap p-2 my-3 flex-col md:flex-row items-center border bg-primary rounded-md">
       <div className="flex items-center justify-start flex-grow">
         <Link href="/">
-          <button name="Home" className="mr-6 p-3 text-white text-xl">Home</button>
+          <button className="mr-6 p-3 text-white text-xl">Home</button>
         </Link>
         <Link href="/about">
-          <button name="About" className="mr-6 p-3 text-white text-xl">About</button>
+          <button className="mr-6 p-3 text-white text-xl">About</button>
         </Link>
         <Link href="/compare-candidates">
-          <button name="Compare Candidates" className="mr-6 p-3 text-white text-xl">Compare Candidates</button>
+          <button className="mr-6 p-3 text-white text-xl">Compare Candidates</button>
         </Link>
         <Link href="/education">
-          <button name="Education" className="mr-6 p-3 text-white text-xl">Education</button>
+          <button className="mr-6 p-3 text-white text-xl">Education</button>
         </Link>
       </div>
       <Link href="/login">
