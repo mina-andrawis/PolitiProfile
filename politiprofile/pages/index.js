@@ -5,7 +5,7 @@ import Link from 'next/link';
 import CongressList from '../components/congress-list';
 import yaml from 'js-yaml';
 
-export default function Home({ allPostsData }) {
+export default function Home({ legislators }) {
   return (
     <Layout home>
       <Head>
@@ -19,7 +19,7 @@ export default function Home({ allPostsData }) {
         </p>
       </section>
       
-      <CongressList />
+      <CongressList legislators={legislators}/>
     </Layout>
   );
 }
