@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import stateNames from '../enums';  // Ensure the stateNames object is correctly imported
+import { stateNames, chamber } from '../helpers/enums';  // Adjust path if needed
+import Date from '../helpers/date';
 
 const CongressList = () => {
   const [legislatorsByState, setLegislatorsByState] = useState({});
@@ -85,10 +86,10 @@ const CongressList = () => {
                         <strong>State:</strong> {stateNames[stateAbbreviation] || lastTerm.state}
                       </p>
                       <p>
-                        <strong>Office:</strong> {lastTerm.office}
+                        <strong>Chamber:</strong> {chamber[lastTerm.type]}
                       </p>
                       <p>
-                        <strong>End of Term:</strong> {lastTerm.end}
+                      <strong>End of Term:</strong> {<Date dateString={lastTerm.end} />}
                       </p>
                     </li>
                   );

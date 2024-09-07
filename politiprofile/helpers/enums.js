@@ -1,4 +1,4 @@
-const stateNames = {
+export const stateNames = {
     AL: 'Alabama',
     AK: 'Alaska',
     AZ: 'Arizona',
@@ -57,4 +57,7 @@ const stateNames = {
     VI: 'U.S. Virgin Islands',
   };
 
-  export default stateNames;
+  export const chamber = {
+    rep: 'House of Representatives',
+    sen: 'Senate',
+  };
