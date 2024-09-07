@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import CongressList from '../components/congress-list';
+import yaml from 'js-yaml';
 
 export default function Home({ allPostsData }) {
   return (
@@ -25,10 +25,13 @@ export default function Home({ allPostsData }) {
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  // Fetch the YAML data from GitHub
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/legislators`);
+  const yamlData = await res.text();
+  const data = yaml.load(yamlData);
+
   return {
-    props: {
-      allPostsData,
-    },
+    props: { legislators: data }, // Pass the legislators data as props
+    revalidate: 86400, // Revalidate the page once every 24 hours (86400 seconds)
   };
 }
