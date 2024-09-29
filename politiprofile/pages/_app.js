@@ -1,5 +1,5 @@
 // pages/_app.js
-import '../styles/tailwind/output.css';
+import "../styles/tailwind/output.css";
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
