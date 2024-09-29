@@ -1,22 +1,22 @@
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     daisyui: {
       themes: ["light", "dark", "cupcake"],
     },
     colors: {
-      primary: '#233d4d',
-      secondary: '#ecc94b',
+      primary: "#233d4d",
+      secondary: "#ecc94b",
 
-      transparent: 'transparent',
-      current: 'currentColor',
-      sand: '#f2e3bc',
+      transparent: "transparent",
+      current: "currentColor",
+      sand: "#f2e3bc",
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
@@ -25,5 +25,5 @@ module.exports = {
       yellow: colors.yellow,
     },
   },
-  plugins: [ require('daisyui'), ]
-}
+  plugins: [require("daisyui")],
+};

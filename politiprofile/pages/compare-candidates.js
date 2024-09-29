@@ -1,18 +1,18 @@
-import React from 'react';
-import Layout from '../components/layout';
+import React from "react";
+import Layout from "../components/layout";
 
 const candidate1 = {
   name: "Jane Doe",
   party: "Progressive Party",
   bio: "Jane has been a champion for environmental issues and social justice. She has a background in law and has worked on numerous policy reforms.",
-  image: "https://via.placeholder.com/150"
+  image: "https://via.placeholder.com/150",
 };
 
 const candidate2 = {
   name: "John Smith",
   party: "Conservative Party",
   bio: "John is known for his focus on economic development and national security. With a background in business, he brings a pragmatic approach to governance.",
-  image: "https://via.placeholder.com/150"
+  image: "https://via.placeholder.com/150",
 };
 
 const CandidateComparison = () => {
@@ -20,11 +20,11 @@ const CandidateComparison = () => {
     <Layout>
       <div className="flex flex-wrap justify-center gap-4 p-6">
         {/* Candidate 1 */}
-        <div className="bg-white shadow-lg rounded-lg p-6 w-80">
-          <img 
-            src={candidate1.image} 
-            alt={`${candidate1.name}'s photo`} 
-            className="w-full h-40 object-cover rounded-t-lg" 
+        <div className="w-80 rounded-lg bg-white p-6 shadow-lg">
+          <img
+            src={candidate1.image}
+            alt={`${candidate1.name}'s photo`}
+            className="h-40 w-full rounded-t-lg object-cover"
           />
           <div className="p-4">
             <h2 className="text-xl font-bold">{candidate1.name}</h2>
@@ -35,11 +35,11 @@ const CandidateComparison = () => {
         </div>
 
         {/* Candidate 2 */}
-        <div className="bg-white shadow-lg rounded-lg p-6 w-80">
-          <img 
-            src={candidate2.image} 
-            alt={`${candidate2.name}'s photo`} 
-            className="w-full h-40 object-cover rounded-t-lg" 
+        <div className="w-80 rounded-lg bg-white p-6 shadow-lg">
+          <img
+            src={candidate2.image}
+            alt={`${candidate2.name}'s photo`}
+            className="h-40 w-full rounded-t-lg object-cover"
           />
           <div className="p-4">
             <h2 className="text-xl font-bold">{candidate2.name}</h2>
