@@ -62,7 +62,7 @@ const CongressList = () => {
         <div key={stateAbbreviation} className="mb-6">
           {/* State name with clickable functionality to expand/collapse */}
           <h2
-            className="text-lg font-semibold mb-2 cursor-pointer"
+            className="text-3xl text-center font-semibold mb-2 cursor-pointer border-b border-gray-300"
             onClick={() => toggleState(stateAbbreviation)}
           >
             {stateNames[stateAbbreviation] || stateAbbreviation}
@@ -75,7 +75,7 @@ const CongressList = () => {
                 legislatorsByState[stateAbbreviation].map((legislator, index) => {
                   const lastTerm = legislator.terms[legislator.terms.length - 1];
                   return (
-                    <li key={index} className="p-2 mb-2 bg-gray-100 rounded-lg shadow-md">
+                    <li key={index} className="p-2 mb-5 bg-gray-100 rounded-lg shadow-md text-center text-xl">
                       <p>
                         <strong>Name:</strong> {legislator.name.first} {legislator.name.last}
                       </p>
