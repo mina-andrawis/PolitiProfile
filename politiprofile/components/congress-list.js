@@ -56,13 +56,15 @@ const CongressList = () => {
 
   return (
     <div className="p-4">
-      <h1 className="mb-4 text-xl font-bold">Current Congress Legislators</h1>
+      <h1 className="my-10 text-center text-5xl font-bold">
+        Your Current Legislators
+      </h1>
 
       {sortedStates.map((stateAbbreviation) => (
         <div key={stateAbbreviation} className="mb-6">
           {/* State name with clickable functionality to expand/collapse */}
           <h2
-            className="mb-2 cursor-pointer border-b border-gray-300 text-center text-3xl font-semibold"
+            className="mx-48 mb-2 cursor-pointer border-b border-gray-300 text-center text-3xl font-semibold"
             onClick={() => toggleState(stateAbbreviation)}
           >
             {stateNames[stateAbbreviation] || stateAbbreviation}
@@ -79,7 +81,7 @@ const CongressList = () => {
                     return (
                       <li
                         key={index}
-                        className="mb-5 rounded-lg bg-gray-100 p-2 text-center text-xl shadow-md"
+                        className="mx-56 mb-5 rounded-lg bg-gray-100 p-2 text-center text-lg shadow-md"
                       >
                         <p>
                           <strong>Name:</strong> {legislator.name.first}{" "}
