@@ -7,7 +7,7 @@ export default function MyAccount() {
   return (
     <Layout>
       <Head>
-        <title>My Accountie</title>
+        <title>My Account</title>
       </Head>
       <h1>My Account</h1>
       <h2>

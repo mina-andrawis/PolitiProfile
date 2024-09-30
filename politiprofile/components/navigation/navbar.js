@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import LoginModal from "../login-modal";
 
 export default function NavBar() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLoginClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="my-3 flex w-full flex-col flex-wrap items-center rounded-md border bg-primary p-2 md:flex-row">
       <div className="flex flex-grow items-center justify-start">
@@ -20,11 +31,15 @@ export default function NavBar() {
           <button className="mr-6 p-3 text-xl text-white">Education</button>
         </Link>
       </div>
-      <Link href="/login">
-        <button className="primary mt-4 inline-flex items-center border-0 px-3 py-1 text-white md:mt-0">
-          Login
-        </button>
-      </Link>
+      <button
+        className="mr-4 p-3 text-xl text-white"
+        onClick={handleLoginClick} // When clicked, open the modal
+      >
+        Login
+      </button>
+
+      {/* Render the LoginModal component */}
+      <LoginModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }
