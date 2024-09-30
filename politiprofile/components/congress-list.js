@@ -56,9 +56,10 @@ const CongressList = () => {
 
   return (
     <div className="p-4">
-      <h1 className="my-10 text-center text-5xl font-bold">
+      <h1 className="mb-3 mt-10 text-center text-5xl font-bold">
         Your Current Legislators
       </h1>
+      <h2 className="mb-10 text-center font-bold">Updated Every 24 Hours</h2>
 
       {sortedStates.map((stateAbbreviation) => (
         <div key={stateAbbreviation} className="mb-6">
