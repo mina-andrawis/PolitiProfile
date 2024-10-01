@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LoginModal from "./login-modal";
-import RegisterModal from "./register-user-modal";
+import RegisterModal from "./register-modal";
 
 const LoginWrapper = () => {
   // State for login and register modals

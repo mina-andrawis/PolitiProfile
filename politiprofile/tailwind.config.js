@@ -7,6 +7,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    extend: {}, // Make sure to include the extend key to avoid overriding
     daisyui: {
       themes: ["light", "dark", "cupcake"],
     },
@@ -17,6 +18,7 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       sand: "#f2e3bc",
+      red: colors.red, 
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
