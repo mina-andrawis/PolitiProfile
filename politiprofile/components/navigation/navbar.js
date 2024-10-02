@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import LoginModal from "../login-register/login-modal";
-import openLoginModal from "../login-register/login-wrapper";
-import openRegisterModal from "../login-register/login-wrapper";
 import LoginWrapper from "../login-register/login-wrapper";
+import { useRouter } from "next/router";
+import useAuthState from "../../hooks/useAuthState";
 
 export default function NavBar() {
+
+  const { user, loading, navigateToLogin, navigateToAccount } = useAuthState(); // Use the hook
+
+  if (loading) return <div>Loading...</div>; 
 
   return (
     <div className="my-3 flex w-full flex-col flex-wrap items-center rounded-md border bg-primary p-2 md:flex-row">
@@ -25,7 +28,18 @@ export default function NavBar() {
           <button className="mr-6 p-3 text-xl text-white">Education</button>
         </Link>
       </div>
+
+      {user ? (
+        <button
+        className="mr-2 p-3 text-xl text-white"
+          onClick={navigateToAccount}
+        >
+          Account
+        </button>
+      ) : (
         <LoginWrapper/>
+      )}
+
     </div>
   );
 }

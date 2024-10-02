@@ -1,3 +1,5 @@
+//Handles authentication-related tasks such as logging in, signing up, logging out, and error handling.
+
 import { useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../authentication/firebase";
@@ -50,9 +52,22 @@ const useAuth = () => {
     }
   };
 
+      // Log out the current user
+    const logout = async () => {
+      setLoading(true);
+      try {
+        await signOut(auth);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
   return {
     register,
     login,
+    logout,
     error,
     success,
     loading,
