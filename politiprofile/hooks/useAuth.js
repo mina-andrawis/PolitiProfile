@@ -1,7 +1,8 @@
 //Handles authentication-related tasks such as logging in, signing up, logging out, and error handling.
 
 import { useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import router from "next/router";
 import { auth } from "../authentication/firebase";
 
 const useAuth = () => {
@@ -56,10 +57,11 @@ const useAuth = () => {
     const logout = async () => {
       setLoading(true);
       try {
-        await signOut(auth);
+        await signOut(auth); // Sign out the user
+        router.push("/"); // Redirect to homepage after logout
         setLoading(false);
-      } catch (err) {
-        setError(err.message);
+      } catch (error) {
+        console.error("Logout failed", error);
         setLoading(false);
       }
     };
