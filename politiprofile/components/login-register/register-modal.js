@@ -6,7 +6,6 @@ const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // Get register method and state from the custom hook
   const { register, error, success, loading } = useAuth();
 
   if (!isOpen) return null;
