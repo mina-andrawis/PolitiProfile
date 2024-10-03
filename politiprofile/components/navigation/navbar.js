@@ -31,7 +31,7 @@ export default function NavBar() {
 
       {user ? (
         <button
-        className="mr-2 p-3 text-xl text-white"
+        className="mr-2 p-3 text-xl text-white bg-customOrange hover:bg-customOrange rounded-md "
           onClick={navigateToAccount}
         >
           Account

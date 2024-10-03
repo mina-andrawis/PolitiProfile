@@ -1,27 +1,46 @@
 // src/pages/account.js
 
-import React from "react";
-import { auth } from "../firebase";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth"; // Assuming useAuth is handling user authentication
+import LoginWrapper from "../components/login-register/login-wrapper";
+import Layout from "../components/layout";
+import Head from "next/head";
 
 const Account = () => {
+  const { user, logout, loading } = useAuth(); // Get the current user and logout function
   const router = useRouter();
 
-  const { user, logout } = useAuth(); // Get the current user
+  // Redirect to login page if not authenticated
+  useEffect(() => {
+    if (!loading && !user) {
+        <LoginWrapper/>
+    }
+  }, [loading, user, router]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">My Account</h1>
-      <p>Welcome to your account page.</p>
-
-      <button
+    <Layout>
+      <Head>
+        <title>My Account</title>
+      </Head>
+      <div className="mx-auto w-full p-6 text-center">
+        <h1 className="mb-4 text-4xl font-bold">My Account</h1>
+        
+        <button className="p-2 bg-red-500 text-white rounded-md hover:bg-red-600"
         onClick={logout}
-        className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
-      >
-        Logout
-      </button>
-    </div>
+        >
+            Log Out
+        </button>
+      </div>
+    </Layout>
   );
 };
 

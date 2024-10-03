@@ -1,65 +1,28 @@
-import { useEffect, useState } from "react";
-import { stateNames, chamber } from "../helpers/enums"; // Adjust path if needed
+// src/pages/congress-list.js
+
+import useLegislatorsByState from "../hooks/useLegislatorsByState";
+import { stateNames, chamber } from "../helpers/enums";
 import Date from "../helpers/date";
 
 const CongressList = () => {
-  const [legislatorsByState, setLegislatorsByState] = useState({});
-  const [expandedStates, setExpandedStates] = useState({});
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchLegislators = async () => {
-      try {
-        const response = await fetch("/api/legislators");
-        const data = await response.json();
-
-        // Group legislators by state
-        const groupedByState = data.reduce((acc, legislator) => {
-          const lastTerm = legislator.terms[legislator.terms.length - 1];
-          const state = lastTerm.state;
-
-          if (!acc[state]) {
-            acc[state] = [];
-          }
-
-          acc[state].push(legislator);
-          return acc;
-        }, {});
-
-        setLegislatorsByState(groupedByState);
-      } catch (err) {
-        setError("Error fetching data");
-      }
-    };
-
-    fetchLegislators();
-  }, []);
+  const {
+    legislatorsByState,
+    expandedStates,
+    sortedStates,
+    toggleState,
+    error,
+  } = useLegislatorsByState(); // Destructure values returned from the custom hook
 
   if (error) {
     return <div>{error}</div>;
   }
-
-  // Toggle the state expansion
-  const toggleState = (stateAbbreviation) => {
-    setExpandedStates((prev) => ({
-      ...prev,
-      [stateAbbreviation]: !prev[stateAbbreviation], // Toggle state expansion
-    }));
-  };
-
-  // Get the state abbreviations and sort them alphabetically based on the full state name
-  const sortedStates = Object.keys(legislatorsByState).sort((a, b) => {
-    const stateA = stateNames[a] || a; // Fallback to abbreviation if name not found
-    const stateB = stateNames[b] || b;
-    return stateA.localeCompare(stateB);
-  });
 
   return (
     <div className="p-4">
       <h1 className="mt-10 text-center text-5xl font-bold">
         Your Current Legislators
       </h1>
-      <h2 className="mb-10 text-center font-bold">Updated Every 24 Hours</h2>
+      <h2 className="mb-10 mt-2 text-center font-bold">Updated Every 24 Hours</h2>
 
       {sortedStates.map((stateAbbreviation) => (
         <div key={stateAbbreviation} className="mb-6">
@@ -104,7 +67,7 @@ const CongressList = () => {
                         </p>
                       </li>
                     );
-                  },
+                  }
                 )}
             </ul>
           )}

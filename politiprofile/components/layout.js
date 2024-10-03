@@ -20,7 +20,9 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         <h1 className={utilStyles.heading2Xl}>{name}</h1>
       </header>
+
       <NavBar />
+      
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
