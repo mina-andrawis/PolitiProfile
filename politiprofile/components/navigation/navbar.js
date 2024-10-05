@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import LoginWrapper from "../login-register/login-wrapper";
+import { useRouter } from "next/router";
+import useLoggedInState from "../../hooks/useAuthState";
 
 export default function NavBar() {
+
+  const { user, loading, navigateToLogin, navigateToAccount } = useLoggedInState(); // Use the hook
+
+  if (loading) return <div>Loading...</div>; 
+
   return (
-    <div className="my-3 flex w-full flex-col flex-wrap items-center rounded-md border bg-primary p-2 md:flex-row">
+    <div className="my-3 flex w-full flex-col flex-wrap items-center rounded-md border bg-secondary p-2 md:flex-row">
       <div className="flex flex-grow items-center justify-start">
         <Link href="/">
           <button className="mr-6 p-3 text-xl text-white">Home</button>
@@ -20,11 +28,18 @@ export default function NavBar() {
           <button className="mr-6 p-3 text-xl text-white">Education</button>
         </Link>
       </div>
-      <Link href="/login">
-        <button className="primary mt-4 inline-flex items-center border-0 px-3 py-1 text-white md:mt-0">
-          Login
+
+      {user ? (
+        <button
+        className="mr-2 p-3 text-xl text-white bg-customOrange hover:bg-customOrange rounded-md "
+          onClick={navigateToAccount}
+        >
+          Account
         </button>
-      </Link>
+      ) : (
+        <LoginWrapper/>
+      )}
+
     </div>
   );
 }

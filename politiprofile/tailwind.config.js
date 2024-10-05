@@ -7,23 +7,19 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    daisyui: {
-      themes: ["light", "dark", "cupcake"],
-    },
-    colors: {
-      primary: "#233d4d",
-      secondary: "#ecc94b",
-
-      transparent: "transparent",
-      current: "currentColor",
-      sand: "#f2e3bc",
-      black: colors.black,
-      white: colors.white,
-      gray: colors.gray,
-      emerald: colors.emerald,
-      indigo: colors.indigo,
-      yellow: colors.yellow,
-    },
+    extend: {
+      colors: {
+        primary: "#1d232a",
+        secondary: "#6366f1",
+        secondaryHover: "#4f46e5",
+        customOrange: "#f97316", // Custom orange
+        defaultTextColor: "#A0AEC0",
+        transparent: "transparent",
+      },
+      daisyui: {
+        themes: ["light", "dark", "cupcake"],
+      },
+    }, // Make sure to include the extend key to avoid overriding
   },
   plugins: [require("daisyui")],
 };
