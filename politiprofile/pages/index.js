@@ -15,7 +15,7 @@ export default function Home({ legislators }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <section className="text-lg">
+      <section className="text-lg text-center">
         <p>
           Connect with politicians and candidates that align with your ideals.
           Compare candidates for elections and discover insights on key

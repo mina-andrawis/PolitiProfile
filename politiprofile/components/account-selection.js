@@ -2,7 +2,7 @@ import React from "react";
 
 const AccountSelection = ({ selection }) => {
   return (
-    <div className="p-6 mt-4 shadow-xl">
+    <div className="p-6 mt-4 shadow-xl border-double border-4">
       {selection === "profile-information" && (
         <div>
           <h2 className="text-2xl font-semibold mb-4">Profile Information</h2>

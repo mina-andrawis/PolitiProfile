@@ -22,10 +22,6 @@ const Account = () => {
     );
   }
 
-  useEffect(() => {
-    console.log(user);
-  }, [accountSelection]);
-
   return (
     <Layout>
       <Head>
