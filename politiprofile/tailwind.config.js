@@ -9,9 +9,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#6366F1",
-        secondary: "#ecc94b",
-        customBlue: "#3b82f6", // Custom blue
+        primary: "#1d232a",
+        secondary: "#6366f1",
         customOrange: "#f97316", // Custom orange
 
         transparent: "transparent",
@@ -24,6 +23,9 @@ module.exports = {
         emerald: colors.emerald,
         indigo: colors.indigo,
         yellow: colors.yellow,
+      },
+      textColor: {
+        'default': '#A0AEC0',  // Set this as the default text color
       },
     }, // Make sure to include the extend key to avoid overriding
     daisyui: {

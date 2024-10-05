@@ -18,7 +18,7 @@ export default function Layout({ children, home }) {
         />
       </Head>
       <header className={styles.header}>
-        <h1 className={utilStyles.heading2Xl}>{name}</h1>
+        <h1 className="text-5xl text-center font-bold font-mono mb-3">{name}</h1>
       </header>
 
       <NavBar />
