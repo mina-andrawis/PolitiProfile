@@ -38,7 +38,6 @@ const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-
   };
 
   return (
