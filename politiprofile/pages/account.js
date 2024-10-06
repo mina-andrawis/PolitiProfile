@@ -51,7 +51,7 @@ const Account = () => {
             </div>
 
             <div className="w-4/5 rounded-lg bg-sand">
-              <AccountSelection selection={accountSelection} />
+              <AccountSelection selection={accountSelection} userProfile={user} />
             </div>
           </div>
         ) : (

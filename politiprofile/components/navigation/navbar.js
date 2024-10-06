@@ -16,7 +16,7 @@ export default function NavBar() {
         <Link href="/">
           <button className="mr-6 p-3 text-xl text-white">Home</button>
         </Link>
-        <Link href="/about">
+        <Link href="/your-topics">
           <button className="mr-6 p-3 text-xl text-white">About</button>
         </Link>
         <Link href="/compare-candidates">
