@@ -3,6 +3,8 @@ import useAuth from "../../hooks/useAuth"; // Import the custom hook
 import useAuthState from "../../hooks/useAuthState"; // Import the custom hook
 import { addDoc, collection } from "firebase/firestore";
 import { db } from  "../../authentication/firebase";
+import { doc, setDoc } from "firebase/firestore";
+
 
 
 const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
@@ -25,11 +27,14 @@ const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
     }
 
     try {
-      const docRef = await addDoc(collection(db, "users"), {
+      await setDoc(doc(db, "users", user.uid), {
         email: user.email,
         uid: user.uid,
+        topics: [],
+        role: "user",
+        name: "",
       });
-      console.log("Document written with ID: ", docRef.id);
+      console.log("Document written with ID: ", user.uid);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
