@@ -14,6 +14,7 @@ module.exports = {
         secondaryHover: "#4f46e5",
         customOrange: "#f97316", // Custom orange
         defaultTextColor: "#A0AEC0",
+        secondaryTextColor: "#718096",
         transparent: "transparent",
       },
       daisyui: {

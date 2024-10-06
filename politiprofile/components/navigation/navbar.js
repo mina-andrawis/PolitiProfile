@@ -11,13 +11,13 @@ export default function NavBar() {
   if (loading) return <div>Loading...</div>; 
 
   return (
-    <div className="my-3 flex w-full flex-col flex-wrap items-center rounded-md border bg-secondary p-2 md:flex-row">
+    <div className="my-3 flex w-full flex-col flex-wrap items-center rounded-md border bg-secondary md:flex-row">
       <div className="flex flex-grow items-center justify-start">
         <Link href="/">
           <button className="mr-6 p-3 text-xl text-white">Home</button>
         </Link>
         <Link href="/your-topics">
-          <button className="mr-6 p-3 text-xl text-white">About</button>
+          <button className="mr-6 p-3 text-xl text-white">Your Topics</button>
         </Link>
         <Link href="/compare-candidates">
           <button className="mr-6 p-3 text-xl text-white">
@@ -31,7 +31,7 @@ export default function NavBar() {
 
       {user ? (
         <button
-        className="mr-2 p-3 text-xl text-white bg-customOrange hover:bg-customOrange rounded-md "
+        className="mr-2 p-1 text-xl text-white bg-customOrange hover:bg-customOrange rounded-md "
           onClick={navigateToAccount}
         >
           Account
