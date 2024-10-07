@@ -3,12 +3,12 @@ import Layout from "../components/layout";
 import Head from "next/head";
 import { db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
-import useAuthState from "../hooks/useAuthState";
+import useUserDetails from "../hooks/useAuthState";
 import topics from "../helpers/topics";
 import useSaveTopics from "../hooks/useSaveTopics";
 
 export default function About() {
-  const { user } = useAuthState(); 
+  const { userDetails } = useUserDetails(); 
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [openTopics, setOpenTopics] = useState({}); 
 
@@ -84,7 +84,7 @@ export default function About() {
 
           {/* Save Button */}
           <button
-            onClick={() => saveTopicsToProfile(user, selectedTopics)}
+            onClick={() => saveTopicsToProfile(selectedTopics)}
             disabled={isSaving}
             className={`mt-6 px-4 py-2 rounded-md text-white ${isSaving ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'}`}
           >
