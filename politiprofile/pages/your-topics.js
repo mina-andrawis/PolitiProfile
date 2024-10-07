@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import Head from "next/head";
-import { db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
-import useUserDetails from "../hooks/useAuthState";
+import useUserDetails from "../hooks/useUserDetails"; // Assuming this hook gets user details
 import topics from "../helpers/topics";
 import useSaveTopics from "../hooks/useSaveTopics";
 
@@ -12,9 +10,9 @@ export default function About() {
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [openTopics, setOpenTopics] = useState({}); 
 
-  const {saveTopicsToProfile, isSaving, saveError, saveSuccess} = useSaveTopics();
+  const { saveTopicsToProfile, isSaving, saveError, saveSuccess } = useSaveTopics();
 
-   const handleTopicChange = (topic) => {
+  const handleTopicChange = (topic) => {
     if (selectedTopics.includes(topic)) {
       setSelectedTopics(selectedTopics.filter((t) => t !== topic));
     } else {
@@ -22,13 +20,19 @@ export default function About() {
     }
   };
 
-  // Toggle dropdown visibility for each topic
   const toggleTopic = (topicName) => {
     setOpenTopics({
       ...openTopics,
       [topicName]: !openTopics[topicName],
     });
   };
+
+  // Fixing the useEffect to populate checkboxes that exist in userDetails
+  useEffect(() => {
+    if (userDetails && userDetails.topics) {
+      setSelectedTopics(userDetails.topics);
+    }
+  }, [userDetails]); // Add userDetails as dependency
 
   return (
     <Layout>
@@ -48,7 +52,6 @@ export default function About() {
           <h2 className="text-3xl font-semibold mb-4">Select Your Topics:</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
             {topics.map((topic) => (
-              
               <div key={topic.name} className="border p-4 rounded-lg">
                 <input
                   type="checkbox"
@@ -57,28 +60,23 @@ export default function About() {
                   onChange={() => handleTopicChange(topic.name)}
                   className="mr-2"
                 />
-              {/* Wrap label and button inside a div to make the whole area clickable */}
-              <div
-                className="flex justify-between items-center cursor-pointer p-0 rounded-lg"
-                onClick={() => toggleTopic(topic.name)} // Make entire area clickable
-              >
-                
-                <span className="font-semibold">
-                  {topic.name}
-                </span>
-                <span className="text-2xl">
-                  {openTopics[topic.name] ? "−" : "↧"}
-                </span>
+                <div
+                  className="flex justify-between items-center cursor-pointer p-0 rounded-lg"
+                  onClick={() => toggleTopic(topic.name)}
+                >
+                  <span className="font-semibold">
+                    {topic.name}
+                  </span>
+                  <span className="text-2xl">
+                    {openTopics[topic.name] ? "−" : "↧"}
+                  </span>
+                </div>
+
+                {/* Topic Description Dropdown */}
+                {openTopics[topic.name] && (
+                  <p className="mt-2 text-md text-secondaryTextColor mb-8">{topic.description}</p>
+                )}
               </div>
-            
-              {/* Topic Description Dropdown */}
-              {openTopics[topic.name] && (
-                <p className="mt-2 text-md text-secondaryTextColor mb-8">{topic.description}</p>
-              )}
-            
-              {/* Topic Checkbox */}
-            </div>
-            
             ))}
           </div>
 
