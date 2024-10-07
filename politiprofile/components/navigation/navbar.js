@@ -55,7 +55,7 @@ export default function NavBar() {
       )}
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex w-full flex-col md:flex-row items-center justify-between p-3">
+      <div className="hidden md:flex w-full flex-col md:flex-row items-center justify-between p-1">
         <div className="flex items-center">
           <Link href="/">
             <button className="mr-6 p-3 text-xl text-white">Home</button>
@@ -73,7 +73,7 @@ export default function NavBar() {
 
         {user ? (
           <button
-            className="mr-2 p-3 text-xl text-white bg-customOrange hover:bg-customOrange rounded-md"
+            className="mr-2 p-2 text-xl text-white bg-customOrange hover:bg-customOrange rounded-md"
             onClick={navigateToAccount}
           >
             Account
