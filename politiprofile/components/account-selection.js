@@ -38,8 +38,6 @@ const AccountSelection = ({ selection }) => {
           <h2 className="text-2xl font-semibold mb-4">Profile Information</h2>
 
           <div className="mb-2">
-            <label className="block text-lg font-medium">Name:</label>
-
             {isEditingName ? (
               <div className="flex items-center">
                 <input
@@ -64,10 +62,10 @@ const AccountSelection = ({ selection }) => {
               </div>
             ) : (
               <div className="flex items-center">
-                <p className="mr-2">{name || "No name set"}</p>
+                <p className="mr-2">Name: {name || "No name set"}</p>
                 <button
                   onClick={() => setIsEditingName(true)}
-                  className="px-3 py-1 text-sm bg-indigo-500 text-white rounded-md hover:bg-indigo-600"
+                  className="px-3 py-1text-sm bg-indigo-500 text-white rounded-md hover:bg-secondaryHover"
                 >
                   Edit
                 </button>
