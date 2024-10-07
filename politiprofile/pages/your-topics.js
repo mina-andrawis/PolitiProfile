@@ -12,7 +12,7 @@ export default function About() {
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [openTopics, setOpenTopics] = useState({}); 
 
-  const {saveTopicsToProfile, isSaving, saveError} = useSaveTopics();
+  const {saveTopicsToProfile, isSaving, saveError, saveSuccess} = useSaveTopics();
 
    const handleTopicChange = (topic) => {
     if (selectedTopics.includes(topic)) {
@@ -66,8 +66,8 @@ export default function About() {
                 <span className="font-semibold">
                   {topic.name}
                 </span>
-                <span>
-                  {openTopics[topic.name] ? "-" : "+"}
+                <span className="text-2xl">
+                  {openTopics[topic.name] ? "−" : "↧"}
                 </span>
               </div>
             
@@ -86,13 +86,14 @@ export default function About() {
           <button
             onClick={() => saveTopicsToProfile(selectedTopics)}
             disabled={isSaving}
-            className={`mt-6 px-4 py-2 rounded-md text-white ${isSaving ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'}`}
+            className={`mt-6 px-4 py-2 rounded-md text-white ${isSaving ? 'bg-gray-400' : 'bg-secondary hover:bg-secondaryHover'}`}
           >
-            {isSaving ? "Saving..." : "Save Topics to Profile"}
+            {isSaving ? "Saving..." : "Save Topics"}
           </button>
 
-          {/* Display error message if any */}
+          {/* Display messages if any */}
           {saveError && <p className="text-red-500 mt-3">{saveError}</p>}
+          {saveSuccess && <p className="text-secondary mt-3">{saveSuccess}</p>}
         </div>
       </div>
     </Layout>
