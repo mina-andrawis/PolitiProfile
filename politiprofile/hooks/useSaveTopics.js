@@ -18,6 +18,12 @@ const useSaveTopics = () => {
       return;
     }
 
+    if (selectedTopics.length === 0) {
+      setSaveError("No topics selected.");
+      setSaveSuccess(null);
+      return;
+    }
+
     setIsSaving(true);
     setSaveError(null);
 

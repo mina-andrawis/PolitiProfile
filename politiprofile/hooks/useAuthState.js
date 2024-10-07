@@ -22,7 +22,7 @@ const useAuthState = () => {
 
     return () => unsubscribe(); // Cleanup listener on unmount
   }, []);
-
+ 
   const navigateHome = () => router.push("/"); // Redirect to login page
   const navigateToAccount = () => router.push("/account"); // Redirect to account page
 
