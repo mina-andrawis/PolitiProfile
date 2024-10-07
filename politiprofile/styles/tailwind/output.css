@@ -1817,6 +1817,42 @@ input.tab:checked + .tab-content,
       var(--handleoffsetcalculator) 0 0 3px var(--fallback-bc,oklch(var(--bc)/1)) inset;
 }
 
+.artboard.phone-1.horizontal,
+      .artboard.phone-1.artboard-horizontal {
+  width: 568px;
+  height: 320px;
+}
+
+.artboard.phone-2.horizontal,
+      .artboard.phone-2.artboard-horizontal {
+  width: 667px;
+  height: 375px;
+}
+
+.artboard.phone-3.horizontal,
+      .artboard.phone-3.artboard-horizontal {
+  width: 736px;
+  height: 414px;
+}
+
+.artboard.phone-4.horizontal,
+      .artboard.phone-4.artboard-horizontal {
+  width: 812px;
+  height: 375px;
+}
+
+.artboard.phone-5.horizontal,
+      .artboard.phone-5.artboard-horizontal {
+  width: 896px;
+  height: 414px;
+}
+
+.artboard.phone-6.horizontal,
+      .artboard.phone-6.artboard-horizontal {
+  width: 1024px;
+  height: 320px;
+}
+
 .tabs-md :where(.tab) {
   height: 2rem;
   font-size: 0.875rem;
@@ -2091,6 +2127,10 @@ input.tab:checked + .tab-content,
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
 .rounded-lg {
@@ -2489,12 +2529,37 @@ input.tab:checked + .tab-content,
     margin-right: 14rem;
   }
 
+  .sm\:mt-0 {
+    margin-top: 0px;
+  }
+
   .sm\:w-3\/4 {
     width: 75%;
   }
 
+  .sm\:w-1\/5 {
+    width: 20%;
+  }
+
+  .sm\:w-4\/5 {
+    width: 80%;
+  }
+
+  .sm\:min-w-fit {
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+  }
+
   .sm\:max-w-2xl {
     max-width: 42rem;
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:p-6 {
+    padding: 1.5rem;
   }
 
   .sm\:px-6 {
@@ -2530,6 +2595,11 @@ input.tab:checked + .tab-content,
   .sm\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+
+  .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 
