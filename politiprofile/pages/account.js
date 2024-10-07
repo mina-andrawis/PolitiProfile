@@ -5,14 +5,15 @@ import LoginWrapper from "../components/login-register/login-wrapper";
 import Layout from "../components/layout";
 import Head from "next/head";
 import useAuthState from "../hooks/useAuthState";
-import AccountContent from "../components/account-selection";
 import AccountSelection from "../components/account-selection";
+import useUserDetails from "../hooks/useUserDetails";
 
 const Account = () => {
   const [accountSelection, setAccountSelection] = useState('profile-information');
 
   const { logout, loading } = useAuth(); // Get the current user and logout function
   const { user } = useAuthState(); // Get the current user
+  const {userDetails} = useUserDetails();
 
   if (loading) {
     return (
@@ -33,7 +34,7 @@ const Account = () => {
         {user ? (
           <div className="flex">
             <div className="w-1/5 py-4 pr-4 min-w-fit">
-              <p className="mb-4">Welcome, {user.email}</p>
+              <p className="mb-4">Welcome, {userDetails?.email}</p>
 
               <button
                 className="p-2 mb-3 w-full bg-secondary text-white rounded-md hover:bg-blue-600"
@@ -51,7 +52,7 @@ const Account = () => {
             </div>
 
             <div className="w-4/5 rounded-lg bg-sand">
-              <AccountSelection selection={accountSelection} userProfile={user} />
+              <AccountSelection selection={accountSelection} />
             </div>
           </div>
         ) : (

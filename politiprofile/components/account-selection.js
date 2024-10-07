@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../authentication/firebase"; // Import Firestore instance
+import useUserDetails from "../hooks/useUserDetails";
 
-const AccountSelection = ({ selection, userProfile }) => {
+const AccountSelection = ({ selection }) => {
+  const { userDetails } = useUserDetails(); // Get user details from custom hook
+
   const [isEditingName, setIsEditingName] = useState(false);
-  const [name, setName] = useState(userProfile?.name || ""); // Initialize with current name
+  const [name, setName] = useState(userDetails?.name || ""); // Initialize with current name
   const [isSaving, setIsSaving] = useState(false);
+
+  // UseEffect to update the local `name` state when `userDetails` changes
+  useEffect(() => {
+    if (userDetails) {
+      setName(userDetails.name || ""); // Update the name when userDetails changes
+    }
+  }, [userDetails]); // Only runs when userDetails changes
 
   const handleSaveName = async () => {
     setIsSaving(true);
     try {
       // Update the name in Firestore
-      const userDocRef = doc(db, "users", userProfile.uid); // Reference the user's document
+      const userDocRef = doc(db, "users", userDetails.uid); // Reference the user's document
       await updateDoc(userDocRef, { name }); // Update the name field in Firestore
       setIsEditingName(false);
     } catch (error) {
@@ -54,7 +64,7 @@ const AccountSelection = ({ selection, userProfile }) => {
               </div>
             ) : (
               <div className="flex items-center">
-                <p className="mr-2">{userProfile.name || "No name set"}</p>
+                <p className="mr-2">{name || "No name set"}</p>
                 <button
                   onClick={() => setIsEditingName(true)}
                   className="px-3 py-1 text-sm bg-indigo-500 text-white rounded-md hover:bg-indigo-600"
@@ -65,7 +75,7 @@ const AccountSelection = ({ selection, userProfile }) => {
             )}
           </div>
 
-          <p className="mb-2">Email: {userProfile.email}</p>
+          <p className="mb-2">Email: {userDetails?.email}</p>
         </div>
       )}
 
@@ -73,8 +83,8 @@ const AccountSelection = ({ selection, userProfile }) => {
         <div>
           <h2 className="text-2xl font-semibold mb-4">Your Important Topics</h2>
           <ul>
-            {userProfile?.topics && userProfile.topics.length > 0 ? (
-              userProfile.topics.map((topic, index) => (
+            {userDetails?.topics && userDetails.topics.length > 0 ? (
+              userDetails.topics.map((topic, index) => (
                 <li key={index}>{topic}</li>
               ))
             ) : (
