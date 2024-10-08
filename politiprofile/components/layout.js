@@ -8,7 +8,8 @@ export const siteTitle = "PolitiProfile";
 
 export default function Layout({ children, home }) {
   return (
-    <div className="max-w-4xl px-6 my-12 mx-auto text-defaultTextColor">
+    <div className="w-full max-w-4xl px-6 my-12 mx-auto text-defaultTextColor overflow-x-hidden">
+
       <Head>
         <meta
           name="description"
@@ -16,7 +17,7 @@ export default function Layout({ children, home }) {
         />
       </Head>
       <header className="flex flex-col items-center">
-        <h1 className="text-5xl text-center font-bold font-mono mb-3">{name}</h1>
+        <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-3">{name}</h1>
       </header>
 
       <NavBar />

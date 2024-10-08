@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../components/layout";
+import Head from "next/head";
 
 const candidate1 = {
   name: "Jane Doe",
@@ -18,6 +19,9 @@ const candidate2 = {
 const CandidateComparison = () => {
   return (
     <Layout>
+      <Head>
+        <title>Compare Candidates</title>
+      </Head>
       <div className="flex flex-wrap justify-center gap-4 p-6">
         {/* Candidate 1 */}
         <div className="w-80 rounded-lg bg-white p-6 shadow-lg">

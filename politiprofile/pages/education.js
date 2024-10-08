@@ -1,9 +1,13 @@
 import React from "react";
 import Layout from "../components/layout";
+import Head from "next/head";
 
 const Education = () => {
   return (
     <Layout>
+      <Head>
+        <title>Education</title>
+      </Head>
       <div className="p-6">
         <h1 className="mb-6 text-4xl font-bold">
           Understanding Politics and Elections
