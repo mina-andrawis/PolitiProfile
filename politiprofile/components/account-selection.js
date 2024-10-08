@@ -83,7 +83,7 @@ const AccountSelection = ({ selection }) => {
           <ul>
             {userDetails?.topics && userDetails.topics.length > 0 ? (
               userDetails.topics.map((topic, index) => (
-                <li key={index}>{topic}</li>
+                <li key={index}>⦾ {topic}</li>
               ))
             ) : (
               <li>
