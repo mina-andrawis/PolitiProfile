@@ -57,10 +57,6 @@ const CongressList = () => {
                           <strong>Party:</strong> {lastTerm.party}
                         </p>
                         <p>
-                          <strong>State:</strong>{" "}
-                          {stateNames[stateAbbreviation] || lastTerm.state}
-                        </p>
-                        <p>
                           <strong>Chamber:</strong> {chamber[lastTerm.type]}
                         </p>
                         <p>
