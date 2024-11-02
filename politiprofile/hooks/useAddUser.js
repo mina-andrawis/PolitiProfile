@@ -1,11 +1,11 @@
-const useAddUser = async (_id, email) => {
+const useAddUser = async (uid, email) => {
     try {
       const response = await fetch('/api/addUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({_id, email}), // Send array in request body
+        body: JSON.stringify({uid, email}), // Send array in request body
       });
   
       const data = await response.json();

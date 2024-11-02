@@ -25,7 +25,7 @@ const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
     }
 
     try {
-      useAddUser(user.email, user.uid);
+      useAddUser(user.uid, user.email);
       console.log("User created in MongoDB with with ID: ", user.uid);
     } catch (e) {
       console.error("Error adding document: ", e);
