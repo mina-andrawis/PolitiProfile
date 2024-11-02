@@ -7,24 +7,6 @@ import useLoggedInState from "../../hooks/useAuthState";
 export default function NavBar() {
   const { user, loading, navigateToLogin, navigateToAccount } = useLoggedInState();
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control mobile menu
- 
-  const addData = async () => {
-  
-    try {
-      const reponse = await fetch('/api/addUser', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: "Record of a Shriveled Datum", content: "No bytes, no problem. Just insert a document, in MongoDB" }),
-      });
-      const data = await reponse.json();
-      console.log(data);
-    }
-    catch (error) {
-      console.error('Error:', error);   
-    }
-  };
 
   if (loading) return <div>Loading...</div>;
 
@@ -76,7 +58,6 @@ export default function NavBar() {
       <div className="hidden md:flex w-full flex-col md:flex-row items-center justify-between p-1">
         <div className="flex items-center">
           <Link 
-            onClick={addData}
             href="/">
             <button className="mr-6 p-3 text-xl text-white">Home</button>
           </Link>

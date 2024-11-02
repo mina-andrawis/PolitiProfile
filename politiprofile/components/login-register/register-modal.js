@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth"; // Import the custom hook
 import useAuthState from "../../hooks/useAuthState"; // Import the custom hook
 import { addDoc, collection } from "firebase/firestore";
-import { db } from  "../../authentication/firebase";
-import { doc, setDoc } from "firebase/firestore";
-
+import useAddUser from "../../hooks/useAddUser"; // Import the custom hook
 
 
 const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
@@ -27,14 +25,8 @@ const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
     }
 
     try {
-      await setDoc(doc(db, "users", user.uid), {
-        email: user.email,
-        uid: user.uid,
-        topics: [],
-        role: "user",
-        name: "",
-      });
-      console.log("Document written with ID: ", user.uid);
+      useAddUser(user.email, user.uid);
+      console.log("User created in MongoDB with with ID: ", user.uid);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
