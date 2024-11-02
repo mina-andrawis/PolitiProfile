@@ -1,4 +1,3 @@
-// pages/api/legislators.js
 import axios from "axios";
 import yaml from "js-yaml";
 
