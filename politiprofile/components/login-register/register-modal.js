@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth"; // Import the custom hook
 import useAuthState from "../../hooks/useAuthState"; // Import the custom hook
-import { addDoc, collection } from "firebase/firestore";
 import useAddUser from "../../hooks/db/useAddUser"; // Import the custom hook
 
 
