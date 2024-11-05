@@ -15,15 +15,7 @@ const useUserDetails = () => {
       if (fireUser) {
         try {
           console.log("fireUser UID:", fireUser.uid);
-          const docRef = doc(db, "users", fireUser.uid); // Reference user's document by UID
-          const docSnap = await getDoc(docRef);
-
-          if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
-            setUserDetails(docSnap.data());
-          } else {
-            console.log("No such document!");
-          }
+          setUserDetails(fireUser.uid); 
         } catch (error) {
           console.error("Error fetching user details:", error);
           setError("Failed to fetch user details.");

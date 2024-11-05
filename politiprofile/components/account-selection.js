@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../authentication/firebase"; // Import Firestore instance
 import useUserDetails from "../hooks/useUserDetails";
+import useUpdateUser from "../hooks/db/useUpdateUser";
 
 const AccountSelection = ({ selection }) => {
   const { userDetails } = useUserDetails(); // Get user details from custom hook
@@ -10,6 +11,9 @@ const AccountSelection = ({ selection }) => {
   const [name, setName] = useState(userDetails?.name || ""); // Initialize with current name
   const [isSaving, setIsSaving] = useState(false);
 
+  const { updateUser, loading, error, success } = useUpdateUser(); // Custom hook to update user details
+
+  
   // UseEffect to update the local `name` state when `userDetails` changes
   useEffect(() => {
     if (userDetails) {
@@ -20,9 +24,7 @@ const AccountSelection = ({ selection }) => {
   const handleSaveName = async () => {
     setIsSaving(true);
     try {
-      // Update the name in Firestore
-      const userDocRef = doc(db, "users", userDetails.uid); // Reference the user's document
-      await updateDoc(userDocRef, { name }); // Update the name field in Firestore
+      updateUser(userDetails.uid, { name });
       setIsEditingName(false);
     } catch (error) {
       console.error("Error updating name: ", error);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth"; // Import the custom hook
 import useAuthState from "../../hooks/useAuthState"; // Import the custom hook
 import { addDoc, collection } from "firebase/firestore";
-import useAddUser from "../../hooks/useAddUser"; // Import the custom hook
+import useAddUser from "../../hooks/db/useAddUser"; // Import the custom hook
 
 
 const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
@@ -11,6 +11,7 @@ const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   
   const { register, error, success, loading } = useAuth();
+  const { addUser } = useAddUser();
 
   if (!isOpen) return null;
 
@@ -25,7 +26,7 @@ const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
     }
 
     try {
-      useAddUser(user.uid, user.email);
+      addUser(user.uid, user.email);
       console.log("User created in MongoDB with with ID: ", user.uid);
     } catch (e) {
       console.error("Error adding document: ", e);

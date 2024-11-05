@@ -1,5 +1,3 @@
-// Example MongoDB insert logic in an API route or server-side function
-
 import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGO_URI;
@@ -7,7 +5,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { uid, email } = req.body; // Expecting user data, including `user.uid`
+    const { uid, email } = req.body; 
 
     try {
       await client.connect();
