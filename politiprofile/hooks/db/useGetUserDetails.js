@@ -2,22 +2,22 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext"; // Import useAuth hook
 
 const useGetUserDetails = () => {
+  const { user } = useAuth(); // Get user from AuthContext
   const [userDetails, setUserDetails] = useState(null); // Initialize with null
   const [loading, setLoading] = useState(true); // Track loading state
   const [error, setError] = useState(null); // Handle errors
 
-  const { user } = useAuth(); // Get the current user from the AuthContext
-
   useEffect(() => {
     const fetchUserDetails = async () => {
       if (user) {
+        console.log("Fetching details for user:", user.email); // Log user email for debugging
         try {
           const response = await fetch("/api/db/getUserDetails", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ _id: user._id }), // Pass uid in request body
+            body: JSON.stringify({ _id: user.uid }), // Pass uid in request body
           });
 
           const data = await response.json();

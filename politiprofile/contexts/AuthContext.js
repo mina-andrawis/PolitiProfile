@@ -8,12 +8,23 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("AuthProvider mounted"); // This will confirm if the AuthProvider is being used correctly
     const auth = getAuth();
+    
     const unsubscribe = onAuthStateChanged(auth, (fireUser) => {
+      if (fireUser) {
+        console.log("User authenticated:", fireUser);
+      } else {
+        console.log("No user authenticated");
+      }
       setUser(fireUser || null);
       setLoading(false);
     });
-    return () => unsubscribe();
+
+    return () => {
+      console.log("AuthProvider unmounted, cleaning up");
+      unsubscribe();
+    };
   }, []);
 
   return (
@@ -23,4 +34,8 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const authContext = useContext(AuthContext);
+  console.log("useAuth called, current user:", authContext.user);
+  return authContext;
+};
