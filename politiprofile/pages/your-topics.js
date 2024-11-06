@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import Head from "next/head";
-import useUserDetails from "../hooks/useUserDetails"; // Assuming this hook gets user details
+import useUserDetails from "../hooks/db/useGetUserDetails"; // Assuming this hook gets user details
 import topics from "../helpers/topics";
 import useSaveTopics from "../hooks/useSaveTopics";
 

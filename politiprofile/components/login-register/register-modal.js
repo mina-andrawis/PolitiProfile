@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useAuth from "../../hooks/useAuthActions"; // Import the custom hook
+import useAuthActions from "../../hooks/useAuthActions"; // Import the custom hook
 import useAddUser from "../../hooks/db/useAddUser"; // Import the custom hook
 
 
@@ -8,7 +8,7 @@ const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   
-  const { register, error, success, loading } = useAuth();
+  const { register, error, success, loading } = useAuthActions();
   const { addUser } = useAddUser();
 
   if (!isOpen) return null;

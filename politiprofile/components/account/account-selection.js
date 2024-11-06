@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import useUserDetails from "../hooks/useUserDetails";
-import useUpdateUser from "../hooks/db/useUpdateUser";
+import useUpdateUser from "../../hooks/db/useUpdateUser"; 
+import { useAuth } from "../../contexts/AuthContext"; 
+import useGetUserDetails from "../../hooks/db/useGetUserDetails";
 
 const AccountSelection = ({ selection }) => {
-  const { userDetails } = useUserDetails(); // Get user details from custom hook
+
+  const { userDetails } = useGetUserDetails();
 
   const [isEditingName, setIsEditingName] = useState(false);
   const [name, setName] = useState(userDetails?.name || ""); // Initialize with current name

@@ -5,18 +5,18 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 export default async function handler(req, res) {
   if (req.method === 'PATCH') {
-    const { uid, updateData } = req.body; // Expecting the user ID and update data in the request body
+    const { _id, updateData } = req.body; // Expecting the user ID and update data in the request body
 
     try {
       await client.connect();
       const database = client.db("default");
       const collection = database.collection("users");
 
-      console.log("Updating user with ID:", uid);
+      console.log("Updating user with ID:", _id);
       console.log("Update data:", updateData);
       // Use PATCH-style update for partial updates
       const updateResult = await collection.updateOne(
-        { _id: uid },
+        { _id: _id },
         { $set: updateData } // Only update the fields provided in updateData
       );
 

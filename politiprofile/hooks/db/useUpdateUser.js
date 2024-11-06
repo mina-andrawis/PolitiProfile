@@ -6,7 +6,7 @@ const useUpdateUser = () => {
   const [success, setSuccess] = useState(null);
 
   // Function to update user data
-  const updateUser = async (uid, updateData) => {
+  const updateUser = async (_id, updateData) => {
     setLoading(true);
     setError(null);
     setSuccess(null);
@@ -18,7 +18,7 @@ const useUpdateUser = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          uid,
+          _id,
           updateData,
         }),
       });

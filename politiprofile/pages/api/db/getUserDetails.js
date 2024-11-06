@@ -4,7 +4,7 @@ const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 export default async function handler(req, res) {
-  if (req.method === 'POST') { // Assuming we're using POST to pass `uid` in the body
+  if (req.method === 'POST') {
     const { _id } = req.body;
 
     try {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       const collection = database.collection("users");
 
       // Query by _id directly as a string
-      const user = await collection.findOne({ _id: uid });
+      const user = await collection.findOne({ _id: _id });
     
       if (!user) {
         res.status(404).json({ error: "User not found" });

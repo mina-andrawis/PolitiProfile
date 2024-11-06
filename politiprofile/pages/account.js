@@ -4,9 +4,9 @@ import useAuthActions from "../hooks/useAuthActions"; // Handles actions like lo
 import LoginWrapper from "../components/login-register/login-wrapper";
 import Layout from "../components/layout";
 import Head from "next/head";
-import AccountSelection from "../components/account-selection";
+import AccountSelection from "../components/account/account-selection";
 import { useAuth } from "../contexts/AuthContext";
-import useUserDetails from "../hooks/useUserDetails"; // Custom hook for user details
+import useUserDetails from "../hooks/db/useGetUserDetails"; // Custom hook for user details
 
 const Account = () => {
   const [accountSelection, setAccountSelection] = useState('profile-information');
