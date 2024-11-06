@@ -95,11 +95,7 @@ export default function YourTopics() {
 
           {/* Display messages if any */}
           {updateError && <p className="text-red-500 mt-3">{updateError}</p>}
-          {
-            /*           
-            {saveError && <p className="text-red-500 mt-3">{saveError}</p>}
-          {saveSuccess && <p className="text-secondary mt-3">{saveSuccess}</p>}*/
-          }
+          {updateSuccess && <p className="text-secondary mt-3">{updateSuccess}</p>}
 
         </div>
       </div>
