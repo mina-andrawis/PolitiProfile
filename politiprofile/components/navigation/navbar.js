@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import LoginWrapper from "../login-register/login-wrapper";
 import { useRouter } from "next/router";
-import useLoggedInState from "../../hooks/useAuthState";
+import { useAuth } from "../../contexts/AuthContext";
+
 
 export default function NavBar() {
-  const { user, loading, navigateToLogin, navigateToAccount } = useLoggedInState();
+  const {user} = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control mobile menu
-
-  if (loading) return <div>Loading...</div>;
+  const router = useRouter();
 
   // Function to toggle the mobile menu
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -44,7 +44,7 @@ export default function NavBar() {
           {user ? (
             <button
               className="mt-2 w-full py-2 text-lg text-white bg-customOrange hover:bg-customOrange rounded-md"
-              onClick={navigateToAccount}
+              onClick={() => router.push("/account")}
             >
               Account
             </button>
@@ -57,7 +57,8 @@ export default function NavBar() {
       {/* Desktop Menu */}
       <div className="hidden md:flex w-full flex-col md:flex-row items-center justify-between p-1">
         <div className="flex items-center">
-          <Link href="/">
+          <Link 
+            href="/">
             <button className="mr-6 p-3 text-xl text-white">Home</button>
           </Link>
           <Link href="/about">
@@ -75,7 +76,7 @@ export default function NavBar() {
         {user ? (
           <button
             className="mr-2 p-2 text-xl text-white bg-customOrange hover:bg-customOrange rounded-md"
-            onClick={navigateToAccount}
+            onClick={() => router.push("/account")}
           >
             Account
           </button>

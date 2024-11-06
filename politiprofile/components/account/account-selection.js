@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../authentication/firebase"; // Import Firestore instance
-import useUserDetails from "../hooks/useUserDetails";
+import useUpdateUser from "../../hooks/db/useUpdateUser"; 
+import { useAuth } from "../../contexts/AuthContext"; 
+import useGetUserDetails from "../../hooks/db/useGetUserDetails";
 
 const AccountSelection = ({ selection }) => {
-  const { userDetails } = useUserDetails(); // Get user details from custom hook
+
+  const { userDetails } = useGetUserDetails();
 
   const [isEditingName, setIsEditingName] = useState(false);
   const [name, setName] = useState(userDetails?.name || ""); // Initialize with current name
-  const [isSaving, setIsSaving] = useState(false);
+
+  // Destructure states from the custom hook to update user details
+  const { updateUser, loading: updating, error: updateError, success: updateSuccess } = useUpdateUser();
 
   // UseEffect to update the local `name` state when `userDetails` changes
   useEffect(() => {
@@ -18,16 +21,14 @@ const AccountSelection = ({ selection }) => {
   }, [userDetails]); // Only runs when userDetails changes
 
   const handleSaveName = async () => {
-    setIsSaving(true);
     try {
-      // Update the name in Firestore
-      const userDocRef = doc(db, "users", userDetails.uid); // Reference the user's document
-      await updateDoc(userDocRef, { name }); // Update the name field in Firestore
+      console.log("Updating name...");
+      console.log("UserDetails:", userDetails.name);
+      console.log("New name:", name);
+      await updateUser(userDetails._id, {name:name});
       setIsEditingName(false);
     } catch (error) {
       console.error("Error updating name: ", error);
-    } finally {
-      setIsSaving(false);
     }
   };
 
@@ -48,10 +49,10 @@ const AccountSelection = ({ selection }) => {
                 />
                 <button
                   onClick={handleSaveName}
-                  disabled={isSaving}
+                  disabled={updating} // Disable while updating
                   className="ml-2 px-3 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:bg-gray-400"
                 >
-                  {isSaving ? "Saving..." : "Save"}
+                  {updating ? "Saving..." : "Save"}
                 </button>
                 <button
                   onClick={() => setIsEditingName(false)}
@@ -65,13 +66,17 @@ const AccountSelection = ({ selection }) => {
                 <p className="mr-2">Name: {name || "No name set"}</p>
                 <button
                   onClick={() => setIsEditingName(true)}
-                  className="px-3 py-1text-sm bg-indigo-500 text-white rounded-md hover:bg-secondaryHover"
+                  className="px-3 py-1 text-sm bg-indigo-500 text-white rounded-md hover:bg-secondaryHover"
                 >
                   Edit
                 </button>
               </div>
             )}
           </div>
+
+          {/* Display error or success messages */}
+          {updateError && <p className="text-red-500 mt-2">{updateError}</p>}
+          {updateSuccess && <p className="text-green-500 mt-2">{updateSuccess}</p>}
 
           <p className="mb-2">Email: {userDetails?.email}</p>
         </div>

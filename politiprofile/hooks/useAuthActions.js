@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import router from "next/router";
 import { auth } from "../authentication/firebase";
 
-const useAuth = () => {
+const useAuthActions = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -76,4 +76,4 @@ const useAuth = () => {
   };
 };
 
-export default useAuth;
+export default useAuthActions;

@@ -12,7 +12,7 @@ const useLegislatorsByState = () => {
   useEffect(() => {
     const fetchLegislators = async () => {
       try {
-        const response = await fetch("/api/legislators");
+        const response = await fetch("/api/retrieveLegislators");
         const data = await response.json();
 
         // Group legislators by state
