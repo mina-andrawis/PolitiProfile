@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../authentication/firebase";
-
-import useAuthState from "./useAuthState";
 import useUserDetails from "./useUserDetails";
 
 const useSaveTopics = () => {

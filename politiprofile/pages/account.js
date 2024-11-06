@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
-import useAuth from "../hooks/useAuth"; // Assuming useAuth is handling user authentication
+import useAuthActions from "../hooks/useAuthActions"; // Handles actions like logout
 import LoginWrapper from "../components/login-register/login-wrapper";
 import Layout from "../components/layout";
 import Head from "next/head";
-import useAuthState from "../hooks/useAuthState";
 import AccountSelection from "../components/account-selection";
-import useUserDetails from "../hooks/useUserDetails";
+import { useAuth } from "../contexts/AuthContext";
+import useUserDetails from "../hooks/useUserDetails"; // Custom hook for user details
 
 const Account = () => {
   const [accountSelection, setAccountSelection] = useState('profile-information');
 
-  const { logout, loading } = useAuth(); // Get the current user and logout function
-  const { user } = useAuthState(); // Get the current user
-  const { userDetails } = useUserDetails();
+  const { logout } = useAuthActions(); // Hook for logout action
+  const { user, loading: authLoading } = useAuth(); // Get the current user and loading state from auth
+  const { userDetails, loading: detailsLoading } = useUserDetails(); // Get user details and loading state
 
-  if (loading) {
+  // Show loading if either auth or user details are loading
+  if (authLoading || detailsLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="text-xl">Loading...</div>
       </div>
     );
   }
-
 
   return (
     <Layout>

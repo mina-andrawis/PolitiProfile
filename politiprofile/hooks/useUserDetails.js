@@ -10,12 +10,28 @@ const useUserDetails = () => {
 
   useEffect(() => {
     const auth = getAuth();
-    
+
     const unsubscribe = onAuthStateChanged(auth, async (fireUser) => {
       if (fireUser) {
         try {
           console.log("fireUser UID:", fireUser.uid);
-          setUserDetails(fireUser.uid); 
+          
+          const response = await fetch("/api/db/getUser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(fireUser.uid), // Send uid and email in request body
+          });
+    
+          const data = await response.json();
+    
+          if (!response.ok) {
+            throw new Error(data.error || "Failed to get user");
+          }
+          
+          setUserDetails(...data); 
+          
         } catch (error) {
           console.error("Error fetching user details:", error);
           setError("Failed to fetch user details.");

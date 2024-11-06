@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import useAuth from "../../hooks/useAuth"; // Import the custom hook
-import useAuthState from "../../hooks/useAuthState"; // Import the custom hook
+import useAuth from "../../hooks/useAuthActions"; // Import the custom hook
 import useAddUser from "../../hooks/db/useAddUser"; // Import the custom hook
 
 

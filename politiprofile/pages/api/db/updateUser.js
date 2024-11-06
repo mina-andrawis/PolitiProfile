@@ -12,6 +12,8 @@ export default async function handler(req, res) {
       const database = client.db("default");
       const collection = database.collection("users");
 
+      console.log("Updating user with ID:", uid);
+      console.log("Update data:", updateData);
       // Use PATCH-style update for partial updates
       const updateResult = await collection.updateOne(
         { _id: uid },

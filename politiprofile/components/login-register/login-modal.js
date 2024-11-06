@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import useAuth from "../../hooks/useAuth";
+import useAuthActions from "../../hooks/useAuthActions";
 
 
 const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
-  const {login, error, success, loading} = useAuth();
+  const {login, error, success, loading} = useAuthActions();
 
   if (!isOpen) return null; // Don't render if modal is not open
 

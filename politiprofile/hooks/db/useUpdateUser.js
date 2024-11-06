@@ -12,7 +12,7 @@ const useUpdateUser = () => {
     setSuccess(null);
 
     try {
-      const response = await fetch("/api/updateUser", {
+      const response = await fetch("/api/db/updateUser", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
