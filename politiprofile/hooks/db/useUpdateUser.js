@@ -11,6 +11,9 @@ const useUpdateUser = () => {
     setError(null);
     setSuccess(null);
 
+    console.log("Updating user with ID:", _id);
+  console.log("Update data:", updateData);
+
     try {
       const response = await fetch("/api/db/updateUser", {
         method: "PATCH",

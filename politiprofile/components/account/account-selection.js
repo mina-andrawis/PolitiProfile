@@ -25,7 +25,7 @@ const AccountSelection = ({ selection }) => {
       console.log("Updating name...");
       console.log("UserDetails:", userDetails.name);
       console.log("New name:", name);
-      await updateUser(userDetails._id, name);
+      await updateUser(userDetails._id, {name:name});
       setIsEditingName(false);
     } catch (error) {
       console.error("Error updating name: ", error);
