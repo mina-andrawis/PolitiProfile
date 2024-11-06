@@ -14,10 +14,11 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (fireUser) => {
       if (fireUser) {
         console.log("User authenticated:", fireUser);
+        setUser(fireUser); // Set the authenticated user
       } else {
         console.log("No user authenticated");
+        setUser(null);
       }
-      setUser(fireUser || null);
       setLoading(false);
     });
 
@@ -34,8 +35,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const useAuth = () => {
-  const authContext = useContext(AuthContext);
-  console.log("useAuth called, current user:", authContext.user);
-  return authContext;
-};
+// Exporting useAuth to access the context in other components
+export const useAuth = () => useContext(AuthContext);

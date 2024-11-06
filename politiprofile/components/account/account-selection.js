@@ -23,7 +23,7 @@ const AccountSelection = ({ selection }) => {
   const handleSaveName = async () => {
     try {
       console.log("Updating name...");
-      console.log("User:", userDetails._id);
+      console.log("UserDetails:", userDetails.name);
       console.log("New name:", name);
       await updateUser(userDetails._id, name);
       setIsEditingName(false);

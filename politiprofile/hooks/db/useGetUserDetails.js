@@ -26,7 +26,7 @@ const useGetUserDetails = () => {
             throw new Error(data.error || "Failed to get user");
           }
 
-          setUserDetails(data); // Set user details received from API
+          setUserDetails(data.user); // Set user details received from API
         } catch (error) {
           console.error("Error fetching user details:", error);
           setError("Failed to fetch user details.");
