@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       const collection = database.collection("users");
 
       console.log("Updating user with ID:", _id);
-      console.log("Update data:", updateData);
+      console.log("UpdateUser.js > Update data:", updateData);
       // Use PATCH-style update for partial updates
       const updateResult = await collection.updateOne(
         { _id: _id },

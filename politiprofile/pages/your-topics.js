@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import Head from "next/head";
-import useUserDetails from "../hooks/db/useGetUserDetails"; // Assuming this hook gets user details
+import useUserDetails from "../hooks/db/useGetUserDetails"; 
 import topics from "../helpers/topics";
-import useSaveTopics from "../hooks/useSaveTopics";
+import useUpdateUser from "../hooks/db/useUpdateUser"; 
 
-export default function About() {
-  const { userDetails } = useUserDetails(); 
+export default function YourTopics() {
   const [selectedTopics, setSelectedTopics] = useState([]);
-  const [openTopics, setOpenTopics] = useState({}); 
+  const [openTopics, setOpenTopics] = useState({});
+  const [saveError, setSaveError] = useState(null);
+  const [saveSuccess, setSaveSuccess] = useState(null);
 
-  const { saveTopicsToProfile, isSaving, saveError, saveSuccess } = useSaveTopics();
+
+  const { userDetails } = useUserDetails(); 
+  const { updateUser, isSaving, error: updateError, success: updateSuccess } = useUpdateUser();
+
 
   const handleTopicChange = (topic) => {
     if (selectedTopics.includes(topic)) {
@@ -82,7 +86,7 @@ export default function About() {
 
           {/* Save Button */}
           <button
-            onClick={() => saveTopicsToProfile(selectedTopics)}
+            onClick={() => updateUser(userDetails._id,{topics:selectedTopics})}
             disabled={isSaving}
             className={`mt-6 px-4 py-2 rounded-md text-white ${isSaving ? 'bg-gray-400' : 'bg-secondary hover:bg-secondaryHover'}`}
           >
@@ -90,8 +94,13 @@ export default function About() {
           </button>
 
           {/* Display messages if any */}
-          {saveError && <p className="text-red-500 mt-3">{saveError}</p>}
-          {saveSuccess && <p className="text-secondary mt-3">{saveSuccess}</p>}
+          {updateError && <p className="text-red-500 mt-3">{updateError}</p>}
+          {
+            /*           
+            {saveError && <p className="text-red-500 mt-3">{saveError}</p>}
+          {saveSuccess && <p className="text-secondary mt-3">{saveSuccess}</p>}*/
+          }
+
         </div>
       </div>
     </Layout>

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 const useUpdateUser = () => {
-  const [loading, setLoading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
   // Function to update user data
   const updateUser = async (_id, updateData) => {
-    setLoading(true);
+    setIsSaving(true);
     setError(null);
     setSuccess(null);
 
@@ -36,11 +36,11 @@ const useUpdateUser = () => {
     } catch (e) {
       setError(e.message);
     } finally {
-      setLoading(false);
+      setIsSaving(false);
     }
   };
 
-  return { updateUser, loading, error, success };
+  return { updateUser, isSaving, error, success };
 };
 
 export default useUpdateUser;
