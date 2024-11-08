@@ -1973,6 +1973,18 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
+.h-3 {
+  height: 0.75rem;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
+.h-auto {
+  height: auto;
+}
+
 .w-80 {
   width: 20rem;
 }

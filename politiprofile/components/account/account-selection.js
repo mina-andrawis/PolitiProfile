@@ -3,9 +3,7 @@ import useUpdateUser from "../../hooks/db/useUpdateUser";
 import { useAuth } from "../../contexts/AuthContext"; 
 import useGetUserDetails from "../../hooks/db/useGetUserDetails";
 
-const AccountSelection = ({ selection }) => {
-
-  const { userDetails } = useGetUserDetails();
+const AccountSelection = ({ selection, userDetails }) => {
 
   const [isEditingName, setIsEditingName] = useState(false);
   const [name, setName] = useState(userDetails?.name || ""); // Initialize with current name
