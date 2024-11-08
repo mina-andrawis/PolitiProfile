@@ -1,10 +1,10 @@
+// components/account/ProfileInformation.js
 import React, { useState, useEffect } from "react";
 
-const ProfileInformation = ({ userDetails, onSave, updating, error, success }) => {
+const ProfileInformation = ({ userDetails, onSave, updating, updateError, updateSuccess }) => {
   const [isEditingName, setIsEditingName] = useState(false);
   const [name, setName] = useState(userDetails?.name || "");
 
-  // Update the local `name` state when `userDetails` changes
   useEffect(() => {
     if (userDetails) {
       setName(userDetails.name || "");
@@ -54,8 +54,8 @@ const ProfileInformation = ({ userDetails, onSave, updating, error, success }) =
           </div>
         )}
       </div>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
-      {success && <p className="text-green-500 mt-2">{success}</p>}
+      {updateError && <p className="text-red-500 mt-2">{updateError}</p>}
+      {updateSuccess && <p className="text-green-500 mt-2">{updateSuccess}</p>}
       <p className="mb-2">Email: {userDetails?.email}</p>
     </div>
   );

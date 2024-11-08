@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useAuthActions from "../hooks/useAuthActions"; // Handles actions like logout
 import LoginWrapper from "../components/login-register/login-wrapper";
@@ -39,7 +39,7 @@ const Account = () => {
           <div className="flex flex-col sm:flex-row">
             {/* Sidebar with buttons */}
             <div className="w-full sm:w-1/5 py-4 pr-4 sm:min-w-fit">
-              <p className="mb-4 text-lg sm:text-base">Welcome, {userDetails?.email || "Loading..."}</p>
+              <p className="mb-4 text-lg sm:text-base">Welcome, {userDetails?.name || userDetails?.email || "Loading..."}</p>
 
               <button
                 className="p-2 mb-3 w-full bg-secondary text-white rounded-md hover:bg-secondaryHover"
