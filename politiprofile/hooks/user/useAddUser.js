@@ -12,7 +12,7 @@ const useAddUser = () => {
     setSuccess(null);
 
     try {
-      const response = await fetch("/api/db/addUser", {
+      const response = await fetch("/api/user/addUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

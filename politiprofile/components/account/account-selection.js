@@ -1,7 +1,7 @@
 // components/account/account-selection.js
 import React from "react";
 import ProfileInformation from "./profile-information";
-import useUpdateUser from "../../hooks/db/useUpdateUser";
+import useUpdateUser from "../../hooks/user/useUpdateUser";
 
 const AccountSelection = ({ selection, userDetails }) => {
   const { updateUser, loading: updating, error: updateError, success: updateSuccess } = useUpdateUser();

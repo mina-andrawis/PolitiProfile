@@ -16,7 +16,7 @@ const candidate2 = {
   image: "https://via.placeholder.com/150",
 };
 
-const CandidateComparison = () => {
+const Bills = () => {
   return (
     <Layout>
       <Head>
@@ -57,4 +57,4 @@ const CandidateComparison = () => {
   );
 };
 
-export default CandidateComparison;
+export default Bills;

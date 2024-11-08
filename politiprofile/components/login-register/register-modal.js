@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useAuthActions from "../../hooks/useAuthActions"; // Import the custom hook
-import useAddUser from "../../hooks/db/useAddUser"; // Import the custom hook
+import useAddUser from "../../hooks/user/useAddUser"; // Import the custom hook
 
 
 const RegisterModal = ({ isOpen, onClose, onOpenLogin }) => {

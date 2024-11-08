@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import Head from "next/head";
-import useUserDetails from "../hooks/db/useGetUserDetails"; 
+import useUserDetails from "../hooks/user/useGetUserDetails"; 
 import topics from "../helpers/topics";
-import useUpdateUser from "../hooks/db/useUpdateUser"; 
+import useUpdateUser from "../hooks/user/useUpdateUser"; 
 
 export default function YourTopics() {
   const [selectedTopics, setSelectedTopics] = useState([]);

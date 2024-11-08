@@ -6,7 +6,7 @@ import Layout from "../components/layout";
 import Head from "next/head";
 import AccountSelection from "../components/account/account-selection";
 import { useAuth } from "../contexts/AuthContext";
-import useUserDetails from "../hooks/db/useGetUserDetails"; // Custom hook for user details
+import useUserDetails from "../hooks/user/useGetUserDetails"; // Custom hook for user details
 
 const Account = () => {
   const [accountSelection, setAccountSelection] = useState('profile-information');
