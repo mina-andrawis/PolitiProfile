@@ -1,6 +1,6 @@
+const { XMLValidator, XMLParser } = require('fast-xml-parser');
 const fs = require('fs');
 const path = require('path');
-const { parseStringPromise } = require('xml2js');
 const winston = require('winston');
 
 // Set up Winston logger
@@ -25,16 +25,14 @@ async function processXmlFiles() {
   try {
     logger.info('Starting XML parsing process...');
     console.log('[INFO]: Starting XML parsing process...');
-    
+
     if (!fs.existsSync(DATA_DIRECTORY)) {
       logger.error(`Directory does not exist: ${DATA_DIRECTORY}`);
       console.error(`[ERROR]: Directory does not exist: ${DATA_DIRECTORY}`);
       return;
     }
 
-    console.log('DATA_DIRECTORY: ', DATA_DIRECTORY);
-
-    // Get all folders (e.g., hr1, hr2, etc.)
+    // Iterate through subfolders in the hr directory
     const subFolders = fs.readdirSync(DATA_DIRECTORY).filter(folder => {
       return fs.lstatSync(path.join(DATA_DIRECTORY, folder)).isDirectory();
     });
@@ -45,53 +43,71 @@ async function processXmlFiles() {
       return;
     }
 
-    // Iterate through each subfolder and look for XML files
-    for (const subFolder of subFolders) {
-      const folderPath = path.join(DATA_DIRECTORY, subFolder);
-      logger.info(`Processing folder ${subFolder}`);
-      console.log(`[INFO]: Processing folder ${subFolder}`);
+    for (const folder of subFolders) {
+      const folderPath = path.join(DATA_DIRECTORY, folder);
+      const xmlFilePath = path.join(folderPath, 'fdsys_billstatus.xml');
 
-      const files = fs.readdirSync(folderPath).filter(file => file.endsWith('.xml'));
-
-      if (files.length === 0) {
-        logger.info(`No XML files found in the directory: ${folderPath}`);
-        console.log(`[INFO]: No XML files found in the directory: ${folderPath}`);
-        continue;
-      }
-
-      logger.info(`Found ${files.length} XML files in folder ${subFolder}`);
-      console.log(`[INFO]: Found ${files.length} XML files in folder ${subFolder}`);
-      
-      for (const file of files) {
+      if (fs.existsSync(xmlFilePath)) {
         try {
-          logger.info(`Processing file ${file}`);
-          console.log(`[INFO]: Processing file ${file}`);
-          
-          const xmlFilePath = path.join(folderPath, file);
-          const xmlContent = fs.readFileSync(xmlFilePath, 'utf-8');
-          const jsonData = await parseStringPromise(xmlContent);
+          logger.info(`Processing file ${xmlFilePath}`);
+          console.log(`[INFO]: Processing file ${xmlFilePath}`);
 
-          // Prepare data to insert into MongoDB (replace with your actual MongoDB insert logic)
+          const xmlContent = fs.readFileSync(xmlFilePath, 'utf-8');
+          const parser = new XMLParser();
+
+          const result = XMLValidator.validate(xmlFilePath);
+          if (result === true) {
+            console.log(`XML file is valid`, result);
+          }
+
+          if (result.err) {
+            console.log(`XML is invalid becuause of - ${result.err.msg}`, result);
+          }
+
+          const jsonData = parser.parse(xmlContent, { object: true });
+          console.log(`[INFO]: Parsed JSON data for file ${xmlFilePath}:`, jsonData);
+
+          // Defensive checks: Ensure each property exists before accessing
+          const bill = jsonData.bill || {};
+          console.log(`[INFO]: Parsed data for bill:`, bill);
           const billData = {
-            congress: jsonData.bill.congress[0],
-            billNumber: jsonData.bill.number[0],
-            originChamber: jsonData.bill.originChamber[0],
-            type: jsonData.bill.type[0],
-            title: jsonData.bill.title[0],
-            introducedDate: jsonData.bill.introducedDate[0],
-            updateDate: jsonData.bill.updateDate[0],
+            congress: bill.congress ? bill.congress[0] : 'Unknown',
+            billNumber: bill.number ? bill.number[0] : 'Unknown',
+            originChamber: bill.originChamber ? bill.originChamber[0] : 'Unknown',
+            type: bill.type ? bill.type[0] : 'Unknown',
+            title: bill.title ? bill.title[0] : 'No Title Provided',
+            introducedDate: bill.introducedDate ? bill.introducedDate[0] : 'Unknown',
+            updateDate: bill.updateDate ? bill.updateDate[0] : 'Unknown',
+            sponsors: bill.sponsors ? bill.sponsors[0]?.item.map(sponsor => ({
+              bioguideId: sponsor.bioguideId ? sponsor.bioguideId[0] : 'Unknown',
+              fullName: sponsor.fullName ? sponsor.fullName[0] : 'Unknown',
+              party: sponsor.party ? sponsor.party[0] : 'Unknown',
+              state: sponsor.state ? sponsor.state[0] : 'Unknown',
+            })) : [],
+            actions: bill.actions ? bill.actions[0]?.item.map(action => ({
+              actionDate: action.actionDate ? action.actionDate[0] : 'Unknown',
+              text: action.text ? action.text[0] : 'No Text Provided',
+              type: action.type ? action.type[0] : 'Unknown',
+            })) : [],
           };
+
+          // Example output to see what's inside billData
+          logger.info(`Parsed data for bill ${billData.type} ${billData.billNumber}: ${JSON.stringify(billData, null, 2)}`);
+          console.log(`[INFO]: Parsed data for bill ${billData.type} ${billData.billNumber}:`, billData);
 
           // Assume the MongoDB insert happens here:
           // const result = await collection.insertOne(billData);
-          // Uncomment and use a dummy success message for now:
-          logger.info(`Inserted data for file ${file}, MongoDB document ID: MOCKED_ID`);
-          console.log(`[INFO]: Inserted data for file ${file}, MongoDB document ID: MOCKED_ID`);
+          // For now, simulate a success message:
+          logger.info(`Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
+          console.log(`[INFO]: Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
 
         } catch (fileError) {
-          logger.error(`Failed to process file ${file}: ${fileError.message}`);
-          console.error(`[ERROR]: Failed to process file ${file}: ${fileError.message}`);
+          logger.error(`Failed to process file ${xmlFilePath}: ${fileError.message}`);
+          console.error(`[ERROR]: Failed to process file ${xmlFilePath}: ${fileError.message}`);
         }
+      } else {
+        logger.info(`No XML file found in folder: ${folder}`);
+        console.log(`[INFO]: No XML file found in folder: ${folder}`);
       }
     }
 
