@@ -24,7 +24,7 @@ const DATA_DIRECTORY = path.join(__dirname, '..', '..', 'congress-scraper', 'dat
 async function processXmlFiles() {
   try {
     logger.info('Starting XML parsing process...');
-    console.log('[INFO]: Starting XML parsing process...');
+    console.log('\n \n[INFO]: Starting XML parsing process...');
 
     if (!fs.existsSync(DATA_DIRECTORY)) {
       logger.error(`Directory does not exist: ${DATA_DIRECTORY}`);
@@ -71,27 +71,100 @@ async function processXmlFiles() {
           //console.log(`[INFO]: Parsed data for bill:`, bill);
 
           const billData = {
-            congress: bill.congress || 'Unknown',
-            billNumber: bill.number || 'Unknown',
-            originChamber: bill.originChamber || 'Unknown',
-            type: bill.type || 'Unknown',
-            title: bill.title || 'No Title Provided',
-            introducedDate: bill.introducedDate || 'Unknown',
-            updateDate: bill.updateDate || 'Unknown',
-            sponsor: bill.sponsors.item.fullName || 'Unknown',
-
-            committees: (() => {
-              if (!bill.committees || !bill.committees.item) {
-                return ['Unknown'];
-              }
-              // If item is an array, map over it; otherwise, wrap it in an array and map
-              const committees = Array.isArray(bill.committees.item) 
-                ? bill.committees.item 
-                : [bill.committees.item];
-              return committees.map(committee => committee.name || 'Unknown');
+            congress: bill.congress || '',
+            billNumber: bill.number || '',
+            originChamber: bill.originChamber || '',
+            type: bill.type || '',
+            title: bill.title || '',
+            introducedDate: bill.introducedDate || '',
+            updateDate: bill.updateDate || '',
+            
+            titles: (() => {
+                if (!bill.titles || !bill.titles.item) return ['No Titles'];
+                const titles = Array.isArray(bill.titles.item) ? bill.titles.item : [bill.titles.item];
+                return titles.map(title => ({
+                    titleType: title?.titleType || '',
+                    titleTypeCode: title?.titleTypeCode || '',
+                    title: title?.title || '',
+                    updateDate: title?.updateDate || '',
+                    chamberName: title?.chamberName || '',
+                    chamberCode: title?.chamberCode || '',
+                    billTextVersionName: title?.billTextVersionName || '',
+                    billTextVersionCode: title?.billTextVersionCode || ''
+                }));
             })(),
-
-          };
+        
+            sponsor: bill.sponsors?.item ? {
+                bioguideId: bill.sponsors.item?.bioguideId || '',
+                fullName: bill.sponsors.item?.fullName || '',
+                party: bill.sponsors.item?.party || '',
+                state: bill.sponsors.item?.state || '',
+                district: bill.sponsors.item?.district || ''
+            } : {},
+        
+            cosponsors: (() => {
+                if (!bill.cosponsors || !bill.cosponsors.item) return ['No Cosponsors'];
+                const cosponsors = Array.isArray(bill.cosponsors.item) ? bill.cosponsors.item : [bill.cosponsors.item];
+                return cosponsors.map(cosponsor => ({
+                    bioguideId: cosponsor?.bioguideId || '',
+                    fullName: cosponsor?.fullName || '',
+                    party: cosponsor?.party || '',
+                    state: cosponsor?.state || '',
+                    district: cosponsor?.district || '',
+                    isOriginalCosponsor: cosponsor?.isOriginalCosponsor || 'False'
+                }));
+            })(),
+        
+            relatedBills: (() => {
+                if (!bill.relatedBills || !bill.relatedBills.item) return ['No Related Bills'];
+                const relatedBills = Array.isArray(bill.relatedBills.item) ? bill.relatedBills.item : [bill.relatedBills.item];
+                return relatedBills.map(relatedBill => ({
+                    title: relatedBill?.title || '',
+                    congress: relatedBill?.congress || '',
+                    number: relatedBill?.number || '',
+                    type: relatedBill?.type || ''
+                }));
+            })(),
+        
+            policyArea: bill.policyArea?.name || '',
+        
+            subjects: bill.subjects?.legislativeSubjects?.item?.map(subject => ({
+                name: subject?.name || '',
+                policyArea: subject?.policyArea?.name || ''
+            })) || [],
+        
+            summaries: (() => {
+                if (!bill.summaries || !bill.summaries.summary) return [''];
+                const summaries = Array.isArray(bill.summaries.summary) ? bill.summaries.summary : [bill.summaries.summary];
+                return summaries.map(summary => summary?.text || '');
+            })(),
+        
+            committees: (() => {
+                if (!bill.committees || !bill.committees.item) return ['No Committees'];
+                const committees = Array.isArray(bill.committees.item) ? bill.committees.item : [bill.committees.item];
+                return committees.map(committee => ({
+                    name: committee?.name || 'Unknown Committee Name',
+                    systemCode: committee?.systemCode || 'Unknown System Code',
+                    chamber: committee?.chamber || 'Unknown Chamber',
+                    type: committee?.type || 'Unknown Type'
+                }));
+            })(),
+        
+            actions: (() => {
+                if (!bill.actions || !bill.actions.item) return ['No Actions'];
+                const actions = Array.isArray(bill.actions.item) ? bill.actions.item : [bill.actions.item];
+                return actions.map(action => ({
+                    actionDate: action?.actionDate || '',
+                    text: action?.text || 'No Text Provided',
+                    type: action?.type || 'Unknown Action Type'
+                }));
+            })(),
+        
+            law: bill.laws?.item ? {
+                type: bill.laws.item?.type || '',
+                number: bill.laws.item?.number || ''
+            } : ""
+        };
 
           // Example output to see what's inside billData
           //logger.info(`Parsed data for bill ${billData.type} ${billData.billNumber}: ${JSON.stringify(billData, null, 2)}`);
@@ -103,6 +176,10 @@ async function processXmlFiles() {
           logger.info(`Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
           console.log(`[INFO]: Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
 
+          console.log('----------------------------------------------------------------------');
+          console.log('\n \n');
+
+          
         } catch (fileError) {
           logger.error(`Failed to process file ${xmlFilePath}: ${fileError.message}`);
           console.error(`[ERROR]: Failed to process file ${xmlFilePath}: ${fileError.message}`);
