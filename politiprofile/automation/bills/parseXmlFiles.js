@@ -78,6 +78,19 @@ async function processXmlFiles() {
             title: bill.title || 'No Title Provided',
             introducedDate: bill.introducedDate || 'Unknown',
             updateDate: bill.updateDate || 'Unknown',
+            sponsor: bill.sponsors.item.fullName || 'Unknown',
+
+            committees: (() => {
+              if (!bill.committees || !bill.committees.item) {
+                return ['Unknown'];
+              }
+              // If item is an array, map over it; otherwise, wrap it in an array and map
+              const committees = Array.isArray(bill.committees.item) 
+                ? bill.committees.item 
+                : [bill.committees.item];
+              return committees.map(committee => committee.name || 'Unknown');
+            })(),
+
           };
 
           // Example output to see what's inside billData
