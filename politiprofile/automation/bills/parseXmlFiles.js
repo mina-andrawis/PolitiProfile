@@ -13,8 +13,12 @@ const logger = winston.createLogger({
   transports: [new winston.transports.Console(), new winston.transports.File({ filename: 'parse_log.log' })],
 });
 
-// Directory with XML files
-const DATA_DIRECTORY = path.join(__dirname, '..', '..', 'congress-scraper', 'data', '118', 'bills', 'hr');
+const DATA_DIRECTORIES = [
+  path.join(__dirname, '..', '..', 'congress-scraper', 'data', '118', 'bills', 'hr'),
+  path.join(__dirname, '..', '..', 'congress-scraper', 'data', '118', 'bills', 's'),
+  path.join(__dirname, '..', '..', 'congress-scraper', 'data', '118', 'bills', 'hjres'),
+  path.join(__dirname, '..', '..', 'congress-scraper', 'data', '118', 'bills', 'sjres')
+];
 
 // Helper function to safely map over arrays or wrap a single item in an array
 const mapItems = (item, mapCallback) => {
@@ -25,20 +29,23 @@ const mapItems = (item, mapCallback) => {
 async function processXmlFiles() {
   console.log('\n \n[INFO]: Starting XML parsing process...');
   logger.info('Starting XML parsing process...');
-  if (!fs.existsSync(DATA_DIRECTORY)) {
-    console.error(`[ERROR]: Directory does not exist: ${DATA_DIRECTORY}`);
-    return logger.error(`Directory does not exist: ${DATA_DIRECTORY}`);
-  }
 
-  const subFolders = fs.readdirSync(DATA_DIRECTORY).filter(folder => fs.lstatSync(path.join(DATA_DIRECTORY, folder)).isDirectory());
+  for (const directory of DATA_DIRECTORIES) {
+    if (!fs.existsSync(directory)) {
+      console.error(`[ERROR]: Directory does not exist: ${directory}`);
+      logger.error(`Directory does not exist: ${directory}`);
+      continue;
+    }
+
+  const subFolders = fs.readdirSync(directory).filter(folder => fs.lstatSync(path.join(directory, folder)).isDirectory());
   if (!subFolders.length) {
-    console.log(`[INFO]: No subfolders found in the directory: ${DATA_DIRECTORY}`);
-    return logger.info(`No subfolders found in the directory: ${DATA_DIRECTORY}`);
+    console.log(`[INFO]: No subfolders found in the directory: ${directory}`);
+    return logger.info(`No subfolders found in the directory: ${directory}`);
   }
 
   const parser = new XMLParser();
   for (const folder of subFolders) {
-    const xmlFilePath = path.join(DATA_DIRECTORY, folder, 'fdsys_billstatus.xml');
+    const xmlFilePath = path.join(directory, folder, 'fdsys_billstatus.xml');
     if (!fs.existsSync(xmlFilePath)) {
       console.log(`[INFO]: No XML file found in folder: ${folder}`);
       logger.info(`No XML file found in folder: ${folder}`);
@@ -58,6 +65,7 @@ async function processXmlFiles() {
         congress: bill.congress || null,
         billNumber: bill.number || null,
         originChamber: bill.originChamber || null,
+        originChamberCode: bill.originChamberCode || null,
         type: bill.type || null,
         title: bill.title || null,
         introducedDate: bill.introducedDate || null,
@@ -141,6 +149,7 @@ async function processXmlFiles() {
       console.error('\x1b[31m',`[ERROR]: Failed to process file ${xmlFilePath}: ${fileError.message}`);
     }
   }
+}
 
   //logger.info('Completed XML parsing process.');
   console.log('[INFO]: Completed XML parsing process.');
