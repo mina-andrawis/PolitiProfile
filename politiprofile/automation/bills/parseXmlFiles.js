@@ -1,4 +1,4 @@
-const { XMLValidator, XMLParser } = require('fast-xml-parser');
+const {XMLValidator, XMLParser } = require('fast-xml-parser');
 const fs = require('fs');
 const path = require('path');
 const winston = require('winston');
@@ -43,6 +43,8 @@ async function processXmlFiles() {
       return;
     }
 
+    const parser = new XMLParser();  // Create an XMLParser instance
+
     for (const folder of subFolders) {
       const folderPath = path.join(DATA_DIRECTORY, folder);
       const xmlFilePath = path.join(folderPath, 'fdsys_billstatus.xml');
@@ -53,46 +55,33 @@ async function processXmlFiles() {
           console.log(`[INFO]: Processing file ${xmlFilePath}`);
 
           const xmlContent = fs.readFileSync(xmlFilePath, 'utf-8');
-          const parser = new XMLParser();
 
-          const result = XMLValidator.validate(xmlFilePath);
-          if (result === true) {
-            console.log(`XML file is valid`, result);
-          }
-
-          if (result.err) {
-            console.log(`XML is invalid becuause of - ${result.err.msg}`, result);
+          const validationResult = XMLValidator.validate(xmlContent);
+          if (validationResult !== true) {
+            console.error(`[ERROR]: XML is invalid: ${validationResult.err.msg}`);
+            logger.error(`XML is invalid: ${validationResult.err.msg}`);
+            continue; // Skip this file since it's invalid
           }
 
           const jsonData = parser.parse(xmlContent, { object: true });
-          console.log(`[INFO]: Parsed JSON data for file ${xmlFilePath}:`, jsonData);
+          //console.log(`[INFO]: Parsed JSON data for file ${xmlFilePath}:`, jsonData);
 
           // Defensive checks: Ensure each property exists before accessing
-          const bill = jsonData.bill || {};
-          console.log(`[INFO]: Parsed data for bill:`, bill);
+          const bill = jsonData.billStatus?.bill || {};
+          //console.log(`[INFO]: Parsed data for bill:`, bill);
+
           const billData = {
-            congress: bill.congress ? bill.congress[0] : 'Unknown',
-            billNumber: bill.number ? bill.number[0] : 'Unknown',
-            originChamber: bill.originChamber ? bill.originChamber[0] : 'Unknown',
-            type: bill.type ? bill.type[0] : 'Unknown',
-            title: bill.title ? bill.title[0] : 'No Title Provided',
-            introducedDate: bill.introducedDate ? bill.introducedDate[0] : 'Unknown',
-            updateDate: bill.updateDate ? bill.updateDate[0] : 'Unknown',
-            sponsors: bill.sponsors ? bill.sponsors[0]?.item.map(sponsor => ({
-              bioguideId: sponsor.bioguideId ? sponsor.bioguideId[0] : 'Unknown',
-              fullName: sponsor.fullName ? sponsor.fullName[0] : 'Unknown',
-              party: sponsor.party ? sponsor.party[0] : 'Unknown',
-              state: sponsor.state ? sponsor.state[0] : 'Unknown',
-            })) : [],
-            actions: bill.actions ? bill.actions[0]?.item.map(action => ({
-              actionDate: action.actionDate ? action.actionDate[0] : 'Unknown',
-              text: action.text ? action.text[0] : 'No Text Provided',
-              type: action.type ? action.type[0] : 'Unknown',
-            })) : [],
+            congress: bill.congress || 'Unknown',
+            billNumber: bill.number || 'Unknown',
+            originChamber: bill.originChamber || 'Unknown',
+            type: bill.type || 'Unknown',
+            title: bill.title || 'No Title Provided',
+            introducedDate: bill.introducedDate || 'Unknown',
+            updateDate: bill.updateDate || 'Unknown',
           };
 
           // Example output to see what's inside billData
-          logger.info(`Parsed data for bill ${billData.type} ${billData.billNumber}: ${JSON.stringify(billData, null, 2)}`);
+          //logger.info(`Parsed data for bill ${billData.type} ${billData.billNumber}: ${JSON.stringify(billData, null, 2)}`);
           console.log(`[INFO]: Parsed data for bill ${billData.type} ${billData.billNumber}:`, billData);
 
           // Assume the MongoDB insert happens here:
