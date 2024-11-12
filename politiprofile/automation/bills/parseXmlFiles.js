@@ -1,4 +1,4 @@
-const {XMLValidator, XMLParser } = require('fast-xml-parser');
+const { XMLValidator, XMLParser } = require('fast-xml-parser');
 const fs = require('fs');
 const path = require('path');
 const winston = require('winston');
@@ -8,204 +8,148 @@ const logger = winston.createLogger({
   level: 'info',
   format: winston.format.combine(
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-    winston.format.printf(({ timestamp, level, message }) => {
-      return `${timestamp} [${level.toUpperCase()}]: ${message}`;
-    })
+    winston.format.printf(({ timestamp, level, message }) => `${timestamp} [${level.toUpperCase()}]: ${message}`)
   ),
-  transports: [
-    new winston.transports.Console(),  // Outputs logs to console
-    new winston.transports.File({ filename: 'parse_log.log' })  // Outputs logs to a file
-  ],
+  transports: [new winston.transports.Console(), new winston.transports.File({ filename: 'parse_log.log' })],
 });
 
 // Directory with XML files
 const DATA_DIRECTORY = path.join(__dirname, '..', '..', 'congress-scraper', 'data', '118', 'bills', 'hr');
 
+// Helper function to safely map over arrays or wrap a single item in an array
+const mapItems = (item, mapCallback) => {
+  if (!item) return [];
+  return (Array.isArray(item) ? item : [item]).map(mapCallback);
+};
+
 async function processXmlFiles() {
-  try {
-    logger.info('Starting XML parsing process...');
-    console.log('\n \n[INFO]: Starting XML parsing process...');
-
-    if (!fs.existsSync(DATA_DIRECTORY)) {
-      logger.error(`Directory does not exist: ${DATA_DIRECTORY}`);
-      console.error(`[ERROR]: Directory does not exist: ${DATA_DIRECTORY}`);
-      return;
-    }
-
-    // Iterate through subfolders in the hr directory
-    const subFolders = fs.readdirSync(DATA_DIRECTORY).filter(folder => {
-      return fs.lstatSync(path.join(DATA_DIRECTORY, folder)).isDirectory();
-    });
-
-    if (subFolders.length === 0) {
-      logger.info(`No subfolders found in the directory: ${DATA_DIRECTORY}`);
-      console.log(`[INFO]: No subfolders found in the directory: ${DATA_DIRECTORY}`);
-      return;
-    }
-
-    const parser = new XMLParser();  // Create an XMLParser instance
-
-    for (const folder of subFolders) {
-      const folderPath = path.join(DATA_DIRECTORY, folder);
-      const xmlFilePath = path.join(folderPath, 'fdsys_billstatus.xml');
-
-      if (fs.existsSync(xmlFilePath)) {
-        try {
-          logger.info(`Processing file ${xmlFilePath}`);
-          console.log(`[INFO]: Processing file ${xmlFilePath}`);
-
-          const xmlContent = fs.readFileSync(xmlFilePath, 'utf-8');
-
-          const validationResult = XMLValidator.validate(xmlContent);
-          if (validationResult !== true) {
-            console.error(`[ERROR]: XML is invalid: ${validationResult.err.msg}`);
-            logger.error(`XML is invalid: ${validationResult.err.msg}`);
-            continue; // Skip this file since it's invalid
-          }
-
-          const jsonData = parser.parse(xmlContent, { object: true });
-          //console.log(`[INFO]: Parsed JSON data for file ${xmlFilePath}:`, jsonData);
-
-          // Defensive checks: Ensure each property exists before accessing
-          const bill = jsonData.billStatus?.bill || {};
-          //console.log(`[INFO]: Parsed data for bill:`, bill);
-
-          const billData = {
-            congress: bill.congress || '',
-            billNumber: bill.number || '',
-            originChamber: bill.originChamber || '',
-            type: bill.type || '',
-            title: bill.title || '',
-            introducedDate: bill.introducedDate || '',
-            updateDate: bill.updateDate || '',
-            
-            titles: (() => {
-                if (!bill.titles || !bill.titles.item) return ['No Titles'];
-                const titles = Array.isArray(bill.titles.item) ? bill.titles.item : [bill.titles.item];
-                return titles.map(title => ({
-                    titleType: title?.titleType || '',
-                    titleTypeCode: title?.titleTypeCode || '',
-                    title: title?.title || '',
-                    updateDate: title?.updateDate || '',
-                    chamberName: title?.chamberName || '',
-                    chamberCode: title?.chamberCode || '',
-                    billTextVersionName: title?.billTextVersionName || '',
-                    billTextVersionCode: title?.billTextVersionCode || ''
-                }));
-            })(),
-        
-            sponsor: bill.sponsors?.item ? {
-                bioguideId: bill.sponsors.item?.bioguideId || '',
-                fullName: bill.sponsors.item?.fullName || '',
-                party: bill.sponsors.item?.party || '',
-                state: bill.sponsors.item?.state || '',
-                district: bill.sponsors.item?.district || ''
-            } : {},
-        
-            cosponsors: (() => {
-                if (!bill.cosponsors || !bill.cosponsors.item) return ['No Cosponsors'];
-                const cosponsors = Array.isArray(bill.cosponsors.item) ? bill.cosponsors.item : [bill.cosponsors.item];
-                return cosponsors.map(cosponsor => ({
-                    bioguideId: cosponsor?.bioguideId || '',
-                    fullName: cosponsor?.fullName || '',
-                    party: cosponsor?.party || '',
-                    state: cosponsor?.state || '',
-                    district: cosponsor?.district || '',
-                    isOriginalCosponsor: cosponsor?.isOriginalCosponsor || 'False'
-                }));
-            })(),
-        
-            relatedBills: (() => {
-                if (!bill.relatedBills || !bill.relatedBills.item) return ['No Related Bills'];
-                const relatedBills = Array.isArray(bill.relatedBills.item) ? bill.relatedBills.item : [bill.relatedBills.item];
-                return relatedBills.map(relatedBill => ({
-                    title: relatedBill?.title || '',
-                    congress: relatedBill?.congress || '',
-                    number: relatedBill?.number || '',
-                    type: relatedBill?.type || ''
-                }));
-            })(),
-        
-            policyArea: bill.policyArea?.name || '',
-        
-            subjects: bill.subjects?.legislativeSubjects?.item?.map(subject => ({
-                name: subject?.name || '',
-                policyArea: subject?.policyArea?.name || ''
-            })) || [],
-        
-            summaries: (() => {
-                if (!bill.summaries || !bill.summaries.summary) return [''];
-                const summaries = Array.isArray(bill.summaries.summary) ? bill.summaries.summary : [bill.summaries.summary];
-                return summaries.map(summary => summary?.text || '');
-            })(),
-        
-            committees: (() => {
-                if (!bill.committees || !bill.committees.item) return ['No Committees'];
-                const committees = Array.isArray(bill.committees.item) ? bill.committees.item : [bill.committees.item];
-                return committees.map(committee => ({
-                    name: committee?.name || 'Unknown Committee Name',
-                    systemCode: committee?.systemCode || 'Unknown System Code',
-                    chamber: committee?.chamber || 'Unknown Chamber',
-                    type: committee?.type || 'Unknown Type'
-                }));
-            })(),
-        
-            actions: (() => {
-                if (!bill.actions || !bill.actions.item) return ['No Actions'];
-                const actions = Array.isArray(bill.actions.item) ? bill.actions.item : [bill.actions.item];
-                return actions.map(action => ({
-                    actionDate: action?.actionDate || '',
-                    text: action?.text || 'No Text Provided',
-                    type: action?.type || 'Unknown Action Type'
-                }));
-            })(),
-        
-            law: bill.laws?.item ? {
-                type: bill.laws.item?.type || '',
-                number: bill.laws.item?.number || ''
-            } : ""
-        };
-
-          // Example output to see what's inside billData
-          //logger.info(`Parsed data for bill ${billData.type} ${billData.billNumber}: ${JSON.stringify(billData, null, 2)}`);
-          console.log(`[INFO]: Parsed data for bill ${billData.type} ${billData.billNumber}:`, billData);
-
-          // Assume the MongoDB insert happens here:
-          // const result = await collection.insertOne(billData);
-          // For now, simulate a success message:
-          logger.info(`Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
-          console.log(`[INFO]: Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
-
-          console.log('----------------------------------------------------------------------');
-          console.log('\n \n');
-
-          
-        } catch (fileError) {
-          logger.error(`Failed to process file ${xmlFilePath}: ${fileError.message}`);
-          console.error(`[ERROR]: Failed to process file ${xmlFilePath}: ${fileError.message}`);
-        }
-      } else {
-        logger.info(`No XML file found in folder: ${folder}`);
-        console.log(`[INFO]: No XML file found in folder: ${folder}`);
-      }
-    }
-
-  } catch (error) {
-    logger.error(`Unexpected error during file processing: ${error.message}`);
-    console.error(`[ERROR]: Unexpected error during file processing: ${error.message}`);
-  } finally {
-    logger.info('Completed XML parsing process.');
-    console.log('[INFO]: Completed XML parsing process.');
+  console.log('\n \n[INFO]: Starting XML parsing process...');
+  logger.info('Starting XML parsing process...');
+  if (!fs.existsSync(DATA_DIRECTORY)) {
+    console.error(`[ERROR]: Directory does not exist: ${DATA_DIRECTORY}`);
+    return logger.error(`Directory does not exist: ${DATA_DIRECTORY}`);
   }
+
+  const subFolders = fs.readdirSync(DATA_DIRECTORY).filter(folder => fs.lstatSync(path.join(DATA_DIRECTORY, folder)).isDirectory());
+  if (!subFolders.length) {
+    console.log(`[INFO]: No subfolders found in the directory: ${DATA_DIRECTORY}`);
+    return logger.info(`No subfolders found in the directory: ${DATA_DIRECTORY}`);
+  }
+
+  const parser = new XMLParser();
+  for (const folder of subFolders) {
+    const xmlFilePath = path.join(DATA_DIRECTORY, folder, 'fdsys_billstatus.xml');
+    if (!fs.existsSync(xmlFilePath)) {
+      console.log(`[INFO]: No XML file found in folder: ${folder}`);
+      logger.info(`No XML file found in folder: ${folder}`);
+      continue;
+    }
+
+    try {
+      console.log(`[INFO]: Processing file ${xmlFilePath}`);
+      //logger.info(`Processing file ${xmlFilePath}`);
+
+      const xmlContent = fs.readFileSync(xmlFilePath, 'utf-8');
+      if (XMLValidator.validate(xmlContent) !== true) throw new Error('Invalid XML format');
+
+      const bill = parser.parse(xmlContent, { object: true }).billStatus?.bill || {};
+      const billData = {
+        billId: bill.type + bill.number + '-' + bill.congress || null,
+        congress: bill.congress || null,
+        billNumber: bill.number || null,
+        originChamber: bill.originChamber || null,
+        type: bill.type || null,
+        title: bill.title || null,
+        introducedDate: bill.introducedDate || null,
+        updateDate: bill.updateDate || null,
+
+        titles: mapItems(bill.titles?.item, title => ({
+          titleType: title?.titleType || null,
+          titleTypeCode: title?.titleTypeCode || null,
+          title: title?.title || null,
+          updateDate: title?.updateDate || null,
+          chamberName: title?.chamberName || null,
+          chamberCode: title?.chamberCode || null,
+          billTextVersionName: title?.billTextVersionName || null,
+          billTextVersionCode: title?.billTextVersionCode || null
+        })),
+
+        sponsor: bill.sponsors?.item ? {
+          bioguideId: bill.sponsors.item?.bioguideId || null,
+          fullName: bill.sponsors.item?.fullName || null,
+          party: bill.sponsors.item?.party || null,
+          state: bill.sponsors.item?.state || null,
+          district: bill.sponsors.item?.district || null
+        } : {},
+
+        cosponsors: mapItems(bill.cosponsors?.item, cosponsor => ({
+          bioguideId: cosponsor?.bioguideId || null,
+          fullName: cosponsor?.fullName || null,
+          party: cosponsor?.party || null,
+          state: cosponsor?.state || null,
+          district: cosponsor?.district || null,
+          isOriginalCosponsor: cosponsor?.isOriginalCosponsor || 'False'
+        })),
+
+        relatedBills: mapItems(bill.relatedBills?.item, relatedBill => ({
+          title: relatedBill?.title || null,
+          congress: relatedBill?.congress || null,
+          number: relatedBill?.number || null,
+          type: relatedBill?.type || null
+        })),
+
+        policyArea: bill.policyArea?.name || null,
+
+        subjects: mapItems(bill.subjects?.legislativeSubjects?.item, subject => ({
+          name: subject?.name || null,
+          policyArea: subject?.policyArea?.name || null
+        })),
+
+        summaries: mapItems(bill.summaries?.summary, summary => summary?.text || null),
+
+        committees: mapItems(bill.committees?.item, committee => ({
+          name: committee?.name || null,
+          systemCode: committee?.systemCode || null,
+          chamber: committee?.chamber || null,
+          type: committee?.type || null
+        })),
+
+        actions: mapItems(bill.actions?.item, action => ({
+          actionDate: action?.actionDate || null,
+          text: action?.text || null, 
+          type: action?.type || null
+        })),
+
+        law: bill.laws?.item ? {
+          type: bill.laws.item?.type || null,
+          number: bill.laws.item?.number || null
+        } : ""
+      };
+
+      console.log(`[INFO]: Parsed data for bill ${billData.type} ${billData.billNumber}:`, billData);
+      //logger.info(`Parsed data for bill ${billData.type} ${billData.billNumber}:`, billData);
+
+      // Assume the MongoDB insert happens here:
+      // const result = await collection.insertOne(billData);
+      // For now, simulate a success message:
+      //logger.info(`Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
+      console.log(`[INFO]: Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
+
+      console.log('----------------------------------------------------------------------\n\n');
+    } catch (fileError) {
+      logger.error(`Failed to process file ${xmlFilePath}: ${fileError.message}`);
+      console.error('\x1b[31m',`[ERROR]: Failed to process file ${xmlFilePath}: ${fileError.message}`);
+    }
+  }
+
+  //logger.info('Completed XML parsing process.');
+  console.log('[INFO]: Completed XML parsing process.');
 }
 
-// Execute the function
-processXmlFiles()
-  .then(() => {
-    logger.info('XML files processed successfully.');
-    console.log('[INFO]: XML files processed successfully.');
-  })
-  .catch((error) => {
-    logger.error(`Error processing XML files: ${error.message}`);
-    console.error(`[ERROR]: Error processing XML files: ${error.message}`);
-  });
+processXmlFiles().then(() => {
+  logger.info('XML files processed successfully.');
+  console.log('[INFO]: XML files processed successfully.');
+}).catch(error => {
+  logger.error(`Error processing XML files: ${error.message}`);
+  console.error(`[ERROR]: Error processing XML files: ${error.message}`);
+});

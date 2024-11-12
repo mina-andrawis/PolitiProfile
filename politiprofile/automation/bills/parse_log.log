@@ -1,21 +1,2 @@
-2024-11-10 21:33:13 [INFO]: Starting XML parsing process...
-2024-11-10 21:33:13 [ERROR]: Directory does not exist: C:\Users\miand\Documents\GitHub\PolitiProfile\politiprofile\congress-scraper\data\118\hr
-2024-11-10 21:33:13 [INFO]: Completed XML parsing process.
-2024-11-10 21:33:13 [INFO]: XML files processed successfully.
-2024-11-10 21:33:50 [INFO]: Starting XML parsing process...
-2024-11-10 21:33:50 [INFO]: No XML files found in the directory: C:\Users\miand\Documents\GitHub\PolitiProfile\politiprofile\congress-scraper\data\118\bills\hr
-C:\Users\miand\Documents\GitHub\PolitiProfile\politiprofile\congress-scraper\data\118\bills\hr
-2024-11-10 21:33:50 [INFO]: Completed XML parsing process.
-2024-11-10 21:33:50 [INFO]: XML files processed successfully.
-2024-11-10 21:40:19 [INFO]: Starting XML parsing process...
-2024-11-10 21:40:19 [ERROR]: Unexpected error during file processing: Cannot read properties of undefined (reading 'forEach')
-2024-11-10 21:40:19 [INFO]: Completed XML parsing process.
-2024-11-10 21:40:19 [INFO]: XML files processed successfully.
-2024-11-10 21:40:36 [INFO]: Starting XML parsing process...
-2024-11-10 21:40:36 [ERROR]: Unexpected error during file processing: Cannot read properties of undefined (reading 'forEach')
-2024-11-10 21:40:36 [INFO]: Completed XML parsing process.
-2024-11-10 21:40:36 [INFO]: XML files processed successfully.
-2024-11-10 21:40:47 [INFO]: Starting XML parsing process...
-2024-11-10 21:40:47 [INFO]: No XML files found in the directory: C:\Users\miand\Documents\GitHub\PolitiProfile\politiprofile\congress-scraper\data\118\bills\hr
-2024-11-10 21:40:47 [INFO]: Completed XML parsing process.
-2024-11-10 21:40:47 [INFO]: XML files processed successfully.
+2024-11-12 00:34:59 [INFO]: Starting XML parsing process...
+2024-11-12 00:35:26 [INFO]: XML files processed successfully.
