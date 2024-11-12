@@ -54,7 +54,7 @@ async function processXmlFiles() {
 
       const bill = parser.parse(xmlContent, { object: true }).billStatus?.bill || {};
       const billData = {
-        billId: bill.type + bill.number + '-' + bill.congress || null,
+        billId: bill.congress + '-' + bill.type + bill.number || null,
         congress: bill.congress || null,
         billNumber: bill.number || null,
         originChamber: bill.originChamber || null,
