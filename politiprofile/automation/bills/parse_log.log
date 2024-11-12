@@ -6,3 +6,203 @@
 2024-11-12 09:50:44 [ERROR]: Error processing XML files: DATA_DIRECTORY is not defined
 2024-11-12 09:52:12 [INFO]: Starting XML parsing process...
 2024-11-12 09:52:52 [INFO]: XML files processed successfully.
+2024-11-12 10:02:37 [INFO]: Starting XML parsing process...
+2024-11-12 10:03:14 [INFO]: XML files processed successfully.
+2024-11-12 10:39:55 [INFO]: Starting XML parsing process...
+2024-11-12 10:39:56 [INFO]: Inserted data for bill HR 1, MongoDB document ID: 673376cce345c075ba375d1c
+2024-11-12 11:12:40 [INFO]: Starting XML parsing process...
+2024-11-12 11:12:41 [INFO]: Document with billId 118-HR1 already exists. Skipping insertion.
+2024-11-12 11:12:41 [INFO]: Document with billId 118-HR10 already exists. Skipping insertion.
+2024-11-12 11:12:41 [INFO]: Inserted data for bill HR 100, MongoDB document ID: 67337e7950787f6470671885
+2024-11-12 11:12:41 [INFO]: Inserted data for bill HR 1000, MongoDB document ID: 67337e7950787f6470671886
+2024-11-12 11:12:42 [INFO]: Inserted data for bill HR 10000, MongoDB document ID: 67337e7a50787f6470671887
+2024-11-12 11:12:42 [INFO]: Inserted data for bill HR 10001, MongoDB document ID: 67337e7a50787f6470671888
+2024-11-12 11:12:42 [INFO]: Inserted data for bill HR 10002, MongoDB document ID: 67337e7a50787f6470671889
+2024-11-12 11:12:42 [INFO]: Inserted data for bill HR 10003, MongoDB document ID: 67337e7a50787f647067188a
+2024-11-12 11:12:42 [INFO]: Inserted data for bill HR 10004, MongoDB document ID: 67337e7a50787f647067188b
+2024-11-12 11:12:42 [INFO]: Inserted data for bill HR 10005, MongoDB document ID: 67337e7a50787f647067188c
+2024-11-12 11:13:23 [INFO]: Starting XML parsing process...
+2024-11-12 11:13:24 [INFO]: Document with billId 118-HR1 already exists. Skipping insertion.
+2024-11-12 11:13:24 [INFO]: Document with billId 118-HR10 already exists. Skipping insertion.
+2024-11-12 11:13:24 [INFO]: Document with billId 118-HR100 already exists. Skipping insertion.
+2024-11-12 11:14:11 [INFO]: Starting XML parsing process...
+2024-11-12 11:14:12 [INFO]: Document with billId 118-HR1 already exists. Skipping insertion.
+2024-11-12 11:14:12 [INFO]: Document with billId 118-HR10 already exists. Skipping insertion.
+2024-11-12 11:14:12 [INFO]: Document with billId 118-HR100 already exists. Skipping insertion.
+2024-11-12 11:14:12 [INFO]: Document with billId 118-HR1000 already exists. Skipping insertion.
+2024-11-12 11:14:12 [INFO]: Document with billId 118-HR10000 already exists. Skipping insertion.
+2024-11-12 11:14:13 [INFO]: Document with billId 118-HR10001 already exists. Skipping insertion.
+2024-11-12 11:14:13 [INFO]: Document with billId 118-HR10002 already exists. Skipping insertion.
+2024-11-12 11:14:13 [INFO]: Document with billId 118-HR10003 already exists. Skipping insertion.
+2024-11-12 11:14:13 [INFO]: Document with billId 118-HR10004 already exists. Skipping insertion.
+2024-11-12 11:14:13 [INFO]: Document with billId 118-HR10005 already exists. Skipping insertion.
+2024-11-12 11:14:13 [INFO]: Inserted data for bill HR 10006, MongoDB document ID: 67337ed5d699b5bc47a52d44
+2024-11-12 11:14:13 [INFO]: Inserted data for bill HR 10007, MongoDB document ID: 67337ed5d699b5bc47a52d45
+2024-11-12 11:14:14 [INFO]: Inserted data for bill HR 10008, MongoDB document ID: 67337ed5d699b5bc47a52d46
+2024-11-12 11:14:14 [INFO]: Inserted data for bill HR 10009, MongoDB document ID: 67337ed6d699b5bc47a52d47
+2024-11-12 11:14:14 [INFO]: Inserted data for bill HR 1001, MongoDB document ID: 67337ed6d699b5bc47a52d48
+2024-11-12 11:14:14 [INFO]: Inserted data for bill HR 10010, MongoDB document ID: 67337ed6d699b5bc47a52d49
+2024-11-12 11:14:14 [INFO]: Inserted data for bill HR 10011, MongoDB document ID: 67337ed6d699b5bc47a52d4a
+2024-11-12 11:14:14 [INFO]: Inserted data for bill HR 10012, MongoDB document ID: 67337ed6d699b5bc47a52d4b
+2024-11-12 11:14:15 [INFO]: Inserted data for bill HR 10013, MongoDB document ID: 67337ed7d699b5bc47a52d4c
+2024-11-12 11:14:15 [INFO]: Inserted data for bill HR 10014, MongoDB document ID: 67337ed7d699b5bc47a52d4d
+2024-11-12 11:14:15 [INFO]: Inserted data for bill HR 10015, MongoDB document ID: 67337ed7d699b5bc47a52d4e
+2024-11-12 11:14:15 [INFO]: Inserted data for bill HR 10016, MongoDB document ID: 67337ed7d699b5bc47a52d4f
+2024-11-12 11:14:15 [INFO]: Inserted data for bill HR 10017, MongoDB document ID: 67337ed7d699b5bc47a52d50
+2024-11-12 11:14:16 [INFO]: Inserted data for bill HR 10018, MongoDB document ID: 67337ed7d699b5bc47a52d51
+2024-11-12 11:14:16 [INFO]: Inserted data for bill HR 10019, MongoDB document ID: 67337ed8d699b5bc47a52d52
+2024-11-12 11:14:16 [INFO]: Inserted data for bill HR 1002, MongoDB document ID: 67337ed8d699b5bc47a52d53
+2024-11-12 11:14:16 [INFO]: Inserted data for bill HR 10020, MongoDB document ID: 67337ed8d699b5bc47a52d54
+2024-11-12 11:14:16 [INFO]: Inserted data for bill HR 10021, MongoDB document ID: 67337ed8d699b5bc47a52d55
+2024-11-12 11:14:16 [INFO]: Inserted data for bill HR 10022, MongoDB document ID: 67337ed8d699b5bc47a52d56
+2024-11-12 11:14:17 [INFO]: Inserted data for bill HR 10023, MongoDB document ID: 67337ed9d699b5bc47a52d57
+2024-11-12 11:14:17 [INFO]: Inserted data for bill HR 10024, MongoDB document ID: 67337ed9d699b5bc47a52d58
+2024-11-12 11:14:17 [INFO]: Inserted data for bill HR 10025, MongoDB document ID: 67337ed9d699b5bc47a52d59
+2024-11-12 11:14:17 [INFO]: Inserted data for bill HR 10026, MongoDB document ID: 67337ed9d699b5bc47a52d5a
+2024-11-12 11:14:17 [INFO]: Inserted data for bill HR 10027, MongoDB document ID: 67337ed9d699b5bc47a52d5b
+2024-11-12 11:14:18 [INFO]: Inserted data for bill HR 10028, MongoDB document ID: 67337ed9d699b5bc47a52d5c
+2024-11-12 11:14:18 [INFO]: Inserted data for bill HR 10029, MongoDB document ID: 67337edad699b5bc47a52d5d
+2024-11-12 11:14:18 [INFO]: Inserted data for bill HR 1003, MongoDB document ID: 67337edad699b5bc47a52d5e
+2024-11-12 11:14:18 [INFO]: Inserted data for bill HR 10030, MongoDB document ID: 67337edad699b5bc47a52d5f
+2024-11-12 11:14:18 [INFO]: Inserted data for bill HR 10031, MongoDB document ID: 67337edad699b5bc47a52d60
+2024-11-12 11:14:18 [INFO]: Inserted data for bill HR 10032, MongoDB document ID: 67337edad699b5bc47a52d61
+2024-11-12 11:14:19 [INFO]: Inserted data for bill HR 10033, MongoDB document ID: 67337edbd699b5bc47a52d62
+2024-11-12 11:14:19 [INFO]: Inserted data for bill HR 10034, MongoDB document ID: 67337edbd699b5bc47a52d63
+2024-11-12 11:14:19 [INFO]: Inserted data for bill HR 10035, MongoDB document ID: 67337edbd699b5bc47a52d64
+2024-11-12 11:14:19 [INFO]: Inserted data for bill HR 10036, MongoDB document ID: 67337edbd699b5bc47a52d65
+2024-11-12 11:14:19 [INFO]: Inserted data for bill HR 10037, MongoDB document ID: 67337edbd699b5bc47a52d66
+2024-11-12 11:14:20 [INFO]: Inserted data for bill HR 10038, MongoDB document ID: 67337edbd699b5bc47a52d67
+2024-11-12 11:14:20 [INFO]: Inserted data for bill HR 10039, MongoDB document ID: 67337edcd699b5bc47a52d68
+2024-11-12 11:14:20 [INFO]: Inserted data for bill HR 1004, MongoDB document ID: 67337edcd699b5bc47a52d69
+2024-11-12 11:14:20 [INFO]: Inserted data for bill HR 10040, MongoDB document ID: 67337edcd699b5bc47a52d6a
+2024-11-12 11:14:20 [INFO]: Inserted data for bill HR 10041, MongoDB document ID: 67337edcd699b5bc47a52d6b
+2024-11-12 11:14:20 [INFO]: Inserted data for bill HR 10042, MongoDB document ID: 67337edcd699b5bc47a52d6c
+2024-11-12 11:14:21 [INFO]: Inserted data for bill HR 10043, MongoDB document ID: 67337eddd699b5bc47a52d6d
+2024-11-12 11:14:21 [INFO]: Inserted data for bill HR 10044, MongoDB document ID: 67337eddd699b5bc47a52d6e
+2024-11-12 11:14:21 [INFO]: Inserted data for bill HR 10045, MongoDB document ID: 67337eddd699b5bc47a52d6f
+2024-11-12 11:14:21 [INFO]: Inserted data for bill HR 10046, MongoDB document ID: 67337eddd699b5bc47a52d70
+2024-11-12 11:14:21 [INFO]: Inserted data for bill HR 10047, MongoDB document ID: 67337eddd699b5bc47a52d71
+2024-11-12 11:14:22 [INFO]: Inserted data for bill HR 10048, MongoDB document ID: 67337eddd699b5bc47a52d72
+2024-11-12 11:14:22 [INFO]: Inserted data for bill HR 10049, MongoDB document ID: 67337eded699b5bc47a52d73
+2024-11-12 11:14:22 [INFO]: Inserted data for bill HR 1005, MongoDB document ID: 67337eded699b5bc47a52d74
+2024-11-12 11:14:22 [INFO]: Inserted data for bill HR 10050, MongoDB document ID: 67337eded699b5bc47a52d75
+2024-11-12 11:14:22 [INFO]: Inserted data for bill HR 10051, MongoDB document ID: 67337eded699b5bc47a52d76
+2024-11-12 11:14:22 [INFO]: Inserted data for bill HR 10052, MongoDB document ID: 67337eded699b5bc47a52d77
+2024-11-12 11:14:23 [INFO]: Inserted data for bill HR 10053, MongoDB document ID: 67337edfd699b5bc47a52d78
+2024-11-12 11:14:23 [INFO]: Inserted data for bill HR 10054, MongoDB document ID: 67337edfd699b5bc47a52d79
+2024-11-12 11:14:23 [INFO]: Inserted data for bill HR 10055, MongoDB document ID: 67337edfd699b5bc47a52d7a
+2024-11-12 11:14:23 [INFO]: Inserted data for bill HR 10056, MongoDB document ID: 67337edfd699b5bc47a52d7b
+2024-11-12 11:14:23 [INFO]: Inserted data for bill HR 10057, MongoDB document ID: 67337edfd699b5bc47a52d7c
+2024-11-12 11:14:23 [INFO]: Inserted data for bill HR 10058, MongoDB document ID: 67337edfd699b5bc47a52d7d
+2024-11-12 11:14:24 [INFO]: Inserted data for bill HR 10059, MongoDB document ID: 67337ee0d699b5bc47a52d7e
+2024-11-12 11:14:24 [INFO]: Inserted data for bill HR 1006, MongoDB document ID: 67337ee0d699b5bc47a52d7f
+2024-11-12 11:14:24 [INFO]: Inserted data for bill HR 10060, MongoDB document ID: 67337ee0d699b5bc47a52d80
+2024-11-12 11:14:24 [INFO]: Inserted data for bill HR 10061, MongoDB document ID: 67337ee0d699b5bc47a52d81
+2024-11-12 11:14:24 [INFO]: Inserted data for bill HR 10062, MongoDB document ID: 67337ee0d699b5bc47a52d82
+2024-11-12 11:14:25 [INFO]: Inserted data for bill HR 10063, MongoDB document ID: 67337ee1d699b5bc47a52d83
+2024-11-12 11:14:25 [INFO]: Inserted data for bill HR 10064, MongoDB document ID: 67337ee1d699b5bc47a52d84
+2024-11-12 11:14:25 [INFO]: Inserted data for bill HR 10065, MongoDB document ID: 67337ee1d699b5bc47a52d85
+2024-11-12 11:14:25 [INFO]: Inserted data for bill HR 10066, MongoDB document ID: 67337ee1d699b5bc47a52d86
+2024-11-12 11:14:25 [INFO]: Inserted data for bill HR 10067, MongoDB document ID: 67337ee1d699b5bc47a52d87
+2024-11-12 11:14:25 [INFO]: Inserted data for bill HR 10068, MongoDB document ID: 67337ee1d699b5bc47a52d88
+2024-11-12 11:14:26 [INFO]: Inserted data for bill HR 10069, MongoDB document ID: 67337ee2d699b5bc47a52d89
+2024-11-12 11:14:26 [INFO]: Inserted data for bill HR 1007, MongoDB document ID: 67337ee2d699b5bc47a52d8a
+2024-11-12 11:14:26 [INFO]: Inserted data for bill HR 10070, MongoDB document ID: 67337ee2d699b5bc47a52d8b
+2024-11-12 11:14:26 [INFO]: Inserted data for bill HR 10071, MongoDB document ID: 67337ee2d699b5bc47a52d8c
+2024-11-12 11:14:26 [INFO]: Inserted data for bill HR 10072, MongoDB document ID: 67337ee2d699b5bc47a52d8d
+2024-11-12 11:14:27 [INFO]: Inserted data for bill HR 10073, MongoDB document ID: 67337ee3d699b5bc47a52d8e
+2024-11-12 11:14:27 [INFO]: Inserted data for bill HR 10074, MongoDB document ID: 67337ee3d699b5bc47a52d8f
+2024-11-12 11:14:27 [INFO]: Inserted data for bill HR 10075, MongoDB document ID: 67337ee3d699b5bc47a52d90
+2024-11-12 11:14:27 [INFO]: Inserted data for bill HR 10076, MongoDB document ID: 67337ee3d699b5bc47a52d91
+2024-11-12 11:14:27 [INFO]: Inserted data for bill HR 10077, MongoDB document ID: 67337ee3d699b5bc47a52d92
+2024-11-12 11:14:27 [INFO]: Inserted data for bill HR 10078, MongoDB document ID: 67337ee3d699b5bc47a52d93
+2024-11-12 11:14:28 [INFO]: Inserted data for bill HR 10079, MongoDB document ID: 67337ee4d699b5bc47a52d94
+2024-11-12 11:14:28 [INFO]: Inserted data for bill HR 1008, MongoDB document ID: 67337ee4d699b5bc47a52d95
+2024-11-12 11:14:28 [INFO]: Inserted data for bill HR 10080, MongoDB document ID: 67337ee4d699b5bc47a52d96
+2024-11-12 11:14:28 [INFO]: Inserted data for bill HR 10081, MongoDB document ID: 67337ee4d699b5bc47a52d97
+2024-11-12 11:14:28 [INFO]: Inserted data for bill HR 10082, MongoDB document ID: 67337ee4d699b5bc47a52d98
+2024-11-12 11:14:29 [INFO]: Inserted data for bill HR 10083, MongoDB document ID: 67337ee5d699b5bc47a52d99
+2024-11-12 11:14:29 [INFO]: Inserted data for bill HR 10084, MongoDB document ID: 67337ee5d699b5bc47a52d9a
+2024-11-12 11:14:29 [INFO]: Inserted data for bill HR 10085, MongoDB document ID: 67337ee5d699b5bc47a52d9b
+2024-11-12 11:14:29 [INFO]: Inserted data for bill HR 10086, MongoDB document ID: 67337ee5d699b5bc47a52d9c
+2024-11-12 11:14:29 [INFO]: Inserted data for bill HR 10087, MongoDB document ID: 67337ee5d699b5bc47a52d9d
+2024-11-12 11:14:29 [INFO]: Inserted data for bill HR 10088, MongoDB document ID: 67337ee5d699b5bc47a52d9e
+2024-11-12 11:14:30 [INFO]: Inserted data for bill HR 10089, MongoDB document ID: 67337ee6d699b5bc47a52d9f
+2024-11-12 11:14:30 [INFO]: Inserted data for bill HR 1009, MongoDB document ID: 67337ee6d699b5bc47a52da0
+2024-11-12 11:14:30 [INFO]: Inserted data for bill HR 10090, MongoDB document ID: 67337ee6d699b5bc47a52da1
+2024-11-12 11:14:30 [INFO]: Inserted data for bill HR 10091, MongoDB document ID: 67337ee6d699b5bc47a52da2
+2024-11-12 11:14:30 [INFO]: Inserted data for bill HR 10092, MongoDB document ID: 67337ee6d699b5bc47a52da3
+2024-11-12 11:14:31 [INFO]: Inserted data for bill HR 10093, MongoDB document ID: 67337ee7d699b5bc47a52da4
+2024-11-12 11:14:31 [INFO]: Inserted data for bill HR 10094, MongoDB document ID: 67337ee7d699b5bc47a52da5
+2024-11-12 11:14:31 [INFO]: Inserted data for bill HR 10095, MongoDB document ID: 67337ee7d699b5bc47a52da6
+2024-11-12 11:14:31 [INFO]: Inserted data for bill HR 10096, MongoDB document ID: 67337ee7d699b5bc47a52da7
+2024-11-12 11:14:31 [INFO]: Inserted data for bill HR 10097, MongoDB document ID: 67337ee7d699b5bc47a52da8
+2024-11-12 11:14:31 [INFO]: Inserted data for bill HR 10098, MongoDB document ID: 67337ee7d699b5bc47a52da9
+2024-11-12 11:14:32 [INFO]: Inserted data for bill HR 10099, MongoDB document ID: 67337ee8d699b5bc47a52daa
+2024-11-12 11:14:32 [INFO]: Inserted data for bill HR 101, MongoDB document ID: 67337ee8d699b5bc47a52dab
+2024-11-12 11:14:32 [INFO]: Inserted data for bill HR 1010, MongoDB document ID: 67337ee8d699b5bc47a52dac
+2024-11-12 11:14:32 [INFO]: Inserted data for bill HR 10100, MongoDB document ID: 67337ee8d699b5bc47a52dad
+2024-11-12 11:14:32 [INFO]: Inserted data for bill HR 10101, MongoDB document ID: 67337ee8d699b5bc47a52dae
+2024-11-12 11:14:33 [INFO]: Inserted data for bill HR 1011, MongoDB document ID: 67337ee8d699b5bc47a52daf
+2024-11-12 11:14:33 [INFO]: Inserted data for bill HR 1012, MongoDB document ID: 67337ee9d699b5bc47a52db0
+2024-11-12 11:14:33 [INFO]: Inserted data for bill HR 1013, MongoDB document ID: 67337ee9d699b5bc47a52db1
+2024-11-12 11:14:33 [INFO]: Inserted data for bill HR 1014, MongoDB document ID: 67337ee9d699b5bc47a52db2
+2024-11-12 11:14:33 [INFO]: Inserted data for bill HR 1015, MongoDB document ID: 67337ee9d699b5bc47a52db3
+2024-11-12 11:14:33 [INFO]: Inserted data for bill HR 1016, MongoDB document ID: 67337ee9d699b5bc47a52db4
+2024-11-12 11:14:34 [INFO]: Inserted data for bill HR 1017, MongoDB document ID: 67337eead699b5bc47a52db5
+2024-11-12 11:14:34 [INFO]: Inserted data for bill HR 1018, MongoDB document ID: 67337eead699b5bc47a52db6
+2024-11-12 11:14:34 [INFO]: Inserted data for bill HR 1019, MongoDB document ID: 67337eead699b5bc47a52db7
+2024-11-12 11:14:34 [INFO]: Inserted data for bill HR 102, MongoDB document ID: 67337eead699b5bc47a52db8
+2024-11-12 11:14:34 [INFO]: Inserted data for bill HR 1020, MongoDB document ID: 67337eead699b5bc47a52db9
+2024-11-12 11:14:35 [INFO]: Inserted data for bill HR 1021, MongoDB document ID: 67337eebd699b5bc47a52dba
+2024-11-12 11:14:35 [INFO]: Inserted data for bill HR 1022, MongoDB document ID: 67337eebd699b5bc47a52dbb
+2024-11-12 11:14:35 [INFO]: Inserted data for bill HR 1023, MongoDB document ID: 67337eebd699b5bc47a52dbc
+2024-11-12 11:14:35 [INFO]: Inserted data for bill HR 1024, MongoDB document ID: 67337eebd699b5bc47a52dbd
+2024-11-12 11:14:35 [INFO]: Inserted data for bill HR 1025, MongoDB document ID: 67337eebd699b5bc47a52dbe
+2024-11-12 11:14:35 [INFO]: Inserted data for bill HR 1026, MongoDB document ID: 67337eebd699b5bc47a52dbf
+2024-11-12 11:14:36 [INFO]: Inserted data for bill HR 1027, MongoDB document ID: 67337eecd699b5bc47a52dc0
+2024-11-12 11:14:36 [INFO]: Inserted data for bill HR 1028, MongoDB document ID: 67337eecd699b5bc47a52dc1
+2024-11-12 11:14:36 [INFO]: Inserted data for bill HR 1029, MongoDB document ID: 67337eecd699b5bc47a52dc2
+2024-11-12 11:14:36 [INFO]: Inserted data for bill HR 103, MongoDB document ID: 67337eecd699b5bc47a52dc3
+2024-11-12 11:14:36 [INFO]: Inserted data for bill HR 1030, MongoDB document ID: 67337eecd699b5bc47a52dc4
+2024-11-12 11:14:37 [INFO]: Inserted data for bill HR 1031, MongoDB document ID: 67337eedd699b5bc47a52dc5
+2024-11-12 11:14:37 [INFO]: Inserted data for bill HR 1032, MongoDB document ID: 67337eedd699b5bc47a52dc6
+2024-11-12 11:14:37 [INFO]: Inserted data for bill HR 1033, MongoDB document ID: 67337eedd699b5bc47a52dc7
+2024-11-12 11:14:37 [INFO]: Inserted data for bill HR 1034, MongoDB document ID: 67337eedd699b5bc47a52dc8
+2024-11-12 11:14:37 [INFO]: Inserted data for bill HR 1035, MongoDB document ID: 67337eedd699b5bc47a52dc9
+2024-11-12 11:14:37 [INFO]: Inserted data for bill HR 1036, MongoDB document ID: 67337eedd699b5bc47a52dca
+2024-11-12 11:14:38 [INFO]: Inserted data for bill HR 1037, MongoDB document ID: 67337eeed699b5bc47a52dcb
+2024-11-12 11:14:38 [INFO]: Inserted data for bill HR 1038, MongoDB document ID: 67337eeed699b5bc47a52dcc
+2024-11-12 11:14:38 [INFO]: Inserted data for bill HR 1039, MongoDB document ID: 67337eeed699b5bc47a52dcd
+2024-11-12 11:14:38 [INFO]: Inserted data for bill HR 104, MongoDB document ID: 67337eeed699b5bc47a52dce
+2024-11-12 11:14:38 [INFO]: Inserted data for bill HR 1040, MongoDB document ID: 67337eeed699b5bc47a52dcf
+2024-11-12 11:14:39 [INFO]: Inserted data for bill HR 1041, MongoDB document ID: 67337eeed699b5bc47a52dd0
+2024-11-12 11:14:39 [INFO]: Inserted data for bill HR 1042, MongoDB document ID: 67337eefd699b5bc47a52dd1
+2024-11-12 11:14:39 [INFO]: Inserted data for bill HR 1043, MongoDB document ID: 67337eefd699b5bc47a52dd2
+2024-11-12 11:14:39 [INFO]: Inserted data for bill HR 1044, MongoDB document ID: 67337eefd699b5bc47a52dd3
+2024-11-12 11:14:39 [INFO]: Inserted data for bill HR 1045, MongoDB document ID: 67337eefd699b5bc47a52dd4
+2024-11-12 11:14:40 [INFO]: Inserted data for bill HR 1046, MongoDB document ID: 67337eefd699b5bc47a52dd5
+2024-11-12 11:14:40 [INFO]: Inserted data for bill HR 1047, MongoDB document ID: 67337ef0d699b5bc47a52dd6
+2024-11-12 11:14:40 [INFO]: Inserted data for bill HR 1048, MongoDB document ID: 67337ef0d699b5bc47a52dd7
+2024-11-12 11:14:40 [INFO]: Inserted data for bill HR 1049, MongoDB document ID: 67337ef0d699b5bc47a52dd8
+2024-11-12 11:14:40 [INFO]: Inserted data for bill HR 105, MongoDB document ID: 67337ef0d699b5bc47a52dd9
+2024-11-12 11:14:40 [INFO]: Inserted data for bill HR 1050, MongoDB document ID: 67337ef0d699b5bc47a52dda
+2024-11-12 11:14:41 [INFO]: Inserted data for bill HR 1051, MongoDB document ID: 67337ef1d699b5bc47a52ddb
+2024-11-12 11:14:41 [INFO]: Inserted data for bill HR 1052, MongoDB document ID: 67337ef1d699b5bc47a52ddc
+2024-11-12 11:14:41 [INFO]: Inserted data for bill HR 1053, MongoDB document ID: 67337ef1d699b5bc47a52ddd
+2024-11-12 11:14:41 [INFO]: Inserted data for bill HR 1054, MongoDB document ID: 67337ef1d699b5bc47a52dde
+2024-11-12 11:14:41 [INFO]: Inserted data for bill HR 1055, MongoDB document ID: 67337ef1d699b5bc47a52ddf
+2024-11-12 11:14:41 [INFO]: Inserted data for bill HR 1056, MongoDB document ID: 67337ef1d699b5bc47a52de0
+2024-11-12 11:14:42 [INFO]: Inserted data for bill HR 1057, MongoDB document ID: 67337ef2d699b5bc47a52de1
+2024-11-12 11:14:42 [INFO]: Inserted data for bill HR 1058, MongoDB document ID: 67337ef2d699b5bc47a52de2
+2024-11-12 11:14:42 [INFO]: Inserted data for bill HR 1059, MongoDB document ID: 67337ef2d699b5bc47a52de3
+2024-11-12 11:14:42 [INFO]: Inserted data for bill HR 106, MongoDB document ID: 67337ef2d699b5bc47a52de4
+2024-11-12 11:14:42 [INFO]: Inserted data for bill HR 1060, MongoDB document ID: 67337ef2d699b5bc47a52de5
+2024-11-12 11:14:43 [INFO]: Inserted data for bill HR 1061, MongoDB document ID: 67337ef2d699b5bc47a52de6
+2024-11-12 11:14:43 [INFO]: Inserted data for bill HR 1062, MongoDB document ID: 67337ef3d699b5bc47a52de7
+2024-11-12 11:14:43 [INFO]: Inserted data for bill HR 1063, MongoDB document ID: 67337ef3d699b5bc47a52de8
+2024-11-12 11:14:43 [INFO]: Inserted data for bill HR 1064, MongoDB document ID: 67337ef3d699b5bc47a52de9
+2024-11-12 11:14:43 [INFO]: Inserted data for bill HR 1065, MongoDB document ID: 67337ef3d699b5bc47a52dea
+2024-11-12 11:14:43 [INFO]: Inserted data for bill HR 1066, MongoDB document ID: 67337ef3d699b5bc47a52deb
+2024-11-12 11:14:44 [INFO]: Inserted data for bill HR 1067, MongoDB document ID: 67337ef4d699b5bc47a52dec
+2024-11-12 11:14:44 [INFO]: Inserted data for bill HR 1068, MongoDB document ID: 67337ef4d699b5bc47a52ded

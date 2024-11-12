@@ -1,7 +1,12 @@
+require('dotenv').config({ path: '../../.env.local' });
+const { MongoClient } = require('mongodb');
 const { XMLValidator, XMLParser } = require('fast-xml-parser');
 const fs = require('fs');
 const path = require('path');
 const winston = require('winston');
+
+const uri = process.env.MONGO_URI;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Set up Winston logger
 const logger = winston.createLogger({
@@ -12,6 +17,11 @@ const logger = winston.createLogger({
   ),
   transports: [new winston.transports.Console(), new winston.transports.File({ filename: 'parse_log.log' })],
 });
+
+// MongoDB Connection URI and Client Setup
+
+const DATABASE_NAME = 'default';
+const COLLECTION_NAME = 'bills';
 
 const DATA_DIRECTORIES = [
   path.join(__dirname, '..', '..', 'congress-scraper', 'data', '118', 'bills', 'hr'),
@@ -27,6 +37,10 @@ const mapItems = (item, mapCallback) => {
 };
 
 async function processXmlFiles() {
+  await client.connect();
+  const db = client.db(DATABASE_NAME);
+  const collection = db.collection(COLLECTION_NAME);
+
   console.log('\n \n[INFO]: Starting XML parsing process...');
   logger.info('Starting XML parsing process...');
 
@@ -137,12 +151,20 @@ async function processXmlFiles() {
       console.log(`[INFO]: Parsed data for bill ${billData.type} ${billData.billNumber}:`, billData);
       //logger.info(`Parsed data for bill ${billData.type} ${billData.billNumber}:`, billData);
 
-      // Assume the MongoDB insert happens here:
-      // const result = await collection.insertOne(billData);
-      // For now, simulate a success message:
-      //logger.info(`Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
-      console.log(`[INFO]: Inserted data for file ${xmlFilePath}, MongoDB document ID: MOCKED_ID`);
+      await collection.createIndex({ billId: 1 }, { unique: true });
 
+      // Check if the document already exists
+      const existingDoc = await collection.findOne({ billId: billData.billId });
+      if (existingDoc) {
+        console.log(`[INFO]: Document with billId ${billData.billId} already exists. Skipping insertion.`);
+        logger.info(`Document with billId ${billData.billId} already exists. Skipping insertion.`);
+        continue;
+      }
+
+      // Assume the MongoDB insert happens here:
+      const result = await collection.insertOne(billData);
+      logger.info(`Inserted data for bill ${billData.type} ${billData.billNumber}, MongoDB document ID: ${result.insertedId}`);
+      console.log(`[INFO]: Inserted data for file ${xmlFilePath}, MongoDB document ID: ${result.insertedId}`);
       console.log('----------------------------------------------------------------------\n\n');
     } catch (fileError) {
       logger.error(`Failed to process file ${xmlFilePath}: ${fileError.message}`);
