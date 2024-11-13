@@ -145,7 +145,7 @@ async function processXmlFiles() {
         law: bill.laws?.item ? {
           type: bill.laws.item?.type || null,
           number: bill.laws.item?.number || null
-        } : ""
+        } : ""  
       };
 
       console.log(`[INFO]: Parsed data for bill ${billData.type} ${billData.billNumber}:`, billData);
@@ -163,7 +163,7 @@ async function processXmlFiles() {
 
       // Assume the MongoDB insert happens here:
       const result = await collection.insertOne(billData);
-      logger.info(`Inserted data for bill ${billData.type} ${billData.billNumber}, MongoDB document ID: ${result.insertedId}`);
+      //logger.info(`Inserted data for bill ${billData.type} ${billData.billNumber}, MongoDB document ID: ${result.insertedId}`);
       console.log(`[INFO]: Inserted data for file ${xmlFilePath}, MongoDB document ID: ${result.insertedId}`);
       console.log('----------------------------------------------------------------------\n\n');
     } catch (fileError) {
