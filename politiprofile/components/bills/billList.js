@@ -10,9 +10,9 @@ const BillList = ({ bills }) => {
     <ul className="space-y-4">
       {bills.map((bill) => (
         <li key={bill.billId} className="p-4 border border-gray-300 rounded">
-          <Link to={`/bills/${bill.billId}`} className="text-blue-600 hover:underline">
-            <h3 className="text-lg font-semibold">{bill.title}</h3>
-          </Link>
+          <h3 className="text-blue-600 hover:underline">
+            <h2 className="text-lg font-semibold">{bill.title}</h2>
+          </h3>
           <p className="text-sm text-gray-500">Policy Area: {bill.policyArea || 'N/A'}</p>
           <p className="text-sm text-gray-500">Bill Number: {bill.billNumber}</p>
         </li>

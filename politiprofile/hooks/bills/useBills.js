@@ -9,10 +9,17 @@ const useBills = (policyArea) => {
     const fetchBills = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/bills?policyArea=${policyArea}`);
-        if (!response.ok) throw new Error('Failed to fetch bills');
+        const response = await fetch(`/api/bills/getBills?policyArea=${policyArea}`);
+        console.log("Response:", response);
+        if (!response.ok) {
+            console.error("Error status:", response.status);
+            console.error("Error status:", policyArea);
+            throw new Error(`Failed to fetch boolls: ${response.statusText}`);
+          }
+          
         const data = await response.json();
-        setBills(data);
+        console.log("Data:", data);
+        setBills(data.bills);
       } catch (err) {
         setError(err.message);
       } finally {

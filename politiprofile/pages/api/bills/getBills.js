@@ -12,17 +12,20 @@ export default async function handler(req, res) {
       const database = client.db("default");
       const collection = database.collection("bills");
 
+      console.log("Policy Area:", policyArea);
       const query = {};
       if (policyArea) {
         query.policyArea = policyArea;
       }
 
+      console.log("Query:", query);
 
       const bills = await collection.find(query).toArray();
 
       if (bills.length === 0) {
         res.status(404).json({ error: "No bills found for the specified filter" });
       } else {
+        console.log("Bills found:", bills.length);
         res.status(200).json({ bills });
       }
     } catch (e) {
