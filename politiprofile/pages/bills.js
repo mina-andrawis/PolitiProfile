@@ -11,17 +11,17 @@ const BillListPage = () => {
   return (
     <Layout>
 
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold mb-4">Bills List</h1>
-      <PolicyAreaFilter policyArea={policyArea} setPolicyArea={setPolicyArea} />
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p className="text-red-500">Error: {error}</p>
-      ) : (
-        <BillList bills={bills} />
-      )}
-    </div>
+      <div className="p-6">
+        <h1 className="text-2xl font-semibold mb-4">Bills List</h1>
+        <PolicyAreaFilter policyArea={policyArea} setPolicyArea={setPolicyArea} />
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p className="text-red-500">Error: {error}</p>
+        ) : (
+          <BillList bills={bills} />
+        )}
+      </div>
     </Layout>
   );
 };
