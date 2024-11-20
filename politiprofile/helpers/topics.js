@@ -12,7 +12,7 @@ const topics = [
     description: "Relates to military funding, defense policies, homeland security, and national defense."
   },
   {
-    name: "Arts, Culture, and Religion",
+    name: "Arts, Culture, Religion",
     description: "Covers funding for the arts, cultural preservation, religious rights, and heritage sites."
   },
   {
@@ -104,7 +104,7 @@ const topics = [
     description: "Covers the management of public lands, natural resources, conservation, and park services."
   },
   {
-    name: "Science, Technology, and Communications",
+    name: "Science, Technology, Communications",
     description: "Relates to innovation, data privacy, telecommunications, research funding, and technology regulation."
   },
   {
