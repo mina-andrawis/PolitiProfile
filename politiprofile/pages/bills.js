@@ -5,15 +5,11 @@ import useBills from '../hooks/bills/useBills';
 import Layout from '../components/layout';
 import usePageReset from '../hooks/bills/usePageReset';
 
-const BillListPage = () => {
+const Bills = () => {
   const [policyArea, setPolicyArea] = useState('');
-  const [page, setPage] = useState(1);
+  
+  const [page, setPage] = usePageReset(policyArea);
 
-
-  useEffect(() => {
-    setPage(1);
-    console.log('Page reset to 1');
-  }, [policyArea]);
 
   const { bills, loading, error, totalPages } = useBills(policyArea, page);
 
@@ -65,4 +61,4 @@ const BillListPage = () => {
   );
 };
 
-export default BillListPage;
+export default Bills;
