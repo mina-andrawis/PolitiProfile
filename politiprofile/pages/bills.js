@@ -37,7 +37,7 @@ const Bills = () => {
               <button
                 onClick={handlePrevPage}
                 disabled={page === 1}
-                className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+                className="px-4 py-2 bg-secondary text-white rounded disabled:opacity-50"
               >
                 Previous
               </button>
@@ -47,7 +47,7 @@ const Bills = () => {
               <button
                 onClick={() => handleNextPage(totalPages)}
                 disabled={page === totalPages}
-                className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+                className="px-4 py-2 bg-secondary text-white rounded disabled:opacity-50"
               >
                 Next
               </button>

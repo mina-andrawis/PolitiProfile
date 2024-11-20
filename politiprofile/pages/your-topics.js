@@ -55,7 +55,7 @@ export default function YourTopics() {
           <h2 className="text-3xl font-semibold mb-4">Select Your Topics:</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
             {topics.map((topic) => (
-              <div key={topic.name} className="border p-4 rounded-lg">
+              <div key={topic.name} className="border px-3 py-1 rounded-lg">
                 <input
                   type="checkbox"
                   value={topic.name}
