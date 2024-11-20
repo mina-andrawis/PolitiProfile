@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import BillList from '../components/bills/billList';
-import PolicyAreaFilter from '../components/bills/policyAreaFilter';
-import useBills from '../hooks/bills/useBills';
-import Layout from '../components/layout';
-import usePagination from '../hooks/usePagination';
+import BillList from '../../components/bills/billList';
+import PolicyAreaFilter from '../../components/bills/policyAreaFilter';
+import useBills from '../../hooks/bills/useBills';
+import Layout from '../../components/layout';
+import usePagination from '../../hooks/usePagination';
 
 const Bills = () => {
   const [policyArea, setPolicyArea] = useState('');
