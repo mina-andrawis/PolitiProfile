@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useBills = (policyArea, page, limit = 50) => {
+const useBills = (policyArea, page, limit = 30) => {
   const [bills, setBills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

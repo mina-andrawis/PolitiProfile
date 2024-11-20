@@ -1,13 +1,13 @@
 import React from 'react';
+import topics from '../../helpers/topics';
 
 const PolicyAreaFilter = ({ policyArea, setPolicyArea }) => {
+
   const policyAreas = [
-    { value: '', label: 'All' },
-    { value: 'Health', label: 'Health' },
-    { value: 'Law', label: 'Law' },
-    { value: 'Education', label: 'Education' },
-    // Add more options as needed
+    { value: '', label: 'All Policy Areas' },
+    ...topics.map((topic) => ({ value: topic.name, label: topic.name }))
   ];
+
 
   return (
     <div className="mb-4">
