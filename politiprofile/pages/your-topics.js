@@ -31,7 +31,6 @@ export default function YourTopics() {
     });
   };
 
-  // Fixing the useEffect to populate checkboxes that exist in userDetails
   useEffect(() => {
     if (userDetails && userDetails.topics) {
       setSelectedTopics(userDetails.topics);
