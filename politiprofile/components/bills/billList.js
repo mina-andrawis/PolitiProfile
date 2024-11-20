@@ -13,7 +13,7 @@ const BillList = ({ bills }) => {
           key={bill.billId}
           className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow border border-gray-200"
         >
-          <h3 className="text-blue-600 hover:underline text-lg font-semibold mb-2">
+          <h3 className="text-secondary hover:underline text-lg font-semibold mb-2">
             {bill.title || 'Untitled Bill'}
           </h3>
           <p className="text-sm text-gray-500 mb-1">Policy Area: {bill.policyArea || 'N/A'}</p>
@@ -21,7 +21,7 @@ const BillList = ({ bills }) => {
 
           {bill.summaries && bill.summaries[0] && (
             <p className="text-gray-700 text-sm mt-2 line-clamp-4">
-              <span className="font-semibold">Summary:</span> {formatSummary(bill.summaries[0])}
+              <span className="font-semibold">{formatSummary(bill.summaries[0])}</span>
             </p>
           )}
         </div>

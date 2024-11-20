@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BillList from '../components/bills/billList';
 import PolicyAreaFilter from '../components/bills/policyAreaFilter';
 import useBills from '../hooks/bills/useBills';
 import Layout from '../components/layout';
+import usePageReset from '../hooks/bills/usePageReset';
 
 const BillListPage = () => {
   const [policyArea, setPolicyArea] = useState('');
-  const [page, setPage] = useState(1); // New state to track the current page
-  const { bills, loading, error, totalPages } = useBills(policyArea, page); // Pass page to useBills
+  const [page, setPage] = useState(1);
 
-  // Handlers for pagination controls
+
+  useEffect(() => {
+    setPage(1);
+    console.log('Page reset to 1');
+  }, [policyArea]);
+
+  const { bills, loading, error, totalPages } = useBills(policyArea, page);
+
   const handleNextPage = () => {
     if (page < totalPages) setPage(page + 1);
   };

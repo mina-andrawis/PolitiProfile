@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useBills from '../hooks/useBills';
+import useBills from '../../hooks/bills/useBills';
 import BillList from './billList';
 
 const BillsPage = ({ policyArea }) => {
