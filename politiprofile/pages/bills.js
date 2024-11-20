@@ -3,23 +3,21 @@ import BillList from '../components/bills/billList';
 import PolicyAreaFilter from '../components/bills/policyAreaFilter';
 import useBills from '../hooks/bills/useBills';
 import Layout from '../components/layout';
-import usePageReset from '../hooks/bills/usePageReset';
+import usePagination from '../hooks/usePagination';
 
 const Bills = () => {
   const [policyArea, setPolicyArea] = useState('');
   
-  const [page, setPage] = usePageReset(policyArea);
+  // Use pagination hook
+  const { page, setPage, handleNextPage, handlePrevPage } = usePagination();
 
-
+  // Fetch bills data with the current page and policy area
   const { bills, loading, error, totalPages } = useBills(policyArea, page);
 
-  const handleNextPage = () => {
-    if (page < totalPages) setPage(page + 1);
-  };
-
-  const handlePrevPage = () => {
-    if (page > 1) setPage(page - 1);
-  };
+  // Reset page to 1 whenever policyArea changes
+  useEffect(() => {
+    setPage(1);
+  }, [policyArea]);
 
   return (
     <Layout>
@@ -47,7 +45,7 @@ const Bills = () => {
               <span>Page {page} of {totalPages}</span>
 
               <button
-                onClick={handleNextPage}
+                onClick={() => handleNextPage(totalPages)}
                 disabled={page === totalPages}
                 className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
               >

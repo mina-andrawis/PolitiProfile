@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 
-const useBills = (policyArea, page = 1, limit = 50) => {
+const useBills = (policyArea, page, limit = 50) => {
   const [bills, setBills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
+
+  useEffect (() => {
+    page = 1;
+  }, [policyArea]);
 
   useEffect(() => {
     const fetchBills = async () => {
@@ -37,7 +41,10 @@ const useBills = (policyArea, page = 1, limit = 50) => {
     };
 
     fetchBills();
-  }, [page, limit]);
+  }, [policyArea, page, limit]);
+
+
+
 
   return { bills, loading, error, totalPages };
 };
