@@ -34,11 +34,13 @@ const BillDetails = ({ billDetails }) => {
         {/* Header Section */}
         <div className="bg-white shadow rounded-lg p-6 mb-6">
           <h1 className="text-3xl font-bold text-primary mb-2">{title || 'Untitled Bill'}</h1>
-          <p className="text-primary">Policy Area: {policyArea || 'N/A'}</p>
+          <p className="text-primary">
+            <span className="font-semibold">Policy Area:</span>  {policyArea || 'N/A'}
+            </p>
           <p className="text-primary">
             <span className="font-semibold">Congress:</span> {congress}, {originChamber} - Bill Number: {billNumber}
           </p>
-          <p className="text-gray-600">
+          <p className="text-primary">
             <span className="font-semibold">Introduced Date:</span> {new Date(introducedDate).toLocaleDateString()}
           </p>
         </div>
@@ -52,13 +54,13 @@ const BillDetails = ({ billDetails }) => {
           {cosponsors.length > 0 ? (
             <ul className="list-disc ml-6">
               {cosponsors.map((cosponsor, index) => (
-                <li key={index} className="text-gray-600">
+                <li key={index} className="text-secondaryTextColor">
                   {cosponsor.fullName} ({cosponsor.party} - {cosponsor.state})
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-gray-600">No cosponsors listed.</p>
+            <p className="text-secondaryTextColor">No cosponsors listed.</p>
           )}
         </div>
 
@@ -72,7 +74,7 @@ const BillDetails = ({ billDetails }) => {
               </p>
             ))
           ) : (
-            <p className="text-gray-600">No summaries available.</p>
+            <p className="text-secondaryTextColor">No summaries available.</p>
           )}
         </div>
 
@@ -82,13 +84,13 @@ const BillDetails = ({ billDetails }) => {
           {committees.length > 0 ? (
             <ul className="list-disc ml-6">
               {committees.map((committee, index) => (
-                <li key={index} className="text-gray-600">
+                <li key={index} className="text-secondaryTextColor">
                   {committee.name} ({committee.chamber})
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-gray-600">No committees listed.</p>
+            <p className="text-secondaryTextColor">No committees listed.</p>
           )}
         </div>
 
@@ -98,13 +100,13 @@ const BillDetails = ({ billDetails }) => {
           {actions.length > 0 ? (
             <ul className="list-disc ml-6">
               {actions.map((action, index) => (
-                <li key={index} className="text-gray-600">
+                <li key={index} className="text-secondaryTextColor">
                   <span className="font-semibold">{new Date(action.actionDate).toLocaleDateString()}:</span> {action.text}
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-gray-600">No actions listed.</p>
+            <p className="text-secondaryTextColor">No actions listed.</p>
           )}
         </div>
 
@@ -114,13 +116,13 @@ const BillDetails = ({ billDetails }) => {
           {relatedBills.length > 0 ? (
             <ul className="list-disc ml-6">
               {relatedBills.map((relatedBill, index) => (
-                <li key={index} className="text-gray-600">
+                <li key={index} className="text-secondaryTextColor">
                   {relatedBill.title} ({relatedBill.type} {relatedBill.number})
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-gray-600">No related bills listed.</p>
+            <p className="text-secondaryTextColor">No related bills listed.</p>
           )}
         </div>
       </div>
