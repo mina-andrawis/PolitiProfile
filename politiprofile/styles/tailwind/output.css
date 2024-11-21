@@ -1984,12 +1984,24 @@ input.tab:checked + .tab-content,
   height: auto;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
 .min-h-\[300px\] {
   min-height: 300px;
 }
 
 .w-full {
   width: 100%;
+}
+
+.w-80 {
+  width: 20rem;
 }
 
 .max-w-4xl {
@@ -2022,6 +2034,10 @@ input.tab:checked + .tab-content,
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {
@@ -2064,6 +2080,11 @@ input.tab:checked + .tab-content,
 
 .rounded-md {
   border-radius: 0.375rem;
+}
+
+.rounded-t-lg {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .border {
@@ -2144,6 +2165,11 @@ input.tab:checked + .tab-content,
 
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .p-0 {
