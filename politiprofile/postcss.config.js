@@ -4,9 +4,4 @@ module.exports = {
     tailwindcss: {},
     autoprefixer: {},
   },
-  plugins: {
-    'postcss-import': {}, // Make sure this is listed
-    tailwindcss: {},
-    autoprefixer: {},
-  },
 };
