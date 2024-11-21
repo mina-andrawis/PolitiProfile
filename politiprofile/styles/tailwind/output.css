@@ -2084,7 +2084,7 @@ input.tab:checked + .tab-content,
 
 .border-gray-200 {
   --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
 }
 
 .border-gray-300 {
@@ -2299,7 +2299,7 @@ input.tab:checked + .tab-content,
 
 .text-primary {
   --tw-text-opacity: 1;
-  color: rgb(29 35 42 / var(--tw-text-opacity));
+  color: rgb(29 35 42 / var(--tw-text-opacity, 1));
 }
 
 .text-red-500 {
