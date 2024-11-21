@@ -15,7 +15,7 @@ const useUpdateUser = () => {
   console.log("Update data:", updateData);
 
     try {
-      const response = await fetch("/api/db/updateUser", {
+      const response = await fetch("/api/user/updateUser", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

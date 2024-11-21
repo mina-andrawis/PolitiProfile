@@ -38,8 +38,8 @@ export default function NavBar() {
           <Link href="/your-topics">
             <button className="w-full py-2 text-lg text-white">Your Topics</button>
           </Link>
-          <Link href="/compare-candidates">
-            <button className="w-full py-2 text-lg text-white">Compare Candidates</button>
+          <Link href="/bills">
+            <button className="w-full py-2 text-lg text-white">Bills</button>
           </Link>
           {user ? (
             <button
@@ -67,8 +67,8 @@ export default function NavBar() {
           <Link href="/your-topics">
             <button className="mr-6 p-3 text-xl text-white">Your Topics</button>
           </Link>
-          <Link href="/compare-candidates">
-            <button className="mr-6 p-3 text-xl text-white">Compare Candidates</button>
+          <Link href="/bills">
+            <button className="mr-6 p-3 text-xl text-white">Bills</button>
           </Link>
 
         </div>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import Head from "next/head";
-import useUserDetails from "../hooks/db/useGetUserDetails"; 
+import useUserDetails from "../hooks/user/useGetUserDetails"; 
 import topics from "../helpers/topics";
-import useUpdateUser from "../hooks/db/useUpdateUser"; 
+import useUpdateUser from "../hooks/user/useUpdateUser"; 
 
 export default function YourTopics() {
   const [selectedTopics, setSelectedTopics] = useState([]);
@@ -31,7 +31,6 @@ export default function YourTopics() {
     });
   };
 
-  // Fixing the useEffect to populate checkboxes that exist in userDetails
   useEffect(() => {
     if (userDetails && userDetails.topics) {
       setSelectedTopics(userDetails.topics);
@@ -56,7 +55,7 @@ export default function YourTopics() {
           <h2 className="text-3xl font-semibold mb-4">Select Your Topics:</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
             {topics.map((topic) => (
-              <div key={topic.name} className="border p-4 rounded-lg">
+              <div key={topic.name} className="border px-3 py-1 rounded-lg">
                 <input
                   type="checkbox"
                   value={topic.name}
