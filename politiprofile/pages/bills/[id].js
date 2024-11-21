@@ -2,15 +2,36 @@ import Layout from '../../components/layout';
 import formatSummary from '../../helpers/formatSummary';
 
 export async function getServerSideProps(context) {
-  const { id } = context.params;
-  console.log('\ngetServerSideProps is running');
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `http://${context.req.headers.host}`;
-  const res = await fetch(`${baseUrl}/api/bills/getBills?billId=${id}`);
-  const billResponse = await res.json();
-  const billDetails = billResponse.bill;
-
-  return { props: { billDetails } };
-}
+    const { id } = context.params;
+    console.log('\ngetServerSideProps is running');
+    
+    let billDetails = null; // Default fallback value
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `http://${context.req.headers.host}`;
+  
+    try {
+      const res = await fetch(`${baseUrl}/api/bills/getBills?billId=${id}`);
+      
+      if (!res.ok) {
+        console.error('Failed to fetch data:', res.statusText);
+      } else {
+        const billResponse = await res.json();
+        billDetails = billResponse.bill || null;
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  
+    // Handle case where data is not available
+    if (!billDetails) {
+      return {
+        notFound: true, // Render a 404 page if data is not found or fetch fails
+      };
+    }
+  
+    return {
+      props: { billDetails },
+    };
+  }
 
 const BillDetails = ({ billDetails }) => {
   const {
