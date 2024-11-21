@@ -35,7 +35,7 @@ export async function getStaticProps() {
   try {
     // Fetch the YAML data from GitHub
     const res = await fetch(
-      `/api/retrieveLegislators`,
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/retrieveLegislators`,
     );
 
     if (!res.ok) {
