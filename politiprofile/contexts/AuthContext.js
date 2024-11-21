@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
+import {auth} from '../authentication/firebase';
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     console.log("AuthProvider mounted"); // This will confirm if the AuthProvider is being used correctly
-    const auth = getAuth();
     
     const unsubscribe = onAuthStateChanged(auth, (fireUser) => {
       if (fireUser) {

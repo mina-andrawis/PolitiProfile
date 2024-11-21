@@ -28,6 +28,7 @@ export default function Home({ legislators }) {
   );
 }
 
+
 export async function getStaticProps() {
   // Fetch the YAML data from GitHub
   const res = await fetch(
