@@ -9,7 +9,8 @@ const BillList = ({ bills }) => {
 
   return (
     <>
-      <h2 className="text-center text-2xl font-bold mb-4">118th Congress</h2>
+      <h2 className="text-center text-2xl font-bold mb-1">118th Congress </h2>
+      <p className="text-center font-bold mb-4">(2023-2025)</p>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {bills.map((bill) => (
           <Link key={bill.billId} href={`/bills/${bill.billId}`} passHref>
