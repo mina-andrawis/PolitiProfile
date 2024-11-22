@@ -35,7 +35,7 @@ export async function getStaticProps() {
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
 
   try {
-    const res = await fetch(`/api/retrieveLegislators`);
+    const res = await fetch(`${baseUrl}/api/retrieveLegislators`);
 
     if (!res.ok) {
       console.error('Failed to fetch data:', res.statusText);
@@ -54,4 +54,4 @@ export async function getStaticProps() {
     return { notFound: true }; // Handle fetch failure by rendering a 404 page
   }
 }
-}
+
