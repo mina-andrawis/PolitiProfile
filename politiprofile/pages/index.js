@@ -31,8 +31,11 @@ export default function Home({ legislators }) {
 
 export async function getStaticProps() {
   // Fetch the YAML data from GitHub
+  
+  const url = process.env.VERCEL_URL || process.env.NEXT_PUBLIC_BASE_URL;
+  
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/retrieveLegislators`,
+    `${url}/api/retrieveLegislators`,
   );
   const yamlData = await res.text();
   const data = yaml.load(yamlData);
