@@ -9,7 +9,7 @@ export async function getServerSideProps(context) {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `http://${context.req.headers.host}`;
   
     try {
-      const res = await fetch(`${baseUrl}/api/bills/getBills?billId=${id}`);
+      const res = await fetch(`/api/bills/getBills?billId=${id}`);
       
       if (!res.ok) {
         console.error('Failed to fetch data:', res.statusText);
