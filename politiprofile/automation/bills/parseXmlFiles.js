@@ -6,7 +6,7 @@ const path = require('path');
 const winston = require('winston');
 
 const uri = process.env.MONGO_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri);
 
 // Set up Winston logger
 const logger = winston.createLogger({
