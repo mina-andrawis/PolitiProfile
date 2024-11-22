@@ -30,18 +30,28 @@ export default function Home({ legislators }) {
 
 
 export async function getStaticProps() {
-  // Fetch the YAML data from GitHub
-  
-  const url = process.env.VERCEL_URL || process.env.NEXT_PUBLIC_BASE_URL;
-  
-  const res = await fetch(
-    `${url}/api/retrieveLegislators`,
-  );
-  const yamlData = await res.text();
-  const data = yaml.load(yamlData);
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
 
-  return {
-    props: { legislators: data }, // Pass the legislators data as props
-    revalidate: 86400, // Revalidate the page once every 24 hours (86400 seconds)
-  };
+  try {
+    const res = await fetch(`${baseUrl}/api/retrieveLegislators`);
+
+    if (!res.ok) {
+      console.error('Failed to fetch data:', res.statusText);
+      return { notFound: true }; // Handle API errors by rendering a 404 page
+    }
+
+    const yamlData = await res.text();
+    const data = yaml.load(yamlData);
+
+    return {
+      props: { legislators: data }, // Pass the legislators data as props
+      revalidate: 86400, // Revalidate the page once every 24 hours (86400 seconds)
+    };
+  } catch (error) {
+    console.error('Error fetching legislators:', error.message);
+    return { notFound: true }; // Handle fetch failure by rendering a 404 page
+  }
+}
 }
