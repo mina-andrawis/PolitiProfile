@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
     try {
       await client.connect();
-      const database = client.db("default"); // Replace "default" with your actual database name if different
+      const database = client.db("default");
       const collection = database.collection("users");
 
       // Query by _id directly as a string
