@@ -34,8 +34,6 @@ export async function getServerSideProps(context) {
 }
 
 
-
-
 const BillDetails = ({ billDetails }) => {
   const {
     title,
