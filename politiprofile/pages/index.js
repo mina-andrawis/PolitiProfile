@@ -30,28 +30,26 @@ export default function Home({ legislators }) {
 
 
 export async function getStaticProps() {
-  // Construct the base URL with the correct protocol
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+  let data = []; // Default fallback data
 
   try {
-    // Fetch data from the API
-    const res = await fetch(`${baseUrl}/api/retrieveLegislators`);
+    // Fetch the YAML data from GitHub
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/retrieveLegislators`,
+    );
 
     if (!res.ok) {
       console.error('Failed to fetch data:', res.statusText);
-      return { notFound: true }; // Handle API errors gracefully
+    } else {
+      const yamlData = await res.text();
+      data = yaml.load(yamlData);
     }
-
-    const yamlData = await res.text();
-    const data = yaml.load(yamlData);
-
-    return {
-      props: { legislators: data }, // Pass the legislators data as props
-      revalidate: 86400, // Revalidate the page every 24 hours
-    };
   } catch (error) {
-    console.error('Error fetching legislators:', error.message);
-    return { notFound: true }; // Handle fetch failure gracefully
+    console.error('Error fetching data:', error);
   }
+
+  return {
+    props: { legislators: data }, // Pass the legislators data as props
+    revalidate: 86400, // Revalidate the page once every 24 hours (86400 seconds)
+  };
 }
