@@ -3,36 +3,38 @@ import formatSummary from '../../helpers/formatSummary';
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
-  console.log('Fetching bill with id:', id);
 
-  // Construct the base URL properly
+  // Construct baseUrl from environment variables or fallback
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : `http://${context.req.headers.host}`);
+                  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : `http://localhost:3000`);
 
-  let billDetails = null;
+  console.log('Base URL:', baseUrl); // Debug log to verify base URL
 
   try {
-    // Use the complete URL
-    const res = await fetch(`${baseUrl}/api/bills/getBills?billId=${id}`);
-    
+    // Ensure proper endpoint formatting
+    const apiEndpoint = `${baseUrl}/api/bills/getBills?billId=${id}`;
+    console.log('API Endpoint:', apiEndpoint); // Debug log to verify API endpoint
+
+    const res = await fetch(apiEndpoint);
+
     if (!res.ok) {
-      console.error('API response error:', res.statusText);
       throw new Error(`Failed to fetch bill details for id: ${id}`);
     }
 
     const billResponse = await res.json();
-    billDetails = billResponse.bill;
+    const billDetails = billResponse.bill;
 
-    if (!billDetails) {
-      throw new Error(`Bill details not found for id: ${id}`);
-    }
+    return {
+      props: { billDetails },
+    };
   } catch (error) {
     console.error('Error in getServerSideProps:', error);
-    return { notFound: true }; // Render a 404 page if there's an error
+    return {
+      notFound: true, // Return 404 if fetch fails
+    };
   }
-
-  return { props: { billDetails } };
 }
+
 
 
 const BillDetails = ({ billDetails }) => {
