@@ -6,8 +6,8 @@ export async function getServerSideProps(context) {
   const { id } = context.params;
 
   try {
-    await connectDB();
-    const bill = await bills.findOne({ billId: id });
+    const db = await connectDB();
+    const bill = await db.bills.findOne({ billId: id });
     if (!bill) {
       return {
         notFound: true, // Return 404 if bill not found
