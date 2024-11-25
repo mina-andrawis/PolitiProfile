@@ -12,7 +12,8 @@ const useGetUserDetails = () => {
       if (user) {
         console.log("Fetching details for user:", user.email); // Log user email for debugging
         try {
-          const response = await fetch("/api/user/getUserDetails", {
+          console.log('NEXT_PUBLIC_SITE_URL:', process.env.NEXT_PUBLIC_SITE_URL);
+          const response = await fetch(`/api/user/getUserDetails`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
