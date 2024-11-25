@@ -5,7 +5,7 @@ export async function getServerSideProps(context) {
   const { id } = context.params;
   console.log('\ngetServerSideProps is running');
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `http://${context.req.headers.host}`;
-  const res = await fetch(`${baseUrl}/api/bills/getBills?billId=${id}`);
+  const res = await fetch(`/api/bills/getBills?billId=${id}`);
   const billResponse = await res.json();
   const billDetails = billResponse.bill;
 
