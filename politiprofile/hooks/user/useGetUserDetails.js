@@ -11,11 +11,15 @@ const useGetUserDetails = () => {
     const fetchUserDetails = async () => {
       if (user) {
         console.log("Fetching details for user:", user.email); // Log user email for debugging
+        console.log('NEXT_PUBLIC_SITE_URL:', process.env.NEXT_PUBLIC_SITE_URL);
+        console.log('VERCEL_URL:', process.env.VERCEL_URL);
         try {
           
           const baseUrl =
-          process.env.NEXT_PUBLIC_SITE_URL ||
-          (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+          process.env.VERCEL_URL 
+          ? `https://${process.env.VERCEL_URL}`
+          : process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
           
           const response = await fetch(`${baseUrl}/api/user/getUserDetails`, {
             method: "POST",
