@@ -12,7 +12,7 @@ const useGetUserDetails = () => {
       if (user) {
         console.log("Fetching details for user:", user.email); // Log user email for debugging
         try {
-          console.log('NEXT_PUBLIC_SITE_URL:', process.env.NEXT_PUBLIC_SITE_URL);
+          console.log('NEXT_PUBLIC_SITE_URL:', process.env.NEXT_AUTH_URL);
           const baseUrl =
           process.env.NEXT_PUBLIC_SITE_URL || // Use the public URL if available
           (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
@@ -21,7 +21,7 @@ const useGetUserDetails = () => {
           console.log('VERCEL_URL:', process.env.VERCEL_URL);
           console.log('baseUrl:', baseUrl);
 
-          const response = await fetch(`/api/user/getUserDetails`, {
+          const response = await fetch(`${process.env.NEXT_AUTH_URL}api/user/getUserDetails`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
