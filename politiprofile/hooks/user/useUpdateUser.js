@@ -14,6 +14,12 @@ const useUpdateUser = () => {
     console.log("Updating user with ID:", _id);
   console.log("Update data:", updateData);
 
+  if (!_id) {
+    setIsSaving(false);
+    setError("User not logged in");
+    return;
+  }
+  
     try {
       const response = await fetch("/api/user/updateUser", {
         method: "PATCH",
