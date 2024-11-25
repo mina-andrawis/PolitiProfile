@@ -1,44 +1,38 @@
 import Layout from '../../components/layout';
 import formatSummary from '../../helpers/formatSummary';
-import connectDB from '../../db';
+import { MongoClient } from 'mongodb';
+
+
+const uri = process.env.MONGO_URI;
+const client = new MongoClient(uri);
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
 
   try {
-    const db = await connectDB();
-    const bill = await db.bills.findOne({ billId: id });
+    await client.connect();
+    const database = client.db("default");
+    const collection = database.collection("bills");
+
+    const bill = await collection.findOne({ billId: id });
+
     if (!bill) {
-      return {
-        notFound: true, // Return 404 if bill not found
-      };
+      return { notFound: true };
     }
 
-    const billDetails = {
-      title: bill.title,
-      policyArea: bill.policyArea,
-      congress: bill.congress,
-      billNumber: bill.billNumber,
-      originChamber: bill.originChamber,
-      introducedDate: bill.introducedDate,
-      sponsor: bill.sponsor,
-      cosponsors: bill.cosponsors,
-      summaries: bill.summaries,
-      committees: bill.committees,
-      actions: bill.actions,
-      relatedBills: bill.relatedBills,
-    };
-
     return {
-      props: { billDetails },
+      props: {
+        billDetails: JSON.parse(JSON.stringify(bill)),
+      },
     };
   } catch (error) {
-    console.error('Error in getServerSideProps:', error);
-    return {
-      notFound: true, // Return 404 if fetch fails
-    };
+    console.error("Error fetching data:", error);
+    return { notFound: true };
+  } finally {
+    await client.close();
   }
 }
+
 
 
 
