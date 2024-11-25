@@ -3,14 +3,37 @@ import formatSummary from '../../helpers/formatSummary';
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
-  console.log('\ngetServerSideProps is running');
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `http://${context.req.headers.host}`;
-  const res = await fetch(`/api/bills/getBills?billId=${id}`);
-  const billResponse = await res.json();
-  const billDetails = billResponse.bill;
+  console.log('Fetching bill with id:', id);
+
+  // Construct the base URL properly
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : `http://${context.req.headers.host}`);
+
+  let billDetails = null;
+
+  try {
+    // Use the complete URL
+    const res = await fetch(`${baseUrl}/api/bills/getBills?billId=${id}`);
+    
+    if (!res.ok) {
+      console.error('API response error:', res.statusText);
+      throw new Error(`Failed to fetch bill details for id: ${id}`);
+    }
+
+    const billResponse = await res.json();
+    billDetails = billResponse.bill;
+
+    if (!billDetails) {
+      throw new Error(`Bill details not found for id: ${id}`);
+    }
+  } catch (error) {
+    console.error('Error in getServerSideProps:', error);
+    return { notFound: true }; // Render a 404 page if there's an error
+  }
 
   return { props: { billDetails } };
 }
+
 
 const BillDetails = ({ billDetails }) => {
   const {
