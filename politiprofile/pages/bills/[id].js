@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
 
   try {
     // Ensure proper endpoint formatting
-    const apiEndpoint = `${baseUrl}/api/bills/getBills?billId=${id}`;
+    const apiEndpoint = `/api/bills/getBills?billId=${id}`;
     console.log('API Endpoint:', apiEndpoint); // Debug log to verify API endpoint
 
     const res = await fetch(apiEndpoint);
