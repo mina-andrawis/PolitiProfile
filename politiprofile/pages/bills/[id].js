@@ -1,28 +1,33 @@
 import Layout from '../../components/layout';
 import formatSummary from '../../helpers/formatSummary';
+import connectDB from '../../db';
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
 
-  // Construct baseUrl from environment variables or fallback
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : `http://localhost:3000`);
-
-  console.log('Base URL:', baseUrl); // Debug log to verify base URL
-
   try {
-    // Ensure proper endpoint formatting
-    const apiEndpoint = `/api/bills/getBills?billId=${id}`;
-    console.log('API Endpoint:', apiEndpoint); // Debug log to verify API endpoint
-
-    const res = await fetch(apiEndpoint);
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch bill details for id: ${id}`);
+    await connectDB();
+    const bill = await bills.findOne({ billId: id });
+    if (!bill) {
+      return {
+        notFound: true, // Return 404 if bill not found
+      };
     }
 
-    const billResponse = await res.json();
-    const billDetails = billResponse.bill;
+    const billDetails = {
+      title: bill.title,
+      policyArea: bill.policyArea,
+      congress: bill.congress,
+      billNumber: bill.billNumber,
+      originChamber: bill.originChamber,
+      introducedDate: bill.introducedDate,
+      sponsor: bill.sponsor,
+      cosponsors: bill.cosponsors,
+      summaries: bill.summaries,
+      committees: bill.committees,
+      actions: bill.actions,
+      relatedBills: bill.relatedBills,
+    };
 
     return {
       props: { billDetails },
