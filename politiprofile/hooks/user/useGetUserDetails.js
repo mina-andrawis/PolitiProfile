@@ -15,7 +15,7 @@ const useGetUserDetails = () => {
           const response = await fetch(`/api/user/getUserDetails`, {
             method: "POST",
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "application/json", 
             },
             body: JSON.stringify({ _id: user.uid }), // Pass uid in request body
           });
