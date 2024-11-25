@@ -16,7 +16,13 @@ const useBills = (policyArea, page, limit = 30) => {
       try {
         console.log(`Fetching bills with policyArea: ${policyArea}, page: ${page}, limit: ${limit}`);
         
-        const response = await fetch(`/api/bills/getBills?policyArea=${policyArea}&page=${page}&limit=${limit}`);
+        const baseUrl =
+        process.env.VERCEL_URL 
+        ? `https://${process.env.VERCEL_URL}`
+        : process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
+        
+        const response = await fetch(`${baseUrl}/api/bills/getBills?policyArea=${policyArea}&page=${page}&limit=${limit}`);
         
         if (!response.ok) {
           console.error("Response status:", response.status);
