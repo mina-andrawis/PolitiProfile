@@ -30,12 +30,22 @@ export default function Home({ legislators }) {
 
 
 export async function getStaticProps() {
-  // Fetch the YAML data from GitHub
-  const res = await fetch(
-    `/api/retrieveLegislators`,
-  );
-  const yamlData = await res.text();
-  const data = yaml.load(yamlData);
+  let data = []; // Default fallback data
+
+  try {
+    const res = await fetch(
+      `/api/retrieveLegislators`,
+    );
+
+    if (!res.ok) {
+      console.error('Failed to fetch data:', res.statusText);
+    } else {
+      const yamlData = await res.text();
+      data = yaml.load(yamlData);
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
 
   return {
     props: { legislators: data }, // Pass the legislators data as props
