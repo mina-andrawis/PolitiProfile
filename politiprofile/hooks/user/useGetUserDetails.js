@@ -11,16 +11,20 @@ const useGetUserDetails = () => {
     const fetchUserDetails = async () => {
       if (user) {
         console.log("Fetching details for user:", user.email); // Log user email for debugging
-        console.log('NEXT_PUBLIC_SITE_URL:', process.env.NEXT_PUBLIC_SITE_URL);
-        console.log('VERCEL_URL:', process.env.VERCEL_URL);
-        try {
-          
-          const baseUrl =
-          process.env.VERCEL_URL 
-          ? `https://${process.env.VERCEL_URL}`
-          : process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
-          
+        const baseUrl =
+          process.env.NEXT_PUBLIC_SITE_URL ||
+          (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+
+        console.log('Base URL:', baseUrl);
+
+        if (!baseUrl) {
+          setError('Base URL is not defined.');
+          setLoading(false);
+          return;
+        }
+
+        try {
           const response = await fetch(`${baseUrl}/api/user/getUserDetails`, {
             method: "POST",
             headers: {
@@ -28,6 +32,8 @@ const useGetUserDetails = () => {
             },
             body: JSON.stringify({ _id: user.uid }), // Pass uid in request body
           });
+
+          console.log('Response status:', response.status);
 
           const data = await response.json();
 
