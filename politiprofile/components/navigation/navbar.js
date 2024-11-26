@@ -4,9 +4,8 @@ import LoginWrapper from "../login-register/login-wrapper";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
 
-
 export default function NavBar() {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control mobile menu
   const router = useRouter();
 
@@ -14,36 +13,31 @@ export default function NavBar() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className="my-3 w-full rounded-md border bg-secondary">
-      {/* Mobile Menu Button */}
-      <div className="flex justify-between items-center p-3 md:hidden">
-        <div className="text-white text-2xl font-bold">Logo</div>
-        <button
-          className="text-white text-3xl focus:outline-none"
-          onClick={toggleMenu}
-        >
-          ☰ {/* Hamburger icon */}
-        </button>
-      </div>
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-500 to-purple-500 shadow-md">
+      <nav className="container mx-auto flex items-center justify-between py-4 px-6">
+        {/* Logo */}
+        <div className="text-2xl font-bold text-white">
+          <Link href="/">PolitiProfile</Link>
+        </div>
 
-      {/* Mobile Menu Links */}
-      {isMenuOpen && (
-        <div className="flex flex-col items-center md:hidden">
+        {/* Desktop Links */}
+        <div className="hidden md:flex space-x-6 items-center">
           <Link href="/">
-            <button className="w-full py-2 text-lg text-white">Home</button>
+            <button className="text-white hover:text-orange-300 transition">Home</button>
           </Link>
           <Link href="/about">
-            <button className="mr-6 p-3 text-xl text-white">About</button>
+            <button className="text-white hover:text-orange-300 transition">About</button>
           </Link>
           <Link href="/your-topics">
-            <button className="w-full py-2 text-lg text-white">Your Topics</button>
+            <button className="text-white hover:text-orange-300 transition">Your Topics</button>
           </Link>
           <Link href="/bills">
-            <button className="w-full py-2 text-lg text-white">Bills</button>
+            <button className="text-white hover:text-orange-300 transition">Bills</button>
           </Link>
+
           {user ? (
             <button
-              className="mt-2 w-full py-2 text-lg text-white bg-customOrange hover:bg-customOrange rounded-md"
+              className="bg-orange-400 text-white px-4 py-2 rounded-md hover:bg-orange-500 transition"
               onClick={() => router.push("/account")}
             >
               Account
@@ -52,38 +46,47 @@ export default function NavBar() {
             <LoginWrapper />
           )}
         </div>
-      )}
 
-      {/* Desktop Menu */}
-      <div className="hidden md:flex w-full flex-col md:flex-row items-center justify-between p-1">
-        <div className="flex items-center">
-          <Link 
-            href="/">
-            <button className="mr-6 p-3 text-xl text-white">Home</button>
-          </Link>
-          <Link href="/about">
-            <button className="mr-6 p-3 text-xl text-white">About</button>
-          </Link>
-          <Link href="/your-topics">
-            <button className="mr-6 p-3 text-xl text-white">Your Topics</button>
-          </Link>
-          <Link href="/bills">
-            <button className="mr-6 p-3 text-xl text-white">Bills</button>
-          </Link>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white text-3xl focus:outline-none"
+          onClick={toggleMenu}
+          aria-label="Toggle Menu"
+        >
+          ☰
+        </button>
+      </nav>
 
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+          <div className="flex flex-col items-center space-y-4 py-4">
+            <Link href="/">
+              <button className="hover:text-orange-300 transition">Home</button>
+            </Link>
+            <Link href="/about">
+              <button className="hover:text-orange-300 transition">About</button>
+            </Link>
+            <Link href="/your-topics">
+              <button className="hover:text-orange-300 transition">Your Topics</button>
+            </Link>
+            <Link href="/bills">
+              <button className="hover:text-orange-300 transition">Bills</button>
+            </Link>
+
+            {user ? (
+              <button
+                className="bg-orange-400 text-white px-4 py-2 rounded-md hover:bg-orange-500 transition"
+                onClick={() => router.push("/account")}
+              >
+                Account
+              </button>
+            ) : (
+              <LoginWrapper />
+            )}
+          </div>
         </div>
-
-        {user ? (
-          <button
-            className="mr-2 p-2 text-xl text-white bg-customOrange hover:bg-customOrange rounded-md"
-            onClick={() => router.push("/account")}
-          >
-            Account
-          </button>
-        ) : (
-          <LoginWrapper />
-        )}
-      </div>
-    </div>
+      )}
+    </header>
   );
 }

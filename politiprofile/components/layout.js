@@ -17,7 +17,6 @@ export default function Layout({ children, home }) {
         />
       </Head>
       <header className="flex flex-col items-center">
-        <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-3">{name}</h1>
       </header>
 
       <NavBar />
