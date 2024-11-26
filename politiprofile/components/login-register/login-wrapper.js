@@ -29,7 +29,7 @@ const LoginWrapper = () => {
 
   return (
     <div >
-      <button onClick={openLoginModal} className="mr-3 p-3 text-xl text-white">
+      <button onClick={openLoginModal} className="mr-3 p-3 bg-secondary rounded-md text-white">
         Login
       </button>
 
