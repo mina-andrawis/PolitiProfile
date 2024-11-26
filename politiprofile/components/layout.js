@@ -19,7 +19,7 @@ export default function Layout({ children, home }) {
       <header className="flex flex-col items-center">
       </header>
 
-      <div className="flex justify-end px-9">
+      <div className="hidden sm:flex justify-end px-9">
           <ThemeToggle />
       </div>
       <NavBar />
