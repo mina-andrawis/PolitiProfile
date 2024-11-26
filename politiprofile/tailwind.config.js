@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#1d232a",
+        primary: "#8b5cf6",
         secondary: "#6366f1",
         secondaryHover: "#4f46e5",
         customOrange: "#f97316", // Custom orange
@@ -20,7 +20,7 @@ module.exports = {
       daisyui: {
         themes: ["light", "dark", "cupcake"],
       },
-    }, // Make sure to include the extend key to avoid overriding
+    }, 
   },
   plugins: [require("daisyui")],
 };

@@ -13,7 +13,7 @@ export default function NavBar() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-500 to-purple-500 shadow-md">
+    <header className="mb-6 mt-4 sticky top-0 z-50 bg-gradient-to-r from-blue-500 to-purple-500 shadow-md">
       <nav className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <div className="text-2xl font-bold text-white">

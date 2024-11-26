@@ -9,7 +9,6 @@ export const siteTitle = "PolitiProfile";
 export default function Layout({ children, home }) {
   return (
     <div className="w-full max-w-4xl px-6 my-12 mx-auto text-defaultTextColor overflow-x-hidden">
-
       <Head>
         <meta
           name="description"
