@@ -3,6 +3,7 @@ import Link from "next/link";
 import LoginWrapper from "../login-register/login-wrapper";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
+import ThemeToggle from "../theme-toggle";
 
 export default function NavBar() {
   const { user } = useAuth();
@@ -13,9 +14,8 @@ export default function NavBar() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="mb-6 mt-4 sticky top-0 z-50 bg-gradient-to-r from-blue-500 to-purple-500 shadow-md">
+    <header className="mb-6 mt-2 sticky top-0 z-50 bg-gradient-to-r from-blue-500 to-purple-500 shadow-md">
       <nav className="container mx-auto flex items-center justify-between py-4 px-6">
-        {/* Logo */}
         <div className="text-2xl font-bold text-white">
           <Link href="/">PolitiProfile</Link>
         </div>

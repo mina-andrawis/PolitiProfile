@@ -625,17 +625,18 @@ html {
 }
 
 :root {
-  color-scheme: light;
-  --in: 72.06% 0.191 231.6;
-  --su: 64.8% 0.150 160;
-  --wa: 84.71% 0.199 83.87;
-  --er: 71.76% 0.221 22.18;
-  --pc: 89.824% 0.06192 275.75;
-  --ac: 15.352% 0.0368 183.61;
-  --inc: 0% 0 0;
-  --suc: 0% 0 0;
-  --wac: 0% 0 0;
-  --erc: 0% 0 0;
+  --p: 60.5631% 0.218915 292.717225;
+  --b2: 93% 0 0;
+  --b3: 86% 0 0;
+  --bc: 20% 0 0;
+  --pc: 12.1126% 0.043783 292.717225;
+  --sc: 11.7081% 0.040811 277.117292;
+  --ac: 14.0974% 0.037344 47.604421;
+  --nc: 19.403% 0 0;
+  --inc: 12.4617% 0.037603 259.814527;
+  --suc: 14.4549% 0.038401 149.57933;
+  --wac: 16.7372% 0.032884 84.428628;
+  --erc: 12.7367% 0.04157 25.331328;
   --rounded-box: 1rem;
   --rounded-btn: 0.5rem;
   --rounded-badge: 1.9rem;
@@ -645,32 +646,33 @@ html {
   --border-btn: 1px;
   --tab-border: 1px;
   --tab-radius: 0.5rem;
-  --p: 49.12% 0.3096 275.75;
-  --s: 69.71% 0.329 342.55;
-  --sc: 98.71% 0.0106 342.55;
-  --a: 76.76% 0.184 183.61;
-  --n: 32.1785% 0.02476 255.701624;
-  --nc: 89.4994% 0.011585 252.096176;
+  --s: 58.5404% 0.204055 277.117292;
+  secondary-text: #2b2d42;
+  --a: 70.4871% 0.186721 47.604421;
+  --n: 97.0151% 0 0;
   --b1: 100% 0 0;
-  --b2: 96.1151% 0 0;
-  --b3: 92.4169% 0.00108 197.137559;
-  --bc: 27.8078% 0.029596 256.847952;
+  border-color: #000000;
+  primary-text: #A0AEC0;
+  --in: 62.3083% 0.188015 259.814527;
+  --su: 72.2746% 0.192007 149.57933;
+  --wa: 83.6861% 0.164422 84.428628;
+  --er: 63.6834% 0.207849 25.331328;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color-scheme: dark;
-    --in: 72.06% 0.191 231.6;
-    --su: 64.8% 0.150 160;
-    --wa: 84.71% 0.199 83.87;
-    --er: 71.76% 0.221 22.18;
-    --pc: 13.138% 0.0392 275.75;
-    --sc: 14.96% 0.052 342.55;
-    --ac: 14.902% 0.0334 183.61;
-    --inc: 0% 0 0;
-    --suc: 0% 0 0;
-    --wac: 0% 0 0;
-    --erc: 0% 0 0;
+    --p: 51.0573% 0.230053 276.965635;
+    --b2: 23.5538% 0.014783 252.417568;
+    --b3: 21.7809% 0.01367 252.417568;
+    --bc: 85.0653% 0.003179 252.417568;
+    --pc: 90.2115% 0.046011 276.965635;
+    --sc: 86.0985% 0.007583 279.685323;
+    --ac: 14.4833% 0.035232 39.276972;
+    --nc: 84.3557% 0 0;
+    --inc: 14.2748% 0.028676 254.624021;
+    --suc: 16.007% 0.036412 151.711031;
+    --wac: 17.2112% 0.034623 91.935651;
+    --erc: 14.2125% 0.03323 22.216224;
     --rounded-box: 1rem;
     --rounded-btn: 0.5rem;
     --rounded-badge: 1.9rem;
@@ -680,30 +682,32 @@ html {
     --border-btn: 1px;
     --tab-border: 1px;
     --tab-radius: 0.5rem;
-    --p: 65.69% 0.196 275.75;
-    --s: 74.8% 0.26 342.55;
-    --a: 74.51% 0.167 183.61;
-    --n: 31.3815% 0.021108 254.139175;
-    --nc: 74.6477% 0.0216 264.435964;
+    --s: 30.4926% 0.037917 279.685323;
+    secondary-text: #2b2d42;
+    primary-text: #A0AEC0;
+    --a: 72.4164% 0.176158 39.276972;
+    --n: 21.7787% 0 0;
     --b1: 25.3267% 0.015896 252.417568;
-    --b2: 23.2607% 0.013807 253.100675;
-    --b3: 21.1484% 0.01165 254.087939;
-    --bc: 74.6477% 0.0216 264.435964;
+    --in: 71.374% 0.143381 254.624021;
+    --su: 80.0349% 0.18206 151.711031;
+    --wa: 86.0559% 0.173115 91.935651;
+    --er: 71.0627% 0.166148 22.216224;
   }
 }
 
 [data-theme=light] {
-  color-scheme: light;
-  --in: 72.06% 0.191 231.6;
-  --su: 64.8% 0.150 160;
-  --wa: 84.71% 0.199 83.87;
-  --er: 71.76% 0.221 22.18;
-  --pc: 89.824% 0.06192 275.75;
-  --ac: 15.352% 0.0368 183.61;
-  --inc: 0% 0 0;
-  --suc: 0% 0 0;
-  --wac: 0% 0 0;
-  --erc: 0% 0 0;
+  --p: 60.5631% 0.218915 292.717225;
+  --b2: 93% 0 0;
+  --b3: 86% 0 0;
+  --bc: 20% 0 0;
+  --pc: 12.1126% 0.043783 292.717225;
+  --sc: 11.7081% 0.040811 277.117292;
+  --ac: 14.0974% 0.037344 47.604421;
+  --nc: 19.403% 0 0;
+  --inc: 12.4617% 0.037603 259.814527;
+  --suc: 14.4549% 0.038401 149.57933;
+  --wac: 16.7372% 0.032884 84.428628;
+  --erc: 12.7367% 0.04157 25.331328;
   --rounded-box: 1rem;
   --rounded-btn: 0.5rem;
   --rounded-badge: 1.9rem;
@@ -713,31 +717,32 @@ html {
   --border-btn: 1px;
   --tab-border: 1px;
   --tab-radius: 0.5rem;
-  --p: 49.12% 0.3096 275.75;
-  --s: 69.71% 0.329 342.55;
-  --sc: 98.71% 0.0106 342.55;
-  --a: 76.76% 0.184 183.61;
-  --n: 32.1785% 0.02476 255.701624;
-  --nc: 89.4994% 0.011585 252.096176;
+  --s: 58.5404% 0.204055 277.117292;
+  secondary-text: #2b2d42;
+  --a: 70.4871% 0.186721 47.604421;
+  --n: 97.0151% 0 0;
   --b1: 100% 0 0;
-  --b2: 96.1151% 0 0;
-  --b3: 92.4169% 0.00108 197.137559;
-  --bc: 27.8078% 0.029596 256.847952;
+  border-color: #000000;
+  primary-text: #A0AEC0;
+  --in: 62.3083% 0.188015 259.814527;
+  --su: 72.2746% 0.192007 149.57933;
+  --wa: 83.6861% 0.164422 84.428628;
+  --er: 63.6834% 0.207849 25.331328;
 }
 
 [data-theme=dark] {
-  color-scheme: dark;
-  --in: 72.06% 0.191 231.6;
-  --su: 64.8% 0.150 160;
-  --wa: 84.71% 0.199 83.87;
-  --er: 71.76% 0.221 22.18;
-  --pc: 13.138% 0.0392 275.75;
-  --sc: 14.96% 0.052 342.55;
-  --ac: 14.902% 0.0334 183.61;
-  --inc: 0% 0 0;
-  --suc: 0% 0 0;
-  --wac: 0% 0 0;
-  --erc: 0% 0 0;
+  --p: 51.0573% 0.230053 276.965635;
+  --b2: 23.5538% 0.014783 252.417568;
+  --b3: 21.7809% 0.01367 252.417568;
+  --bc: 85.0653% 0.003179 252.417568;
+  --pc: 90.2115% 0.046011 276.965635;
+  --sc: 86.0985% 0.007583 279.685323;
+  --ac: 14.4833% 0.035232 39.276972;
+  --nc: 84.3557% 0 0;
+  --inc: 14.2748% 0.028676 254.624021;
+  --suc: 16.007% 0.036412 151.711031;
+  --wac: 17.2112% 0.034623 91.935651;
+  --erc: 14.2125% 0.03323 22.216224;
   --rounded-box: 1rem;
   --rounded-btn: 0.5rem;
   --rounded-badge: 1.9rem;
@@ -747,15 +752,16 @@ html {
   --border-btn: 1px;
   --tab-border: 1px;
   --tab-radius: 0.5rem;
-  --p: 65.69% 0.196 275.75;
-  --s: 74.8% 0.26 342.55;
-  --a: 74.51% 0.167 183.61;
-  --n: 31.3815% 0.021108 254.139175;
-  --nc: 74.6477% 0.0216 264.435964;
+  --s: 30.4926% 0.037917 279.685323;
+  secondary-text: #2b2d42;
+  primary-text: #A0AEC0;
+  --a: 72.4164% 0.176158 39.276972;
+  --n: 21.7787% 0 0;
   --b1: 25.3267% 0.015896 252.417568;
-  --b2: 23.2607% 0.013807 253.100675;
-  --b3: 21.1484% 0.01165 254.087939;
-  --bc: 74.6477% 0.0216 264.435964;
+  --in: 71.374% 0.143381 254.624021;
+  --su: 80.0349% 0.18206 151.711031;
+  --wa: 86.0559% 0.173115 91.935651;
+  --er: 71.0627% 0.166148 22.216224;
 }
 
 .container {
@@ -1829,10 +1835,10 @@ input.tab:checked + .tab-content,
   --tab-padding: 0.5rem;
 }
 
-[type="checkbox"].toggle-sm {
-  --handleoffset: 0.75rem;
-  height: 1.25rem;
-  width: 2rem;
+[type="checkbox"].toggle-xs {
+  --handleoffset: 0.5rem;
+  height: 1rem;
+  width: 1.5rem;
 }
 
 .steps-horizontal .step {
@@ -1919,19 +1925,9 @@ input.tab:checked + .tab-content,
   margin-right: auto;
 }
 
-.my-12 {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-
-.my-7 {
-  margin-top: 1.75rem;
-  margin-bottom: 1.75rem;
 }
 
 .my-8 {
@@ -2058,12 +2054,6 @@ input.tab:checked + .tab-content,
   max-width: 28rem;
 }
 
-.border-spacing-1 {
-  --tw-border-spacing-x: 0.25rem;
-  --tw-border-spacing-y: 0.25rem;
-  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
-}
-
 .cursor-pointer {
   cursor: pointer;
 }
@@ -2172,6 +2162,11 @@ input.tab:checked + .tab-content,
   border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
 }
 
+.border-primary {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity, 1)));
+}
+
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
@@ -2209,7 +2204,7 @@ input.tab:checked + .tab-content,
 
 .bg-primary {
   --tw-bg-opacity: 1;
-  background-color: rgb(139 92 246 / var(--tw-bg-opacity, 1));
+  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
 }
 
 .bg-red-500 {
@@ -2219,27 +2214,12 @@ input.tab:checked + .tab-content,
 
 .bg-secondary {
   --tw-bg-opacity: 1;
-  background-color: rgb(99 102 241 / var(--tw-bg-opacity, 1));
+  background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity, 1)));
 }
 
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.bg-blue-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
-}
-
-.bg-blue-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(147 197 253 / var(--tw-bg-opacity, 1));
-}
-
-.bg-blue-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(96 165 250 / var(--tw-bg-opacity, 1));
 }
 
 .bg-opacity-50 {
@@ -2258,10 +2238,6 @@ input.tab:checked + .tab-content,
 
 .to-purple-500 {
   --tw-gradient-to: #a855f7 var(--tw-gradient-to-position);
-}
-
-.bg-repeat-round {
-  background-repeat: round;
 }
 
 .p-0 {
@@ -2303,6 +2279,11 @@ input.tab:checked + .tab-content,
   padding-right: 1.5rem;
 }
 
+.px-9 {
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
+}
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -2316,11 +2297,6 @@ input.tab:checked + .tab-content,
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.px-9 {
-  padding-left: 2.25rem;
-  padding-right: 2.25rem;
 }
 
 .pr-4 {
@@ -2365,6 +2341,11 @@ input.tab:checked + .tab-content,
   line-height: 1.75rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -2375,11 +2356,6 @@ input.tab:checked + .tab-content,
 
 .font-semibold {
   font-weight: 600;
-}
-
-.text-defaultTextColor {
-  --tw-text-opacity: 1;
-  color: rgb(160 174 192 / var(--tw-text-opacity, 1));
 }
 
 .text-gray-500 {
@@ -2414,7 +2390,7 @@ input.tab:checked + .tab-content,
 
 .text-primary {
   --tw-text-opacity: 1;
-  color: rgb(139 92 246 / var(--tw-text-opacity, 1));
+  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
 }
 
 .text-red-500 {
@@ -2424,12 +2400,7 @@ input.tab:checked + .tab-content,
 
 .text-secondary {
   --tw-text-opacity: 1;
-  color: rgb(99 102 241 / var(--tw-text-opacity, 1));
-}
-
-.text-secondaryTextColor {
-  --tw-text-opacity: 1;
-  color: rgb(113 128 150 / var(--tw-text-opacity, 1));
+  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity, 1)));
 }
 
 .text-white {
@@ -2501,11 +2472,6 @@ input.tab:checked + .tab-content,
 .hover\:bg-red-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-secondaryHover:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(79 70 229 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-gray-900:hover {

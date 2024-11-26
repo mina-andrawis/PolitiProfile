@@ -19,11 +19,11 @@ export default function ThemeToggle() {
 
   return (
     <div className="form-control flex flex-col items-center">
-      <label className="text-white text-sm mb-0">Theme</label>
+      <label className="text-primaryText text-xs mb-0">Theme</label>
       <label className="label p-0 cursor-pointer">
         <input
           type="checkbox"
-          className="toggle toggle-sm  border-white bg-secondary [--tglbg:white] hover:bg-secondaryHover"
+          className="toggle toggle-xs border-white bg-secondary [--tglbg:white] hover:bg-secondaryHover"
           checked={theme === "dark"}
           onChange={toggleTheme}
         />
