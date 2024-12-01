@@ -10,29 +10,11 @@ Personally, I’ve discovered politicians who don’t even represent my state an
 
 There will be a questionnaire to the user asking what topics they are interested in. Then they are matched to politicians who align with their views.
 
-# V1
-- Project consists of a single page application with different tabs along the top
-- Tabs include: Home, My Account, About, Candidate Comparison, Education
-- Home
-    - Shows a grid of all current congresspeople in the US
-    - Categorized by state and senate/house congressperson
-    - Columns:
-        - Party
-        - Political History
-            - Terms and previous political positions
-        - Phone Number
-    - https://github.com/unitedstates/congress-legislators/blob/main/legislators-current.yaml
-- My Account
-    - Shows log-in screen
-    - Shows user interests
-- Users will be able to input which political topics that they are interested in
-- User will have the ability create an account with email and password
-- Political Topics: Abortion, Gay Marriage, Gun Control, Term Limits, Supreme Court Reform, Taxes, Equal Pay, Drug Price Regulation, Israel, Climate Change, Healthcare Reform, Minimum Wage Increase, Police Reform, Student Loans Reform
-
 
 **Technologies Utilized:**
 - This application is built with **Next.js**, a **React Framework**.
 - **Tailwind** and **CSS Modules** are used for styling.
-- **MaterialUI** will be the primary **UI Library**.
+- **DaisyUI** is the primary **UI Library**.
+- **FireBase** is used for authentication.
 - The database used is **MongoDB**.
 - The application will be deployed using **Vercel**.
