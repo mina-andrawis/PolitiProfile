@@ -11,11 +11,11 @@ const PolicyAreaFilter = ({ policyArea, setPolicyArea }) => {
 
   return (
     <div className="mb-4">
-      <label className="block text-gray-700 font-semibold mb-2">Filter by Policy Area</label>
+      <label className="block text-primaryText font-semibold mb-2">Filter by Policy Area</label>
       <select
         value={policyArea}
         onChange={(e) => setPolicyArea(e.target.value)}
-        className="p-2 border border-gray-300 rounded"
+        className="p-2 border border-dark rounded text-secondary"
       >
         {policyAreas.map((area) => (
           <option key={area.value} value={area.value}>

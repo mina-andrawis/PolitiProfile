@@ -71,12 +71,12 @@ const BillDetails = ({ billDetails }) => {
         <div className="bg-white shadow rounded-lg p-6 mb-6">
           <h2 className="text-xl text-primary font-bold mb-4">Sponsor and Cosponsors</h2>
           <p className="mb-4 text-primary">
-            <span className="font-semibold text-primary">Sponsor:</span> {sponsor.fullName} ({sponsor.party} - {sponsor.state})
+            <span className="font-semibold">Sponsor:</span> {sponsor.fullName} ({sponsor.party} - {sponsor.state})
           </p>
           {cosponsors.length > 0 ? (
-            <ul className="list-disc ml-6">
+            <ul className="list-disc ml-6 text-dark">
               {cosponsors.map((cosponsor, index) => (
-                <li key={index} className="text-secondaryTextColor">
+                <li className="text-darkText" key={index}>
                   {cosponsor.fullName} ({cosponsor.party} - {cosponsor.state})
                 </li>
               ))}
@@ -91,7 +91,7 @@ const BillDetails = ({ billDetails }) => {
           <h2 className="text-xl text-primary font-bold mb-4">Summary</h2>
           {summaries.length > 0 ? (
             summaries.map((summary, index) => (
-              <p key={index} className="text-gray-700 mb-2">
+              <p key={index} className="text-dark mb-2">
                 {formatSummary(summary)}
               </p>
             ))

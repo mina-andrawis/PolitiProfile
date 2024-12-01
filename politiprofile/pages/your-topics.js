@@ -42,7 +42,7 @@ export default function YourTopics() {
       <Head>
         <title>Your Topics</title>
       </Head>
-      <div className="mx-auto w-full p-6 text-center">
+      <div className="mx-auto w-full p-6 text-center text-secondaryText">
         <p className="text-lg mb-3">
           We all have political topics that are important to us.
         </p>
@@ -53,7 +53,7 @@ export default function YourTopics() {
         {/* Topic Selection Section */}
         <div className="mt-6">
           <h2 className="text-3xl font-semibold mb-4">Select Your Topics:</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-left">
             {topics.map((topic) => (
               <div key={topic.name} className="border px-3 py-1 rounded-lg">
                 <input
@@ -77,7 +77,7 @@ export default function YourTopics() {
 
                 {/* Topic Description Dropdown */}
                 {openTopics[topic.name] && (
-                  <p className="mt-2 text-md text-secondaryTextColor mb-8">{topic.description}</p>
+                  <p className="mt-2 text-md mb-8">{topic.description}</p>
                 )}
               </div>
             ))}
@@ -93,7 +93,7 @@ export default function YourTopics() {
           </button>
 
           {/* Display messages if any */}
-          {updateError && <p className="text-red-500 mt-3">{updateError}</p>}
+          {updateError && <p className="text-error mt-3">{updateError}</p>}
           {updateSuccess && <p className="text-secondary mt-3">{updateSuccess}</p>}
 
         </div>

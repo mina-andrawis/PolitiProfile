@@ -6,6 +6,13 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+  theme: {
+    extend: {
+      colors: {
+        dark: "#3B3B3B", //used for items on white background, etc.
+      },
+    },
+  },
   daisyui: {
     themes: [
       {
