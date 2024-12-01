@@ -47,7 +47,7 @@ const CongressList = () => {
                     return (
                       <li
                         key={index}
-                        className="mx-auto mb-2 rounded-lg bg-gray-100 py-2 text-center text-sm sm:text-lg shadow-md w-full sm:w-3/4"
+                        className="mx-auto mb-2 rounded-lg text-dark bg-gray-100 py-2 text-center text-sm sm:text-lg shadow-md w-full sm:w-3/4"
                       >
                         <p>
                           <strong>Name:</strong> {legislator.name.first}{" "}
