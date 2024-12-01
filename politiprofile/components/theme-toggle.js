@@ -23,7 +23,7 @@ export default function ThemeToggle() {
       <label className="label p-0 cursor-pointer">
         <input
           type="checkbox"
-          className="toggle toggle-xs border-white bg-secondary [--tglbg:white] hover:bg-secondaryHover"
+          className="toggle toggle-xs border-primary bg-primary [--tglbg:rgb(249,115,22)] hover:bg-secondaryHover"
           checked={theme === "dark"}
           onChange={toggleTheme}
         />
