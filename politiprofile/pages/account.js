@@ -42,14 +42,14 @@ const Account = () => {
               <p className="mb-4 text-lg sm:text-base">Welcome, {userDetails?.name || userDetails?.email || "Loading..."}</p>
 
               <button
-                className="p-2 mb-3 w-full bg-secondary text-white rounded-md hover:bg-secondaryHover"
+                className="p-2 mb-3 w-full bg-primary text-white rounded-md hover:bg-secondaryHover"
                 onClick={() => setAccountSelection('profile-information')}
               >
                 Profile Information
               </button>
 
               <button
-                className="p-2 mb-3 w-full bg-secondary text-white rounded-md hover:bg-secondaryHover"
+                className="p-2 mb-3 w-full bg-primary text-white rounded-md hover:bg-secondaryHover"
                 onClick={() => setAccountSelection('profile-topics')}
               >
                 Your Important Topics

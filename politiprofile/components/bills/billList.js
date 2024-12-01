@@ -9,7 +9,7 @@ const BillList = ({ bills }) => {
 
   return (
     <>
-      <h2 className="text-center text-2xl font-bold mb-1">118th Congress </h2>
+      <h2 className="text-center text-secondary-text text-2xl font-bold mb-1">118th Congress </h2>
       <p className="text-center font-bold mb-4">(2023-2025)</p>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {bills.map((bill) => (
@@ -25,7 +25,7 @@ const BillList = ({ bills }) => {
                 <p className="text-sm text-gray-500 mb-4">Bill Number: {bill.billNumber}</p>
 
                 {bill.summaries && bill.summaries[0] && (
-                  <p className="text-gray-700 text-sm mt-2 line-clamp-4">
+                  <p className="text-dark text-sm mt-2 line-clamp-4">
                     <span className="font-semibold">{formatSummary(bill.summaries[0])}</span>
                   </p>
                 )}

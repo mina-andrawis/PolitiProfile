@@ -2,14 +2,14 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "./navigation/navbar";
+import ThemeToggle from "./theme-toggle";
 
 const name = "PolitiProfile";
 export const siteTitle = "PolitiProfile";
 
 export default function Layout({ children, home }) {
   return (
-    <div className="w-full max-w-4xl px-6 my-12 mx-auto text-defaultTextColor overflow-x-hidden">
-
+    <div className="w-full max-w-4xl px-6 my-8 mx-auto text-primary-text overflow-x-hidden">
       <Head>
         <meta
           name="description"
@@ -17,9 +17,11 @@ export default function Layout({ children, home }) {
         />
       </Head>
       <header className="flex flex-col items-center">
-        <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-3">{name}</h1>
       </header>
 
+      <div className="hidden sm:flex justify-end px-9">
+          <ThemeToggle />
+      </div>
       <NavBar />
       
       <main>{children}</main>

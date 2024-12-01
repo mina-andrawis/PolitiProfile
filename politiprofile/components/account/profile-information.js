@@ -26,12 +26,12 @@ const ProfileInformation = ({ userDetails, onSave, updating, updateError, update
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:secondary"
             />
             <button
               onClick={handleSaveName}
               disabled={updating}
-              className="ml-2 px-3 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:bg-gray-400"
+              className="ml-2 px-3 py-2 bg-primary text-white rounded-md hover:secondary disabled:bg-gray-400"
             >
               {updating ? "Saving..." : "Save"}
             </button>
@@ -47,7 +47,7 @@ const ProfileInformation = ({ userDetails, onSave, updating, updateError, update
             <p className="mr-2">Name: {name || "No name set"}</p>
             <button
               onClick={() => setIsEditingName(true)}
-              className="px-3 py-1 text-sm bg-indigo-500 text-white rounded-md hover:bg-secondaryHover"
+              className="px-3 py-1 text-sm bg-primary text-white rounded-md hover:bg-secondaryHover"
             >
               Edit
             </button>
