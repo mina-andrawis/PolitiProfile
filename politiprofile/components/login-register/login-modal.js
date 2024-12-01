@@ -30,32 +30,32 @@ const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
         >
           &times;
         </button>
-        <h2 className="mb-6 text-center text-2xl font-semibold text-gray-800">Sign in to PolitiProfile</h2>
+        <h2 className="mb-6 text-center text-2xl font-semibold text-black">Sign in to PolitiProfile</h2>
 
         <form>
           <div className="mb-4">
-            <label className="mb-1 block text-sm font-medium text-gray-700">Email</label>
+            <label className="mb-1 block text-sm font-medium text-primary">Email</label>
             <input
               type="email"
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-black text-black px-4 py-2 transition focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Enter your email"
               required
             />
           </div>
           <div className="mb-6">
-            <label className="mb-1 block text-sm font-medium text-gray-700">Password</label>
+            <label className="mb-1 block text-sm font-medium text-primary">Password</label>
             <input
               type="password"
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 transition focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-black text-black px-4 py-2 transition focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Enter your password"
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full rounded-lg bg-indigo-600 py-2 text-white transition hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-400"
+            className="w-full rounded-lg bg-primary py-2 text-white transition hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-400"
             onClick={handleLogin}
           >
             Sign In
