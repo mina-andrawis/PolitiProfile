@@ -19,7 +19,7 @@ export default function ThemeToggle() {
 
   return (
     <div className="form-control flex flex-col items-center">
-      <label className="text-primaryText text-xs mb-0">Theme</label>
+      <label className="text-primary-text text-xs mb-0">Theme</label>
       <label className="label p-0 cursor-pointer">
         <input
           type="checkbox"
