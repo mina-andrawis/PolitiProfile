@@ -9,6 +9,11 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     console.log("Cron job triggered: Fetching legislators from GitHub and updating MongoDB");
 
+    // Authorization Check
+    if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
+        return res.status(401).end("Unauthorized");
+    }
+
     try {
       // Connect to MongoDB
       await client.connect();
@@ -36,8 +41,10 @@ export default async function handler(req, res) {
 
       const result = await collection.bulkWrite(bulkOperations);
 
+      // Log the result
       console.log(`Inserted: ${result.upsertedCount}, Updated: ${result.modifiedCount}`);
 
+      // Respond with success
       res.status(200).json({ message: "Legislators updated successfully", result });
     } catch (error) {
       console.error("Error in retrieveLegislators API:", error.message);
