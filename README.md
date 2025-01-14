@@ -1,4 +1,4 @@
-url: https://www.politiprofile.us/
+https://www.politiprofile.us/
 
 A platform where users will be introduced to politicians and candidates who represent their ideals. This information will give voters an enhanced ability to support the individuals making the biggest waves in their niche. Personally, I would love the ability to find elected officials who always seem to be proposing bills that I agree with. I want to find the people fighting the good fight.
 
