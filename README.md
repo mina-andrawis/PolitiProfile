@@ -1,3 +1,5 @@
+url: https://www.politiprofile.us/
+
 A platform where users will be introduced to politicians and candidates who represent their ideals. This information will give voters an enhanced ability to support the individuals making the biggest waves in their niche. Personally, I would love the ability to find elected officials who always seem to be proposing bills that I agree with. I want to find the people fighting the good fight.
 
 Often times, the word Politician is a dirty word. It feels like they do not have our best interest at heart.. but it doesn’t have to be that way. There are those politicians who (more or less) deserve recognition. Whether it be continually proposing bills that you feel are really important or making the important and difficult votes that we expect from our representatives. Even if a member of congress does not directly represent your state, they still affect you. They play a vital hand in passing federal laws, which range from taxes to abortion to legalizing weed. Whatever topic you are interested in, there is a congress member or candidate who espouses the same ideals.
