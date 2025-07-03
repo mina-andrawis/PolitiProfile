@@ -1,12 +1,14 @@
 export default function FighterCard({ fighter }) {
   return (
     <div className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition">
+      <div className="aspect-w-4 aspect-h-3 mb-4">
       <img
         src={fighter.photoUrl}
         alt={fighter.name}
-        className="w-full h-48 object-cover rounded-md mb-4"
+        className="w-full h-full object-cover object-top rounded-md"
       />
-      <h2 className="text-xl font-semibold">{fighter.name}</h2>
+    </div>
+      <h2 className="text-xl text-gray-600 font-semibold">{fighter.name}</h2>
       <p className="text-sm text-gray-600 mb-2">{fighter.office}</p>
 
       <div className="flex flex-wrap gap-2 mb-2">
