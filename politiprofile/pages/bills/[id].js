@@ -90,11 +90,9 @@ const BillDetails = ({ billDetails }) => {
         <div className="bg-white shadow rounded-lg p-6 mb-6">
           <h2 className="text-xl text-primary font-bold mb-4">Summary</h2>
           {summaries.length > 0 ? (
-            summaries.map((summary, index) => (
-              <p key={index} className="text-dark mb-2">
-                {formatSummary(summary)}
+            <p key={index} className="text-dark mb-2">
+                {formatSummary(summary[0])}
               </p>
-            ))
           ) : (
             <p className="text-secondaryTextColor">No summaries available.</p>
           )}
