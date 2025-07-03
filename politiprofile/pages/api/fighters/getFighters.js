@@ -29,11 +29,11 @@ export default async function handler(req, res) {
 
       // Fetch multiple fighters with pagination
       const skip = (page - 1) * limit;
-      const bills = await collection.find(query).skip(skip).limit(Number(limit)).toArray();
-      const totalBills = await collection.countDocuments(query);
-      const totalPages = Math.ceil(totalBills / limit);
+      const fighters = await collection.find(query).skip(skip).limit(Number(limit)).toArray();
+      const totalFighters = await collection.countDocuments(query);
+      const totalPages = Math.ceil(totalFighters / limit);
 
-      return res.status(200).json({ bills, totalBills, totalPages });
+      return res.status(200).json({ fighters, totalFighters, totalPages });
     } catch (e) {
       console.error("Error fetching fighters:", e);
       res.status(500).json({ error: 'Unable to get fighters from MongoDB' });
