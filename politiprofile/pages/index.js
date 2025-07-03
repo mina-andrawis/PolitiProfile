@@ -3,8 +3,10 @@ import Layout, { siteTitle } from "../components/layout";
 import Link from "next/link";
 import CongressList from "../components/congress-list";
 import yaml from "js-yaml";
+import FighterGrid from "../components/fighters/fighter-grid";
+import fighters from "../helpers/mock-fighters";
 
-export default function Home({ legislators }) {
+export default function Home() {
   return (
     <Layout home>
       <Head>
@@ -22,8 +24,7 @@ export default function Home({ legislators }) {
           political issues.
         </p>
       </section>
-
-      <CongressList legislators={legislators} />
+            <FighterGrid fighters={fighters} />
     </Layout>
   );
 }
