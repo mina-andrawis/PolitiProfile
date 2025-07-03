@@ -17,7 +17,7 @@ export default function Home({ initialFighters, initialTotalPages }) {
         <title>{siteTitle}</title>
         <meta
           name="description"
-          content="Connect with politicians and candidates that align with your ideals. Compare candidates for elections and discover insights on key political issues."
+          content="Support bold and populist purveyors of freedom who unapologetically oppose fascism, defend our democracy, and champion the rights of all people."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

@@ -76,7 +76,7 @@ const BillDetails = ({ billDetails }) => {
           {cosponsors.length > 0 ? (
             <ul className="list-disc ml-6 text-dark">
               {cosponsors.map((cosponsor, index) => (
-                <li className="text-darkText" key={index}>
+                <li className="text-dark" key={index}>
                   {cosponsor.fullName} ({cosponsor.party} - {cosponsor.state})
                 </li>
               ))}
@@ -106,23 +106,23 @@ const BillDetails = ({ billDetails }) => {
           {committees.length > 0 ? (
             <ul className="list-disc ml-6">
               {committees.map((committee, index) => (
-                <li key={index} className="text-secondaryTextColor">
+                <li key={index} className="text-dark">
                   {committee.name} ({committee.chamber})
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-secondaryTextColor">No committees listed.</p>
+            <p className="text-dark">No committees listed.</p>
           )}
         </div>
 
         {/* Actions Section */}
         <div className="bg-white shadow rounded-lg p-6 mb-6">
-          <h2 className="text-xl text-primary font-bold mb-4">Actions</h2>
+          <h2 className="text-xl text-primary font-bold">Actions</h2>
           {actions.length > 0 ? (
             <ul className="list-disc ml-6">
               {actions.map((action, index) => (
-                <li key={index} className="text-secondaryTextColor">
+                <li key={index} className="text-dark mb-2">
                   <span className="font-semibold">{new Date(action.actionDate).toLocaleDateString()}:</span> {action.text}
                 </li>
               ))}
@@ -138,13 +138,13 @@ const BillDetails = ({ billDetails }) => {
           {relatedBills.length > 0 ? (
             <ul className="list-disc ml-6">
               {relatedBills.map((relatedBill, index) => (
-                <li key={index} className="text-secondaryTextColor">
+                <li key={index} className="text-dark">
                   {relatedBill.title} ({relatedBill.type} {relatedBill.number})
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-secondaryTextColor">No related bills listed.</p>
+            <p className="text-dark">No related bills listed.</p>
           )}
         </div>
       </div>
