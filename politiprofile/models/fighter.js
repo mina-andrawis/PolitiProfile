@@ -7,21 +7,17 @@ const fighterSchema = new mongoose.Schema({
   },
   office: {
     type: String,
-    default: '',
+    required: true,
   },
   state: {
     type: String,
-    default: '',
+    required: true,
   },
-  district: {
+  party: {
     type: String,
     default: '',
   },
-  image: {
-    type: String,
-    default: '',
-  },
-  bio: {
+  photoUrl: {
     type: String,
     default: '',
   },
@@ -29,10 +25,44 @@ const fighterSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
-  tags: {
+  endorsements: {
+    type: [String],
+    default: [],
+  },
+  quote: {
     type: String,
     default: '',
-},  
+  },
+  donationLink: {
+    type: String,
+    default: '',
+  },
+  socialLinks: {
+    twitter: { type: String, default: '' },
+    website: { type: String, default: '' },
+    instagram: { type: String, default: '' },
+  },
+  status: {
+    type: String,
+    enum: ['incumbent', 'candidate'],
+    default: 'candidate',
+  },
+  runningForReelection: {
+    type: Boolean,
+    default: false,
+  },
+  tags: {
+    type: [String],
+    default: [],
+  },
+  bio: {
+    type: String,
+    default: '',
+  },
+  alignmentScore: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Fighter = mongoose.models.Fighter || mongoose.model('Fighter', fighterSchema);

@@ -18,12 +18,13 @@ export default function Home() {
       </Head>
       <section className="text-lg text-center">
         <p>
-          Connect with politicians and candidates that align with your ideals.
-          Compare candidates for elections and discover insights on key
-          political issues.
+          Say hello to those who choose to fight the good fight.
+        </p>
+        <p>
+          Support bold and populist purveyors of freedom who unapologetically oppose fascism, defend our democracy, and champion the rights of all people.
         </p>
       </section>
-            <FighterGrid fighters={fighters} />
+      <FighterGrid fighters={fighters} />
     </Layout>
   );
 }
@@ -34,7 +35,7 @@ export async function getStaticProps() {
 
   try {
     const res = await fetch(
-      `/api/retrieveLegislators`,
+      `/api/fighers/getFighters.js`,
     );
 
     if (!res.ok) {
