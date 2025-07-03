@@ -4,8 +4,8 @@ import FighterCard from './fighter-card'
 const FighterGrid = ({ fighters }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-      {fighters.map((profile) => (
-        <FighterCard key={profile.name} profile={profile} />
+      {fighters.map((fighter) => (
+        <FighterCard key={fighter.name} fighter={fighter} />
       ))}
     </div>
   )

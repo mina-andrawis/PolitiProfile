@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import Link from "next/link";
-import CongressList from "../components/congress-list";
 import yaml from "js-yaml";
 import FighterGrid from "../components/fighters/fighter-grid";
 import fighters from "../helpers/mock-fighters";
