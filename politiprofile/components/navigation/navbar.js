@@ -29,10 +29,10 @@ export default function NavBar() {
           <Link href="/">
             <button
               className={`${
-                isActive("/") ? "text-orange-300" : "text-white"
+                isActive("/featured-fighters") ? "text-orange-300" : "text-white"
               } hover:text-orange-300 transition`}
             >
-              Home
+              Featured Fighters
             </button>
           </Link>
           <Link href="/about">
@@ -92,10 +92,10 @@ export default function NavBar() {
             <Link href="/">
               <button
                 className={`${
-                  isActive("/") ? "text-orange-300" : "text-white"
+                  isActive("/featured-fighters") ? "text-orange-300" : "text-white"
                 } hover:text-orange-300 transition`}
               >
-                Home
+                Featured Fighters
               </button>
             </Link>
             <Link href="/about">
