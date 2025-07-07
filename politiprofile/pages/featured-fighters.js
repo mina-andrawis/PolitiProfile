@@ -28,7 +28,7 @@ export default function Home({ initialFighters, initialTotalPages }) {
 
       <div className="flex flex-col lg:flex-row items-start justify-between gap-8 max-w-6xl mx-auto">
         <section className="flex-1 text-center my-auto">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-primaryText">
+          <h1 className="text-4xl sm:text-5xl mb-8 font-bebas text-primaryText">
             Meet the Fighters for Justice
           </h1>
           <p className="text-lg text-primaryText mb-3">
@@ -39,13 +39,13 @@ export default function Home({ initialFighters, initialTotalPages }) {
             Explore and support the next generation of populist champions.
           </p>
 
-          {/* Toggle Button on Mobile */}
+          {/* Toggle Button on Mobile/Tablet */}
           <div className="lg:hidden mt-6">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="px-2 py-2 bg-secondary text-white rounded"
+              className="px-2 py-2 bg-secondary text-sm text-white rounded"
             >
-              {sidebarOpen ? "Hide" : "What Makes a Fighter?"}
+              {sidebarOpen ? "Hide Criteria" : "What Makes a Fighter?"}
             </button>
           </div>
         </section>
@@ -58,8 +58,10 @@ export default function Home({ initialFighters, initialTotalPages }) {
 
       {/* Sidebar conditionally visible on mobile and tablet */}
       {sidebarOpen && (
-        <div className="lg:hidden mt-4 px-4">
-          <Sidebar />
+        <div className="lg:hidden mt-4 px-4 flex justify-center">
+          <div className="w-full max-w-sm">
+            <Sidebar />
+          </div>
         </div>
       )}
 

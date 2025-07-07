@@ -1,6 +1,6 @@
 export default function Sidebar() {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 lg:sticky lg:top-6 space-y-4">
+    <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 lg:top-6 space-y-4">
       <div>
         <h3 className="text-base font-semibold text-primary uppercase tracking-wide">
           Fighter Criteria
