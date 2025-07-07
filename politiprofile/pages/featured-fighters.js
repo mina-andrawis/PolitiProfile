@@ -8,10 +8,7 @@ import Sidebar from "../components/fighters/sidebar";
 
 export default function Home({ initialFighters, initialTotalPages }) {
   const { page, setPage, handleNextPage, handlePrevPage } = usePagination();
-  const { fighters, loading, error, totalPages } = useFighters('', page, 30, {
-    fallbackData: initialFighters,
-    fallbackPages: initialTotalPages,
-  });
+  const { fighters, loading, error, totalPages } = useFighters('', page, 30);
 
   const [sidebarOpen, setSidebarOpen] = useState(false); // mobile toggle
 
