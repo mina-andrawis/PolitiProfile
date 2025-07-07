@@ -17,7 +17,7 @@
     "dotenv": "^16.4.5",
     "fast-xml-parser": "^4.5.0",
     "fetch": "^1.1.0",
-    "firebase": "^10.14.0",
+    "firebase": "^10.14.1",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "mongodb": "6.10",

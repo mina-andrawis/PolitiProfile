@@ -15,7 +15,7 @@ const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
     const user = await login(email, password);
 
     if (user) {
-      console.log("Use Logged In:", user);
+      console.log("User Logged In:", user);
       onClose();
     }
   
@@ -32,6 +32,8 @@ const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
         </button>
         <h2 className="mb-6 text-center text-2xl font-semibold text-dark ">Sign in to PolitiProfile</h2>
 
+        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+        {success && <p className="text-green-500 text-sm mb-4">Login successful!</p>}
         <form>
           <div className="mb-4">
             <label className="mb-1 block text-sm font-medium text-primary">Email</label>
