@@ -6,7 +6,6 @@ const client = new MongoClient(uri);
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { uid, email } = req.body; 
-
     try {
       await client.connect();
       const database = client.db("default");

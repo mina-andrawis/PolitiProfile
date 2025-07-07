@@ -5,7 +5,7 @@ export default function ThemeToggle() {
 
   // Set the initial theme based on localStorage or default to 'light'
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
+    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
     document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);

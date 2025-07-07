@@ -1,0 +1,32 @@
+export default function FighterCard({ fighter }) {
+  return (
+    <div className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition">
+      <div className="aspect-w-4 aspect-h-3 mb-4">
+      <img
+        src={fighter.photoUrl}
+        alt={fighter.name}
+        className="w-full h-full object-cover object-top rounded-md"
+      />
+    </div>
+      <h2 className="text-xl text-gray-600 font-semibold">{fighter.name}</h2>
+      <p className="text-sm text-gray-600 mb-2">{fighter.office}</p>
+
+      <div className="flex flex-wrap gap-2 mb-2">
+        {fighter.tags.map((tag) => (
+          <span
+            key={tag}
+            className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <p className="text-sm italic text-gray-700">“{fighter.quote}”</p>
+
+      <button className="mt-4 text-sm bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+        ❤️ Follow
+      </button>
+    </div>
+  )
+}
