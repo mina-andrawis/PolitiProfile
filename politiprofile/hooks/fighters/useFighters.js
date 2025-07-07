@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react';
 
-const useFighters = (state, initialPage, limit = 30) => {
+const useFighters = (state, page, limit = 30) => {
   const [fighters, setFighters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
-  const [currentPage, setCurrentPage] = useState(initialPage);
 
   // Reset page when state filter changes
   useEffect(() => {
-    setCurrentPage(1);
+    page = 1;
   }, [state]);
 
   useEffect(() => {
     const fetchFighters = async () => {
       setLoading(true);
       try {
-        console.log(`Fetching fighters with state: ${state}, page: ${currentPage}, limit: ${limit}`);
+        console.log(`Fetching fighters with state: ${state}, page: ${page}, limit: ${limit}`);
 
-        const url = `/api/fighters/getFighters?${state ? `state=${state}&` : ''}page=${currentPage}&limit=${limit}`;
+        const url = `/api/fighters/getFighters?${state ? `state=${state}&` : ''}page=${page}&limit=${limit}`;
         const response = await fetch(url);
 
         if (!response.ok) {
