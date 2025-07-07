@@ -27,7 +27,7 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
       {!home && (
         <div className="mt-12">
-          <Link href="/">← Back to home</Link>
+          <Link href="/featured-fighters">← Back to home</Link>
         </div>
       )}
     </div>

@@ -21,12 +21,12 @@ export default function NavBar() {
       <nav className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <div className="text-2xl font-bold text-white">
-          <Link href="/">PolitiProfile</Link>
+          <Link href="/featured-fighters">PolitiProfile</Link>
         </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex space-x-6 items-center">
-          <Link href="/">
+          <Link href="/featured-fighters">
             <button
               className={`${
                 isActive("/featured-fighters") ? "text-orange-300" : "text-white"
@@ -89,7 +89,7 @@ export default function NavBar() {
       {isMenuOpen && (
         <div className="md:hidden bg-gradient-to-r from-blue-500 to-purple-500 text-white">
           <div className="flex flex-col items-center space-y-4 py-4">
-            <Link href="/">
+            <Link href="/featured-fighters">
               <button
                 className={`${
                   isActive("/featured-fighters") ? "text-orange-300" : "text-white"
