@@ -5,13 +5,6 @@ import { AuthProvider } from "../contexts/AuthContext";
 import React from "react";
 
 function MyApp({ Component, pageProps }) {
-  // Set dark mode by default on initial load
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-
   return (
     <AuthProvider>
       <Component {...pageProps} />

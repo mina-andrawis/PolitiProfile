@@ -46,6 +46,8 @@ module.exports = {
         },
       },
     ],
+    darkTheme: "dark",
+    defaultTheme: "dark",
   },
   plugins: [require("daisyui")],
 };
