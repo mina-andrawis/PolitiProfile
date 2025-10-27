@@ -1,28 +1,40 @@
 import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
-const useAddFighter = () => {
+const useFollowFighter = () => {
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const addFighter = async (fighterData) => {
+  const followFighter = async (fighterId) => {
     setLoading(true);
     setError(null);
     setSuccess(null);
+    if (!user || !user.uid || !fighterId) {
+      setError("Missing user or fighter information");
+      setLoading(false);
+      return;
+    }
+      console.log("useFollowFighter logic: userId:", user.uid, "fighterId:", fighterId);
 
     try {
+      console.log("Attempting to follow fighter:", fighterId);
       const response = await fetch("/api/fighters/followFighter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(fighterData), // send full fighter object
+        body: JSON.stringify({
+          userId: user.uid,
+          fighterId: fighterId,
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to add fighter");
+        throw new Error(data.error || "Failed to follow fighter");
       }
 
       setSuccess(data.message);
@@ -33,7 +45,7 @@ const useAddFighter = () => {
     }
   };
 
-  return { addFighter, loading, error, success };
+  return { followFighter, loading, error, success };
 };
 
-export default useAddFighter;
+export default useFollowFighter;

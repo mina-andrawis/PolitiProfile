@@ -16,6 +16,7 @@ export default async function handler(req, res) {
       const db = client.db("default");
       const usersCollection = db.collection("users");
       const fightersCollection = db.collection("fighters");
+      console.log("INSIDE FOLLOW HANDLER");
 
       console.log("Following logic: userId:", userId, "fighterId:", fighterId);
 

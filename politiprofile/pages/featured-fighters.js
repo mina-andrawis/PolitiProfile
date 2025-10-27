@@ -2,13 +2,13 @@ import { useState } from "react";
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import FighterGrid from "../components/fighters/fighter-grid";
-import useFighters from "../hooks/fighters/useFighters";
+import useGetFighters from "../hooks/fighters/useGetFighters";
 import usePagination from "../hooks/usePagination";
 import Sidebar from "../components/fighters/sidebar";
 
 export default function Home({ initialFighters, initialTotalPages }) {
   const { page, setPage, handleNextPage, handlePrevPage } = usePagination();
-  const { fighters, loading, error, totalPages } = useFighters('', page, 4);
+  const { fighters, loading, error, totalPages } = useGetFighters('', page, 4);
 
   const [sidebarOpen, setSidebarOpen] = useState(false); // mobile toggle
 

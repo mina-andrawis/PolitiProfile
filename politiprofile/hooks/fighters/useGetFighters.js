@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useFighters = (state, page, limit = 30) => {
+const useGetFighters = (state, page, limit = 30) => {
   const [fighters, setFighters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -48,4 +48,4 @@ const useFighters = (state, page, limit = 30) => {
   return { fighters, loading, error, totalPages };
 };
 
-export default useFighters;
+export default useGetFighters;
