@@ -1,52 +1,73 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
-const useFollowFighter = () => {
+// pass `initialIsFollowing` from the component, based on userDetails.Following
+export default function useFollowFighter(initialIsFollowing = false) {
   const { user } = useAuth();
+
+  const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
+  const [lastActionMessage, setLastActionMessage] = useState(null);
 
-  const followFighter = async (fighterId) => {
-    setLoading(true);
-    setError(null);
-    setSuccess(null);
-    if (!user || !user.uid || !fighterId) {
-      setError("Missing user or fighter information");
-      setLoading(false);
+  // keep hook in sync if parent prop changes (e.g. card remounts w/ new data)
+  useEffect(() => {
+    setIsFollowing(initialIsFollowing);
+  }, [initialIsFollowing]);
+
+  const sendFollowAction = async (fighterId, action) => {
+    if (!user || !user.uid) {
+      setError("Not authenticated");
       return;
     }
-      console.log("useFollowFighter logic: userId:", user.uid, "fighterId:", fighterId);
+
+    setLoading(true);
+    setError(null);
+    setLastActionMessage(null);
+
+    // optimistic update
+    const prev = isFollowing;
+    const optimistic = action === "follow";
+    setIsFollowing(optimistic);
 
     try {
-      console.log("Attempting to follow fighter:", fighterId);
-      const response = await fetch("/api/fighters/followFighter", {
+      const res = await fetch("/api/fighters/followFighter", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           userId: user.uid,
-          fighterId: fighterId,
+          fighterId,
+          action, // "follow" or "unfollow"
         }),
       });
 
-      const data = await response.json();
+      const data = await res.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to follow fighter");
+      if (!res.ok) {
+        throw new Error(data.error || `Failed to ${action}`);
       }
 
-      console.log("Fighter followed successfully:", fighterId);
-      setSuccess(data.message);
-    } catch (e) {
-      setError(e.message);
+      console.log(`✅ ${action} success`, data);
+      setLastActionMessage(data.message);
+    } catch (err) {
+      console.error(err);
+      setError(err.message || "Something went wrong");
+      // rollback optimistic change
+      setIsFollowing(prev);
     } finally {
       setLoading(false);
     }
   };
 
-  return { followFighter, loading, error, success };
-};
+  const followFighter = (fighterId) => sendFollowAction(fighterId, "follow");
+  const unfollowFighter = (fighterId) => sendFollowAction(fighterId, "unfollow");
 
-export default useFollowFighter;
+  return {
+    isFollowing,
+    loading,
+    error,
+    lastActionMessage,
+    followFighter,
+    unfollowFighter,
+  };
+}
