@@ -37,6 +37,7 @@ const useFollowFighter = () => {
         throw new Error(data.error || "Failed to follow fighter");
       }
 
+      console.log("Fighter followed successfully:", fighterId);
       setSuccess(data.message);
     } catch (e) {
       setError(e.message);
