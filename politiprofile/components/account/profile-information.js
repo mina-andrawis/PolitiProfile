@@ -1,5 +1,7 @@
 // components/account/ProfileInformation.js
 import React, { useState, useEffect } from "react";
+import ThemeToggle from "../theme-toggle";
+
 
 const ProfileInformation = ({ userDetails, onSave, updating, updateError, updateSuccess }) => {
   const [isEditingName, setIsEditingName] = useState(false);
@@ -57,6 +59,7 @@ const ProfileInformation = ({ userDetails, onSave, updating, updateError, update
       {updateError && <p className="text-red-500 mt-2">{updateError}</p>}
       {updateSuccess && <p className="text-green-500 mt-2">{updateSuccess}</p>}
       <p className="mb-2">Email: {userDetails?.email}</p>
+      <ThemeToggle />
     </div>
   );
 };

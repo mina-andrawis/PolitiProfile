@@ -48,6 +48,7 @@ const Account = () => {
                 Profile Information
               </button>
 
+
               <button
                 className="p-2 mb-3 w-full bg-primary text-white rounded-md hover:bg-secondaryHover"
                 onClick={() => setAccountSelection('profile-topics')}
