@@ -9,7 +9,7 @@ export const siteTitle = "PolitiProfile";
 
 export default function Layout({ children, home }) {
   return (
-    <div className="w-full max-w-5xl px-4 sm:px-12 lg:px-16 my-12 mx-auto text-primary-text overflow-x-hidden">
+    <div className="w-full max-w-6xl px-4 sm:px-12 lg:px-16 mt-24 mx-auto text-primary-text overflow-x-hidden">
       <Head>
         <meta
           name="description"
@@ -20,7 +20,7 @@ export default function Layout({ children, home }) {
       </header>
 
       <div className="hidden sm:flex justify-end px-9">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
       </div>
       <NavBar />
       
