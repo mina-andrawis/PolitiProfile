@@ -1,10 +1,14 @@
 import React, { useMemo } from "react";
 import useGetUserDetails from "../../hooks/user/useGetUserDetails";
 import useFollowFighter from "../../hooks/fighters/useFollowFighter";
+import { useAuth } from "../../contexts/AuthContext";
+import { useAuthModals } from "../login-register/auth-modals";
 
 export default function FighterCard({ fighter }) {
   // grab user details (includes Following array)
   const { userDetails, loading: detailsLoading } = useGetUserDetails();
+  const { user } = useAuth();
+  const { openLogin, AuthModals } = useAuthModals();
 
   // compute initial follow state for THIS fighter
   const initialIsFollowing = useMemo(() => {
@@ -28,6 +32,13 @@ export default function FighterCard({ fighter }) {
 
   // click handler switches based on current state
   const handleFollowClick = async () => {
+    if (!user) {
+      console.log("User not logged in");
+      openLogin();
+      return;
+    }
+    console.log("User logged in");
+
     if (isFollowing) {
       await unfollowFighter(fighter._id);
     } else {
@@ -36,6 +47,8 @@ export default function FighterCard({ fighter }) {
   };
 
   return (
+    <>
+      <AuthModals />
     <div className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition">
       <div className="aspect-w-4 aspect-h-3 mb-4">
         <img
@@ -81,5 +94,6 @@ export default function FighterCard({ fighter }) {
             : "❤️ Follow"}
       </button>
     </div>
+    </>
   );
 }
