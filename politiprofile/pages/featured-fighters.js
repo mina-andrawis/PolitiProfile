@@ -6,14 +6,14 @@ import useGetFighters from "../hooks/fighters/useGetFighters";
 import usePagination from "../hooks/usePagination";
 import Sidebar from "../components/fighters/sidebar";
 
-export default function Home({ initialFighters, initialTotalPages }) {
+export default function FeaturedFighters({ initialFighters, initialTotalPages }) {
   const { page, setPage, handleNextPage, handlePrevPage } = usePagination();
   const { fighters, loading, error, totalPages } = useGetFighters('', page, 4);
 
   const [sidebarOpen, setSidebarOpen] = useState(false); // mobile toggle
 
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
         <meta
