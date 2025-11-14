@@ -29,7 +29,7 @@ function ScorePill({ score }) {
   if (typeof score !== "number") return null;
   return (
     <span className="text-[11px] font-semibold px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-200">
-      Align {score}
+      Alignment Score: {score}
     </span>
   );
 }
