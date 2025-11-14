@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(node scripts/analyzeTopics.js:*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []
