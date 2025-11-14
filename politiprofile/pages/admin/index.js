@@ -310,25 +310,26 @@ function FighterEditor({ fighter, onUpdate }) {
           <div key={topic} className="border rounded p-3">
             <div className="font-semibold text-sm mb-2">{topic}</div>
             <div className="grid grid-cols-2 gap-2">
-              <div>
-                <label className="text-xs text-gray-600 dark:text-gray-400">Stance</label>
-                <select
-                  value={positions[topic]?.stance || 'no-position'}
-                  onChange={(e) => updatePosition(topic, 'stance', e.target.value)}
-                  className="w-full text-sm border rounded px-2 py-1"
-                >
-                  <option value="support">Support</option>
-                  <option value="oppose">Oppose</option>
-                  <option value="neutral">Neutral</option>
-                  <option value="no-position">No Position</option>
-                </select>
-              </div>
+            <div>
+              <label className="text-xs dark:text-gray-400">Stance</label>
+              <select
+                value={positions[topic]?.stance || 'no-position'}
+                onChange={(e) => updatePosition(topic, 'stance', e.target.value)}
+                className="w-full text-sm border rounded px-2 py-1 dark:text-black"
+              >
+                <option value="support">Support</option>
+                <option value="oppose">Oppose</option>
+                <option value="neutral">Neutral</option>
+                <option value="no-position">No Position</option>
+              </select>
+            </div>
+
               <div>
                 <label className="text-xs text-gray-600 dark:text-gray-400">Priority</label>
                 <select
                   value={positions[topic]?.priority || 'low'}
                   onChange={(e) => updatePosition(topic, 'priority', e.target.value)}
-                  className="w-full text-sm border rounded px-2 py-1"
+                  className="w-full text-sm border rounded px-2 py-1 dark:text-black"
                 >
                   <option value="high">High</option>
                   <option value="medium">Medium</option>
