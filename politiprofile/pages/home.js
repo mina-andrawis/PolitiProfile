@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import useGetFighters from "../hooks/fighters/useGetFighters";
+import useGetUserDetails from "../hooks/user/useGetUserDetails";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import useHomeFeed from "../hooks/home/useHomeFeed";
 import FeedCard from "../components/home/feed-card";
@@ -108,11 +109,20 @@ function Filters({ value, onChange }) {
 
 // ── Right rail ────────────────────────────────────────────────────────────────
 function TopFightersPanel() {
-  const { fighters = [], loading } = useGetFighters("", 1, 5); // first 5
+  const { userDetails } = useGetUserDetails();
+  const userTopics = userDetails?.topics || [];
+
+  const { fighters = [], loading } = useGetFighters("", 1, 5, userTopics, 'alignment'); // first 5, sorted by alignment
+
   return (
     <aside className="space-y-3">
       <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-200">Top Fighters for You</h4>
       {loading && <div className="text-xs text-slate-500">Loading…</div>}
+      {!loading && fighters.length === 0 && (
+        <div className="text-xs text-slate-500">
+          {userTopics.length === 0 ? 'Select your topics to see personalized fighters!' : 'No fighters found'}
+        </div>
+      )}
       {!loading &&
         fighters.map((f) => (
           <div key={f._id} className="flex items-center gap-3 p-2 rounded-xl border border-slate-200 dark:border-slate-800">
@@ -128,9 +138,9 @@ function TopFightersPanel() {
               <div className="text-sm font-semibold text-slate-900 dark:text-slate-100 truncate">{f.name}</div>
               <div className="text-[11px] text-slate-500 truncate">{f.office}</div>
             </div>
-            {typeof f.alignmentScore === "number" && (
+            {typeof f.alignmentScore === "number" && f.alignmentScore > 0 && (
               <span className="text-[11px] font-semibold px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-200">
-                Alignment: {f.alignmentScore}
+                {f.alignmentScore}%
               </span>
             )}
           </div>

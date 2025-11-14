@@ -1,9 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 
-const fetchFighters = async ({ state, page, limit }) => {
-  console.log(`Fetching fighters with state: ${state}, page: ${page}, limit: ${limit}`);
+const fetchFighters = async ({ state, page, limit, userTopics, sortBy }) => {
+  console.log(`Fetching fighters with state: ${state}, page: ${page}, limit: ${limit}, userTopics: ${userTopics?.length || 0}`);
 
-  const url = `/api/fighters/getFighters?${state ? `state=${state}&` : ''}page=${page}&limit=${limit}`;
+  const params = new URLSearchParams({
+    page: page.toString(),
+    limit: limit.toString(),
+  });
+
+  if (state) params.append('state', state);
+  if (sortBy) params.append('sortBy', sortBy);
+  if (userTopics && userTopics.length > 0) {
+    params.append('userTopics', JSON.stringify(userTopics));
+  }
+
+  const url = `/api/fighters/getFighters?${params.toString()}`;
   const response = await fetch(url);
 
   if (!response.ok) {
@@ -20,10 +31,10 @@ const fetchFighters = async ({ state, page, limit }) => {
   return response.json();
 };
 
-const useGetFighters = (state, page, limit = 30) => {
+const useGetFighters = (state = '', page = 1, limit = 30, userTopics = null, sortBy = 'alignment') => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['fighters', state, page, limit],
-    queryFn: () => fetchFighters({ state, page, limit }),
+    queryKey: ['fighters', state, page, limit, userTopics, sortBy],
+    queryFn: () => fetchFighters({ state, page, limit, userTopics, sortBy }),
   });
 
   return {
