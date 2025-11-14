@@ -21,7 +21,6 @@
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "mongodb": "6.10",
-    "mongoose": "^8.7.3",
     "net": "^1.0.2",
     "next": "^14.2.7",
     "nextjs": "^0.0.3",

@@ -6,9 +6,10 @@ import useGetFighters from "../hooks/fighters/useGetFighters";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import useHomeFeed from "../hooks/home/useHomeFeed";
 import FeedCard from "../components/home/feed-card";
+import topics from "../helpers/topics";
 
 // ── Mock fetchers (replace with real API) ─────────────────────────────────────
-const MOCK_ISSUES = ["Labor", "Climate", "Housing", "Healthcare", "Democracy", "Antitrust", "Education"];
+const ISSUES = topics.map(t => t.name);
 const DEFAULT_FILTERS = { issues: [], types: ["ARTICLE", "BILL", "VIDEO", "THREAD"], sort: "TOP_MATCH", myStateOnly: false, level: "ALL" };
 
 function mockDelay(ms) { return new Promise((r) => setTimeout(r, ms)); }
@@ -76,7 +77,7 @@ function Filters({ value, onChange }) {
       <section>
         <h4 className="text-sm font-semibold mb-2 text-slate-700 dark:text-slate-200">Issues</h4>
         <div className="flex flex-wrap gap-2">
-          {MOCK_ISSUES.map((issue) => (
+          {ISSUES.map((issue) => (
             <button
               key={issue}
               onClick={() => toggleIssue(issue)}
