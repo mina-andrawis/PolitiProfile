@@ -1,8 +1,25 @@
 // Migration script to add topicPositions field to existing fighters
 const { MongoClient } = require('mongodb');
-const topics = require('../helpers/topics.js').default;
-
 require('dotenv').config({ path: '.env.local' });
+
+// Topics list - copied from helpers/topics.js (top 15)
+const topics = [
+  { name: "Health" },
+  { name: "Government Operations and Politics" },
+  { name: "Armed Forces and National Security" },
+  { name: "International Affairs" },
+  { name: "Taxation" },
+  { name: "Crime and Law Enforcement" },
+  { name: "Agriculture and Food" },
+  { name: "Finance and Financial Sector" },
+  { name: "Education" },
+  { name: "Public Lands and Natural Resources" },
+  { name: "Transportation and Public Works" },
+  { name: "Immigration" },
+  { name: "Commerce" },
+  { name: "Energy" },
+  { name: "Labor and Employment" }
+];
 
 const uri = process.env.MONGO_URI;
 

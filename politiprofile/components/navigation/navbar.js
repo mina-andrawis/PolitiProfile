@@ -4,9 +4,11 @@ import Image from "next/image";
 import LoginWrapper from "../login-register/login-wrapper";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
+import useGetUserDetails from "../../hooks/user/useGetUserDetails";
 
 export default function NavBar() {
   const { user } = useAuth();
+  const { userDetails } = useGetUserDetails();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 
@@ -88,12 +90,29 @@ export default function NavBar() {
           </Link>
 
           {user ? (
-            <button
-              className="bg-orange-400 text-white px-4 py-2 rounded-md hover:bg-orange-500 transition"
-              onClick={() => router.push("/account")}
-            >
-              Account
-            </button>
+            <>
+              {userDetails?.email === 'mi.andrawis@gmail.com' && (
+                <Link href="/admin">
+                  <button
+                    className={`${
+                      isActive("/admin") ? "text-orange-300" : "text-white"
+                    } hover:text-orange-300 transition flex flex-col items-center`}
+                  >
+                    <svg className="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Admin</span>
+                  </button>
+                </Link>
+              )}
+              <button
+                className="bg-orange-400 text-white px-4 py-2 rounded-md hover:bg-orange-500 transition"
+                onClick={() => router.push("/account")}
+              >
+                Account
+              </button>
+            </>
           ) : (
             <LoginWrapper />
           )}
