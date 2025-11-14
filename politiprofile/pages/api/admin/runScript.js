@@ -20,7 +20,8 @@ export default async function handler(req, res) {
   const allowedScripts = {
     'linkFightersToBioguide': 'scripts/linkFightersToBioguide.js',
     'analyzeFighterPositions': 'scripts/analyzeFighterPositions.js',
-    'migrateFighterTopics': 'scripts/migrateFighterTopics.js'
+    'migrateFighterTopics': 'scripts/migrateFighterTopics.js',
+    'updateBills': 'scripts/updateBills.js'
   };
 
   if (!allowedScripts[script]) {

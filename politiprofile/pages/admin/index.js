@@ -457,6 +457,13 @@ function ScriptsTab({ userId }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <ScriptCard
+          title="Update Bills Database"
+          description="Import new bills from congress data repository"
+          scriptName="updateBills"
+          onRun={runScript}
+          running={running === 'updateBills'}
+        />
+        <ScriptCard
           title="Link Fighters to Bioguide"
           description="Match fighter names to legislators and add bioguideId"
           scriptName="linkFightersToBioguide"
